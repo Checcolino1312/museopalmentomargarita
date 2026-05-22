@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "PowerShell($binFile = \"C:\\\\Users\\\\cicci\\\\.claude\\\\projects\\\\c--Users-cicci-OneDrive-Desktop-palmentomargarita\\\\24de0820-d302-4c2d-9951-b01d899e2b99\\\\tool-results\\\\webfetch-1779453036200-j2j4yu.bin\"; $bytes = [System.IO.File]::ReadAllBytes\\($binFile\\); Write-Host \"File size: $\\($bytes.Length\\) bytes\"; Write-Host \"First 4 bytes \\(hex\\): $\\($bytes[0..3] | ForEach-Object { $_.ToString\\('X2'\\) } | Join-String -Separator ' '\\)\")",
+      "Read(//c/Users/cicci/AppData/Local/Temp/design_extracted/**)",
+      "Bash(npx create-next-app@latest . --typescript --no-tailwind --app --no-src-dir --no-import-alias --eslint)"
+    ]
+  }
+}
