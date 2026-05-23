@@ -1,0 +1,533 @@
+[
+  {
+    "id": "INV-001",
+    "nome": "UTENSILI di UTILIZZO QUODIANO",
+    "epoca": "fine ottocento/inizi novecento",
+    "provenienza": "Francavilla Fontana",
+    "descrizione": "- Utensili e contenitori vari per la conservazione delle marmellate, miele e conserve sottolio;\n- imbuti per travasare olio e vino dalle damigiane o dai piccoli capasoni alle bottiglie \n- tritaghiaccio manuale",
+    "noteTitolo": "La produzione alimentare nelle masserie",
+    "noteCorpo": "Fino alla metà del Novecento, la produzione e la lavorazione degli alimenti nelle campagne pugliesi avvenivano quasi esclusivamente all’interno delle masserie. Queste strutture rappresentavano il cuore della vita rurale, luoghi autosufficienti dove si trasformavano i prodotti della terra in conserve destinate a durare per tutto l’anno.\nFrutta, ortaggi, vino e olio venivano lavorati seguendo pratiche tradizionali tramandate di generazione in generazione, con l’obiettivo di garantire il sostentamento delle famiglie durante tutte le stagioni. In un contesto in cui non esistevano sistemi moderni di conservazione, la capacità di trasformare e preservare gli alimenti era fondamentale."
+  },
+  {
+    "id": "INV-002",
+    "nome": "BOTTIGLIE",
+    "epoca": "fine ottocento/inizi novecento",
+    "provenienza": "Francavilla Fontana",
+    "descrizione": "Bottiglie di varie epoca per la conservazione di Vino, Grappe, Liquori della tradizione locale",
+    "noteTitolo": "Bottiglie per vino e liquori tradizionali",
+    "noteCorpo": "Le bottiglie rappresentano un elemento fondamentale della conservazione e della cultura enogastronomica pugliese. Utilizzate per custodire vino e liquori artigianali, erano spesso riempite direttamente nelle masserie o nelle cantine locali, dove la produzione avveniva secondo metodi tradizionali.\nTra questi contenitori, il fiasco del vino, spesso rivestito in paglia per proteggerlo e facilitarne il trasporto, era il più diffuso: utilizzato nelle masserie e durante il lavoro nei campi, è diventato nel tempo uno dei simboli più riconoscibili della tradizione vinicola italiana\nAccanto al vino, simbolo della convivialità contadina, trovavano spazio liquori tipici come limoncello, mirto e nocino, preparati con ingredienti naturali e ricette tramandate nel tempo. Queste bevande, oltre ad accompagnare i pasti, erano espressione dell’identità locale e occasioni di condivisione."
+  },
+  {
+    "id": "INV-003",
+    "nome": "Strutture di sostegno per la pigiatura manuale",
+    "epoca": "Settecento",
+    "provenienza": "Francavilla Fontana",
+    "descrizione": "Staffe/leve di supporto utilizzate durante la pigiatura dell’uva",
+    "noteTitolo": "Strutture di supporto per la pigiatura dell’uva",
+    "noteCorpo": "Le strutture metalliche visibili lungo la parete sono oggetto di diverse interpretazioni legate alle tecniche tradizionali di lavorazione dell’uva.\nL’ipotesi più plausibile le identifica come elementi di supporto o tensione utilizzati durante la fase di pigiatura nel palmento. In un contesto caratterizzato da superfici scivolose per la presenza del mosto, i palmentari si servivano infatti di appigli o sostegni per mantenere l’equilibrio e imprimere maggiore forza durante la lavorazione.\nSebbene non sia possibile stabilire con assoluta certezza la funzione originaria di queste strutture, esse testimoniano l’ingegnosità delle soluzioni adottate nella tradizione contadina per facilitare un’attività tanto faticosa quanto fondamentale nella produzione del vino."
+  },
+  {
+    "id": "INV-004",
+    "nome": "Anfora (la mensa)",
+    "epoca": "Inizi Novecento",
+    "provenienza": "Francavilla Fontana",
+    "descrizione": "Contenitore per trasporto del mosto",
+    "noteTitolo": "Anfore per il trasporto del mosto",
+    "noteCorpo": "Le anfore erano tradizionalmente utilizzate per il trasporto e la conservazione del mosto e del vino, prima della diffusione di contenitori moderni. Realizzate in terracotta o altri materiali (in plastica i più recenti), garantivano una buona protezione del liquido e contribuivano a mantenerne le caratteristiche durante gli spostamenti.\nDopo la pigiatura, il mosto veniva trasferito nelle anfore per essere trasportato dalle masserie alle cantine o ai luoghi di consumo. La loro forma, studiata per facilitarne il trasporto e l’immagazzinamento, richiama modelli già diffusi in epoca antica."
+  },
+  {
+    "id": "INV-005",
+    "nome": "Lampada",
+    "epoca": "Inizi novecento",
+    "provenienza": "Francavilla Fontana",
+    "descrizione": "Lampada con braccio estensibile",
+    "noteTitolo": "Lampada con braccio estensibile",
+    "noteCorpo": "Lampada dotata di braccio orientabile, utilizzata per illuminare con precisione le aree di lavoro nelle masserie e nei laboratori artigianali, facilitando le attività quotidiane anche in condizioni di scarsa luce."
+  },
+  {
+    "id": "INV-006",
+    "nome": "FONTANA A PARETE",
+    "epoca": "Inizi Novecento",
+    "provenienza": "Francavilla Fontana",
+    "descrizione": "FONTANA A PARETE in GHISA",
+    "noteTitolo": "Fontana a parete in ghisa",
+    "noteCorpo": "Fontana in ghisa installata a parete, utilizzata negli spazi esterni e interni delle masserie per l’approvvigionamento d’acqua e per le attività quotidiane legate al lavoro agricolo."
+  },
+  {
+    "id": "INV-007",
+    "nome": "POMPA ACQUA",
+    "epoca": "Inizi Novecento",
+    "provenienza": "Francavilla Fontana",
+    "descrizione": "Pompa Manuale per tiraggio dell'acqua dal pozzo",
+    "noteTitolo": "Pompa manuale per il tiraggio dell’acqua dal pozzo",
+    "noteCorpo": "Pompa manuale utilizzata per l’estrazione dell’acqua dai pozzi, fondamentale nelle masserie per l’approvvigionamento idrico. Azionata tramite leva, richiedeva l’impiego di notevole forza per sollevare l’acqua in superficie, destinata agli usi domestici, agricoli e produttivi."
+  },
+  {
+    "id": "INV-008",
+    "nome": "CAPASONE",
+    "epoca": "fine ottocento",
+    "provenienza": "Francavilla Fontana",
+    "descrizione": "CAPASONE IN TERRACOTTA",
+    "noteTitolo": "Capasone per il vino",
+    "noteCorpo": "Grande contenitore in terracotta utilizzato per la conservazione e il trasporto del vino. Diffuso nelle masserie pugliesi, permetteva di mantenere il vino al riparo da luce e sbalzi di temperatura, favorendone la corretta fermentazione e maturazione. \nLa sua forma ampia e robusta, ereditata dalla tradizione mediterranea, testimonia l’importanza della produzione vinicola nella vita quotidiana e nella cultura contadina del territorio."
+  },
+  {
+    "id": "INV-009",
+    "nome": "FISCULI",
+    "epoca": "Settecento/Ottocento",
+    "provenienza": "Francavilla Fontana",
+    "descrizione": "FISCULI in CORDA INTRECCIATA",
+    "noteTitolo": "Fisculi IN CORDA INTRECCIATA",
+    "noteCorpo": "I fisculi sono intrecci circolari in fibra vegetale utilizzati nella spremitura dell’uva e delle olive. Disposti in pila all’interno del torchio, permettevano la separazione del liquido (mosto o olio) dalla parte solida, rappresentando uno strumento fondamentale nei processi produttivi tradizionali delle masserie. \nI fisculi hanno un’origine molto antica e sono utilizzati da secoli nelle produzioni tradizionali:\n - già presenti in epoca romana e pre-romana\n- ampiamente diffusi dal Medioevo fino all’età moderna\n- rimasti in uso nelle masserie fino alla prima metà del Novecento"
+  },
+  {
+    "id": "INV-010",
+    "nome": "SOFFIATORE PER LEGUMI E CEREALI",
+    "epoca": "Novecento",
+    "provenienza": "Francavilla Fontana",
+    "descrizione": "SOFFIATORE PER LEGUMI E CEREALI",
+    "noteTitolo": "Soffiatore per legumi e CEREALI",
+    "noteCorpo": "Strumento tradizionale utilizzato per la pulizia di legumi e cereali, dotato di una ventola che, azionata manualmente o elettricamente, generava un flusso d’aria utile a separare le parti più leggere dalle impurità. Diffuso nelle masserie, era parte integrante delle attività agricole legate alla selezione e preparazione dei raccolti."
+  },
+  {
+    "id": "INV-011",
+    "nome": "DISTILLATORE",
+    "epoca": "ottocento",
+    "provenienza": "francavilla Fontana",
+    "descrizione": "Distillatore per grappa e altri distillati",
+    "noteTitolo": "Distillatore per grappa e altri distillati in RAME",
+    "noteCorpo": "Apparecchiatura utilizzata per la distillazione di vinacce e altri prodotti agricoli, impiegata per ottenere grappa e liquori tradizionali. Attraverso il riscaldamento e la successiva condensazione dei vapori, permetteva di separare e raccogliere le componenti alcoliche, dando vita a distillati legati alla cultura contadina e alla tradizione locale."
+  },
+  {
+    "id": "INV-012",
+    "nome": "CRIC RUDIMENTALE",
+    "epoca": "settecento/ottocento",
+    "provenienza": "",
+    "descrizione": "CRIC RUDIMENTALE IN FERRO",
+    "noteTitolo": "Cric rudimentale in Ferro",
+    "noteCorpo": "Strumento meccanico utilizzato per sollevare o sostenere carichi pesanti durante le attività agricole e di manutenzione nelle masserie. Azionato manualmente, rappresenta una soluzione semplice ma efficace adottata prima della diffusione delle attrezzature moderne."
+  },
+  {
+    "id": "INV-013",
+    "nome": "STUFA IN GHISA",
+    "epoca": "Fine ottocento",
+    "provenienza": "",
+    "descrizione": "STUFA A LEGNA IN GHISA CON PIASTRA COTTURA",
+    "noteTitolo": "Stufa a legna in ghisa con piastra di cottura",
+    "noteCorpo": "Stufa in ghisa utilizzata per il riscaldamento degli ambienti e la preparazione dei cibi, dotata di piastra superiore per la cottura. Diffusa nelle masserie, rappresentava un elemento indispensabile nella vita quotidiana, unendo funzione domestica e attività di lavoro."
+  },
+  {
+    "id": "INV-014",
+    "nome": "TEGAMI IN RAME",
+    "epoca": "fine ottocento",
+    "provenienza": "",
+    "descrizione": "TEGAMI IN RAME",
+    "noteTitolo": "Tegami in rame",
+    "noteCorpo": "Strumenti essenziali della cucina tradizionale, i tegami in rame venivano utilizzati per la preparazione quotidiana dei cibi grazie alla loro capacità di distribuire il calore in modo uniforme. Appesi alle pareti o disposti vicino al fuoco, accompagnavano la vita domestica delle masserie, conservando ancora oggi il riflesso di antichi gesti, sapori e tradizioni contadine."
+  },
+  {
+    "id": "INV-015",
+    "nome": "PANARI E CESTE",
+    "epoca": "Meta novecento",
+    "provenienza": "",
+    "descrizione": "PANARI E CESTE IN CANNA",
+    "noteTitolo": "Panari in canna",
+    "noteCorpo": "Cesti intrecciati in canna, utilizzati nelle masserie per la raccolta, il trasporto e la conservazione di prodotti agricoli come uva, legumi e pane. Leggeri ma resistenti, accompagnavano il lavoro quotidiano nei campi, testimoniando l’abilità artigianale e il legame profondo tra uomo e natura nella tradizione contadina."
+  },
+  {
+    "id": "INV-016",
+    "nome": "BASTONI",
+    "epoca": "ottocento",
+    "provenienza": "",
+    "descrizione": "BASTONI DA CAMMINO CON PUNTA IN FERRO",
+    "noteTitolo": "Bastoni da cammino con punta in ferro",
+    "noteCorpo": "Strumenti semplici ma indispensabili per muoversi nella campagna, i bastoni da cammino con punta in ferro offrivano stabilità e sostegno su terreni irregolari. Utilizzati dai contadini durante il lavoro quotidiano e gli spostamenti, accompagnavano ogni passo tra campi e sentieri, diventando simbolo di esperienza, fatica e profondo legame con la terra."
+  },
+  {
+    "id": "INV-017",
+    "nome": "IMBRICI",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "Imbrici",
+    "noteCorpo": "Gli imbrici sono elementi da copertura in terracotta, utilizzati fin dall’antichità per realizzare tetti inclinati; si presentano come lastre di forma trapezoidale con bordi laterali rialzati, disposte in file sovrapposte per favorire lo scorrimento dell’acqua piovana; generalmente impiegati insieme ai coppi, che coprono le giunzioni, costituiscono il tradizionale sistema di copertura “alla romana”, ancora diffuso nei centri storici italiani."
+  },
+  {
+    "id": "INV-018",
+    "nome": "BOTTE IN ROVERE",
+    "epoca": "ottocento",
+    "provenienza": "",
+    "descrizione": "BOTTE IN ROVERE",
+    "noteTitolo": "Botte IN ROVERE",
+    "noteCorpo": "Contenitore in legno utilizzato per la conservazione e la maturazione del vino, la botte era elemento centrale delle attività vinicole nelle masserie. Al suo interno il vino riposava e si trasformava lentamente, acquisendo profumi e caratteristiche uniche, frutto del tempo e del sapere contadino tramandato di generazione in generazione."
+  },
+  {
+    "id": "INV-019",
+    "nome": "ANFORA (LU 'MMILE)",
+    "epoca": "inizi novecento",
+    "provenienza": "",
+    "descrizione": "Anfora in terracotta",
+    "noteTitolo": "Anfora per il trasporto dell’acqua",
+    "noteCorpo": "Contenitore in terracotta utilizzato per il trasporto e la conservazione dell’acqua nelle masserie e negli ambienti rurali. Dalla forma studiata per facilitarne il trasporto a mano o a spalla, accompagnava le attività quotidiane, garantendo una riserva essenziale per la vita domestica e il lavoro nei campi."
+  },
+  {
+    "id": "INV-020",
+    "nome": "LU LIMMU",
+    "epoca": "Inizi Novecento",
+    "provenienza": "",
+    "descrizione": "Recipiente circolare di terracotta per lavare biancheria o verdur",
+    "noteTitolo": "“Lu limmu” – contenitore in creta per il bucato",
+    "noteCorpo": "“Lu limmu” è un contenitore in creta utilizzato nella tradizione contadina per il lavaggio della biancheria. Al suo interno si usavano acqua, cenere e limone, sfruttando le proprietà naturali di questi elementi per detergere e sbiancare i tessuti.\nStrumento semplice ma efficace, rappresenta un esempio delle antiche pratiche domestiche basate su risorse naturali e conoscenze tramandate nel tempo."
+  },
+  {
+    "id": "INV-021",
+    "nome": "BAULE",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "BAULE IN LEGNO",
+    "noteTitolo": "BAULE IN LEGNO",
+    "noteCorpo": "Contenitore domestico realizzato in legno, utilizzato nelle abitazioni contadine per custodire biancheria, indumenti e oggetti personali.\nIl baule rappresentava un elemento essenziale della vita familiare: spesso collocato nella camera da letto, accompagnava i momenti più importanti della vita, come il matrimonio, conservando il corredo della sposa.\nRobusto e funzionale, era progettato per proteggere il contenuto da polvere e umidità, ma assumeva anche un valore simbolico, legato all’identità e alla memoria della casa contadina."
+  },
+  {
+    "id": "INV-022",
+    "nome": "SEDIA IN LEGNO",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "Sedia in legno trasformabile in scaletta",
+    "noteTitolo": "Sedia in legno trasformabile in scaletta",
+    "noteCorpo": "Mobile multifunzionale realizzato in legno, concepito per rispondere alle esigenze pratiche della vita domestica contadina.\nAttraverso un semplice meccanismo a ribalta, la sedia si trasformava in una piccola scala, permettendo di raggiungere ripiani alti, dispense o scaffali."
+  },
+  {
+    "id": "INV-023",
+    "nome": "LAMPADA DA TAVOLO",
+    "epoca": "Meta novecento",
+    "provenienza": "",
+    "descrizione": "LAMPADA ELETTRICA DA TAVOLO",
+    "noteTitolo": "Lampada da tavolo elettrica",
+    "noteCorpo": "Oggetto di illuminazione domestica alimentato a energia elettrica, diffuso nelle abitazioni con l’avvento della modernizzazione e dell’elettrificazione.\nComposta generalmente da una base in metallo o ceramica e da un paralume in vetro o tessuto, la lampada consentiva di illuminare gli ambienti interni con una luce più stabile e sicura rispetto ai sistemi precedenti a olio o a candela"
+  },
+  {
+    "id": "INV-024",
+    "nome": "VASI CERAMICA",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "VASI IN CERAMICA",
+    "noteTitolo": "Vasi per la ricotta forte",
+    "noteCorpo": "Contenitori in terracotta utilizzati per la conservazione e la fermentazione della ricotta forte, prodotto tipico della tradizione pugliese."
+  },
+  {
+    "id": "INV-025",
+    "nome": "FERRI DEL FUOCO",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "FERRI DEL FUOCO",
+    "noteTitolo": "Ferri del fuoco",
+    "noteCorpo": "Insieme di utensili in ferro utilizzati per la gestione del focolare domestico, cuore della vita nelle abitazioni contadine.\nComprendevano attrezzi come pinze, palette e attizzatoi, indispensabili per alimentare, regolare e mantenere il fuoco acceso durante le attività quotidiane.\nImpiegati per la preparazione dei cibi e il riscaldamento degli ambienti, questi strumenti testimoniano l’importanza del camino come centro funzionale e simbolico della casa."
+  },
+  {
+    "id": "INV-026",
+    "nome": "CANNIZZO",
+    "epoca": "Novecento",
+    "provenienza": "",
+    "descrizione": "Struttura intrecciata realizzata con canne",
+    "noteTitolo": "Cannizzo",
+    "noteCorpo": "Struttura intrecciata realizzata con canne palustri o giunchi, utilizzata nelle abitazioni e negli ambienti agricoli per molteplici funzioni.\nImpiegato come giaciglio, supporto per l’asciugatura di prodotti alimentari (come fichi, pomodori o legumi) o divisorio negli spazi domestici e rurali, il cannizzo rappresentava una soluzione semplice e versatile.\nLeggero ma resistente, era facilmente trasportabile e adattabile alle diverse necessità quotidiane, rispecchiando l’uso ingegnoso delle risorse naturali disponibili sul territorio.\nTestimonianza della cultura materiale contadina, il cannizzo racconta un modo di vivere essenziale, fondato su praticità, autosufficienza e stretta connessione con l’ambiente."
+  },
+  {
+    "id": "INV-027",
+    "nome": "CUCINA A FUOCO",
+    "epoca": "inizi Novecento",
+    "provenienza": "",
+    "descrizione": "CUCINA A FUOCO SMALTATA",
+    "noteTitolo": "CUCINA A FUOCO",
+    "noteCorpo": "Stufa-cucina in ghisa e lamiera smaltata utilizzata nelle abitazioni contadine per cucinare e riscaldare gli ambienti domestici.\nAlimentata a legna, era dotata di piano di cottura, forno e scomparti per la gestione del fuoco, consentendo diverse modalità di preparazione degli alimenti.\nFulcro della vita familiare, rappresentava un elemento essenziale della casa: con un’unica fonte di calore era possibile cucinare, riscaldare l’ambiente e svolgere altre attività quotidiane come scaldare l’acqua o asciugare i panni"
+  },
+  {
+    "id": "INV-028",
+    "nome": "CROCCOLI",
+    "epoca": "Inizi Novecento",
+    "provenienza": "",
+    "descrizione": "BASTONI IN LEGNO D'ULIVO",
+    "noteTitolo": "Croccoli",
+    "noteCorpo": "Strumenti agricoli in legno d'ulivo, utilizzati nel lavoro dei campi per gestire, raccogliere e movimentare materiali come paglia, fieno e prodotti agricoli.\nDalla struttura semplice ma funzionale, i croccoli permettevano di sollevare, girare o accumulare le masse vegetali durante le varie fasi della lavorazione agricola.\nIndispensabili nelle attività quotidiane della vita contadina, erano utilizzati soprattutto durante la raccolta e la preparazione del foraggio o nella gestione delle scorte alimentari per gli animali.\nVenivano inoltre impiegati per avvicinare i rami durante la raccolta della frutta, facilitando il raggiungimento e la raccolta dei prodotti dagli alberi."
+  },
+  {
+    "id": "INV-029",
+    "nome": "TRAPANO A MANO",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "TRAPANO A MANO",
+    "noteTitolo": "TRAPANO A MANO",
+    "noteCorpo": "Strumento manuale utilizzato per praticare fori su legno, metallo e altri materiali, attraverso un movimento rotatorio azionato direttamente dall’operatore.\nCostituito da una struttura in metallo con impugnatura e manovella laterale, permetteva di imprimere forza e precisione durante le lavorazioni artigianali.\nDiffuso nelle attività quotidiane di falegnami, contadini e artigiani, era indispensabile per la realizzazione e la manutenzione di oggetti, attrezzi e strutture domestiche.\nPrima dell’introduzione degli utensili elettrici, il trapano a mano rappresentava uno strumento essenziale per i lavori di assemblaggio e riparazione, richiedendo abilità e controllo da parte dell’utilizzatore."
+  },
+  {
+    "id": "INV-030",
+    "nome": "FILTRO METALLICO",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "Filtro metallico alimentare",
+    "noteCorpo": "Il filtro metallico alimentare è un dispositivo utilizzato per separare particelle solide e impurità da liquidi o prodotti alimentari, costituito da una rete o superficie metallica con maglie di diversa dimensione; impiegato nei processi di lavorazione di bevande, oli, latticini e altri alimenti, garantisce la purezza e la sicurezza del prodotto finale trattenendo residui indesiderati durante la filtrazione; grazie alla resistenza alla corrosione, alla durata e alla possibilità di essere lavato e riutilizzato, rappresenta una soluzione affidabile e igienica nell’industria alimentare"
+  },
+  {
+    "id": "INV-031",
+    "nome": "Chiantaturu",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "ATTREZZO AGRICOLO PER TRAPIANTARE",
+    "noteTitolo": "Chiantaturu",
+    "noteCorpo": "Il chiantaturu è un antico attrezzo agricolo manuale, diffuso nelle campagne dell’Italia meridionale, utilizzato per praticare fori nel terreno e facilitare la semina di cereali o altre colture; realizzato generalmente in legno con una punta in ferro, veniva impiegato per penetrare il suolo con precisione e rapidità durante il lavoro nei campi; oggi rappresenta una testimonianza della tradizione contadina e delle tecniche manuali di lavorazione della terra precedenti alla meccanizzazione agricola"
+  },
+  {
+    "id": "INV-032",
+    "nome": "BLOCCA PORTA",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "BLOCCA PORTA IN FERRO",
+    "noteTitolo": "BLOCCA PORTA",
+    "noteCorpo": "Elemento in ferro utilizzato per bloccare e mantenere fisse le porte, murato nella parte retrostante dell’ingresso.\nCostituito da un gancio o sistema di arresto, permetteva di trattenere l’anta, evitando chiusure  accidentali dovute al vento o al peso della porta.\nDiffuso negli ambienti domestici e rurali, era particolarmente utile nelle abitazioni contadine, nelle stalle e nei locali di lavoro, dove era spesso necessario mantenere le porte aperte per il passaggio o l’aerazione degli spazi.\nAllo stesso tempo, poteva essere utilizzato come dispositivo di sicurezza, contribuendo a impedire l’apertura della porta dall’esterno e garantendo maggiore protezione degli ambienti interni."
+  },
+  {
+    "id": "INV-033",
+    "nome": "Bruciatore di macchinario agricolo",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "Bruciatore di macchinario agricolo",
+    "noteCorpo": "Il bruciatore è un componente del sistema di combustione impiegato nei macchinari agricoli, in cui avviene la miscelazione di un combustibile (gas, gasolio o biomassa) con l’aria e la successiva reazione di combustione, generalmente con produzione di fiamma; utilizzato in attrezzature come essiccatoi, generatori di aria calda o sistemi per il diserbo termico, consente la produzione di calore necessario ai processi agricoli; grazie alla regolazione del rapporto aria-combustibile e ai sistemi di controllo, garantisce efficienza energetica, sicurezza e continuità di funzionamento nelle operazioni di lavorazione e trasformazione dei prodotti."
+  },
+  {
+    "id": "INV-034",
+    "nome": "CASSE PER PASTA",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "Casse in legno per la pasta",
+    "noteCorpo": "Le casse in legno utilizzate nei pastifici, in particolare nella tradizione del pastificio di Gragnano, sono contenitori impiegati per il trasporto, lo stoccaggio e l’essiccazione della pasta, realizzati con materiali naturali che favoriscono la traspirazione del prodotto; grazie alla struttura porosa del legno, permettono una corretta aerazione durante le fasi di lavorazione, contribuendo a mantenere la qualità e la consistenza della pasta essiccata; tipiche della produzione artigianale gragnanese, rappresentano uno strumento essenziale per garantire una conservazione igienica e naturale del prodotto finito."
+  },
+  {
+    "id": "INV-035",
+    "nome": "",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "",
+    "noteCorpo": ""
+  },
+  {
+    "id": "INV-036",
+    "nome": "TRINCIAFORAGGIO",
+    "epoca": "fine ottocento/inizi novecento",
+    "provenienza": "",
+    "descrizione": "TRINCIAFORAGGIO",
+    "noteTitolo": "TRINCIAFORAGGIO",
+    "noteCorpo": "Macchina agricola in legno e ferro utilizzata per sminuzzare foraggi, paglia e altri prodotti vegetali destinati all’alimentazione degli animali.\nDotata di una struttura robusta e di un sistema di lame azionate manualmente, permetteva di ridurre il materiale in parti più piccole, facilitandone il consumo e la conservazione.\nDiffusa nelle aziende agricole e nelle stalle, era uno strumento indispensabile nella preparazione del cibo per il bestiame, contribuendo a ottimizzare le risorse disponibili e a migliorare la gestione delle scorte.\nIl movimento, spesso azionato tramite manovella o sistema meccanico semplice, richiedeva forza e coordinazione, rappresentando un esempio significativo del lavoro manuale tipico della vita contadina."
+  },
+  {
+    "id": "INV-037",
+    "nome": "POMPA TRASPORTABILE",
+    "epoca": "fine ottocento/inizi novecento",
+    "provenienza": "",
+    "descrizione": "Pompa trasportabile per acqua sorgiva",
+    "noteTitolo": "Pompa trasportabile per acqua sorgiva",
+    "noteCorpo": "Dispositivo portatile utilizzato per prelevare e trasferire acqua da sorgenti naturali, pozzi o cisterne, impiegando la sola forza manuale o semplici sistemi meccanici.\nBasata su un principio di aspirazione e pressione, permetteva di sollevare l’acqua da profondità variabili e convogliarla verso contenitori o punti di utilizzo. [uac-m.org]\nStrumento particolarmente diffuso in ambito rurale e agricolo, veniva utilizzato per l’approvvigionamento idrico domestico, l’irrigazione di piccoli orti e l’abbeveraggio degli animali, garantendo un accesso continuo all’acqua anche in assenza di sistemi idrici strutturati."
+  },
+  {
+    "id": "INV-038",
+    "nome": "POMPA A MANO",
+    "epoca": "fine ottocento/inizi novecento",
+    "provenienza": "",
+    "descrizione": "Pompa a mano per trattamenti in vigna",
+    "noteTitolo": "Pompa a mano per trattamenti in vigna",
+    "noteCorpo": "Attrezzo agricolo utilizzato per l’irrorazione manuale di soluzioni a base di rame sulle coltivazioni vitivinicole, in particolare per la protezione delle viti da malattie come la peronospora.\nDotata di un serbatoio e di un sistema di pompaggio azionato manualmente, permetteva di creare pressione e distribuire il liquido attraverso una lancia o un ugello, garantendo una diffusione uniforme del trattamento sulle piante.\nDiffusa nelle campagne e nelle piccole aziende agricole, era uno strumento fondamentale nella gestione della vigna, contribuendo alla salvaguardia del raccolto e alla qualità della produzione."
+  },
+  {
+    "id": "INV-039",
+    "nome": "CALESSINO",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "CALESSINO IN VIMINI",
+    "noteTitolo": "CALESSINO IN VIMINI",
+    "noteCorpo": "Piccolo veicolo leggero realizzato in vimini intrecciato, utilizzato per il trasporto di bambini, spesso trainato o spinto manualmente.\nCaratterizzato da una struttura elegante e decorativa, era dotato di un ombrellino superiore che proteggeva dal sole e garantiva maggiore comfort durante l’utilizzo.\nDiffuso nei contesti domestici e borghesi, rappresentava un oggetto funzionale ma anche di carattere estetico, simbolo di cura e attenzione verso l’infanzia.\nLa lavorazione in vimini, materiale flessibile ma resistente, univa leggerezza e solidità, permettendo un facile spostamento e una buona durata nel tempo."
+  },
+  {
+    "id": "INV-040",
+    "nome": "Ombrello di seta per la pioggia",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "Ombrello di seta per la pioggia",
+    "noteCorpo": "L’ombrello di seta è un accessorio destinato alla protezione dalla pioggia, composto da un’asta centrale con impugnatura e da una copertura in tessuto sostenuta da stecche apribili; in passato la seta, spesso trattata per renderla più resistente all’acqua, veniva utilizzata per la sua leggerezza ed eleganza, rendendo l’ombrello non solo uno strumento pratico ma anche un oggetto di pregio; diffuso in Europa tra XVII e XIX secolo, contribuì alla trasformazione dell’ombrello in accessorio di uso quotidiano, affiancando alla funzione protettiva un forte valore estetico e sociale"
+  },
+  {
+    "id": "INV-041",
+    "nome": "OMBRELLO PER IL SOLE",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "OMBRELLO PER IL SOLE",
+    "noteCorpo": "L’ombrello per il sole, detto anche parasole, è un accessorio portatile utilizzato per creare ombra e proteggere dai raggi solari; è costituito da un’asta centrale con impugnatura e da una copertura in tessuto sostenuta da stecche apribili; fin dall’antichità veniva impiegato principalmente come riparo dal sole, spesso associato a nobiltà e prestigio nelle civiltà orientali e mediterranee; leggero e maneggevole, era particolarmente diffuso nelle passeggiate all’aperto e nei viaggi, contribuendo a proteggere dal calore e a migliorare il comfort nelle giornate estive. [it.wikipedia.org]"
+  },
+  {
+    "id": "INV-042",
+    "nome": "VASCA PER BAGNETTO NEONATI",
+    "epoca": "inizi novecento",
+    "provenienza": "",
+    "descrizione": "VASCA PER BAGNETTO NEONATI",
+    "noteTitolo": "Vasca per bagnetto neonati con base in legno",
+    "noteCorpo": "Contenitore utilizzato per il bagno dei neonati, sostenuto da una struttura in legno che ne facilitava l’utilizzo domestico, mantenendo la vasca stabile e sollevata da terra.\nProgettata per garantire sicurezza e praticità, permetteva di lavare il bambino in modo più agevole, evitando all’adulto posture scomode e assicurando maggiore controllo durante il bagno.\nDiffusa negli ambienti familiari, rappresentava un elemento essenziale nella cura quotidiana dell’infanzia, in un’epoca in cui l’organizzazione domestica era fortemente legata a soluzioni semplici ma funzionali."
+  },
+  {
+    "id": "INV-043",
+    "nome": "PORTA ENFANT in LEGNO E TESSUTO",
+    "epoca": "inizi novecento",
+    "provenienza": "",
+    "descrizione": "Porta enfant in legno e tessuto",
+    "noteTitolo": "Porta enfant in legno e tessuto",
+    "noteCorpo": "Strumento utilizzato per il trasporto dei neonati, composto da una struttura in legno abbinata a elementi in tessuto, pensati per avvolgere e sostenere il bambino in modo sicuro e confortevole.\nProgettato per facilitare gli spostamenti quotidiani, permetteva di portare il bambino vicino al corpo o di adagiarlo in posizione stabile durante le attività domestiche, garantendo allo stesso tempo protezione e praticità."
+  },
+  {
+    "id": "INV-044",
+    "nome": "LAMPADA ESTENSIBILE",
+    "epoca": "inizi novecento",
+    "provenienza": "",
+    "descrizione": "LAMPADA ESTENSIBILE PIANI DI LAVORO",
+    "noteTitolo": "Lampada estensibile per piani di lavoro",
+    "noteCorpo": "Dispositivo di illuminazione progettato per essere fissato o posizionato in prossimità dei piani di lavoro, caratterizzato da un braccio estensibile che permetteva di orientare la luce secondo le necessità.\nDotata di un sistema articolato o telescopico, consentiva di avvicinare o allontanare la fonte luminosa, migliorando la visibilità durante attività manuali di precisione, come lavorazioni artigianali, scrittura o lettura.\nDiffusa in ambienti domestici e professionali, trovava impiego su tavoli, banchi da lavoro e scrivanie, rappresentando una soluzione pratica per ottimizzare l’illuminazione in spazi limitati."
+  },
+  {
+    "id": "INV-045",
+    "nome": "LAMPADA PORCELLANA",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "",
+    "noteCorpo": ""
+  },
+  {
+    "id": "INV-046",
+    "nome": "CASSE DI LEGNO",
+    "epoca": "fine ottocento",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "Cassette in legno per la raccolta dell’uva",
+    "noteCorpo": "Le cassette in legno per la raccolta dell’uva erano contenitori rettangolari realizzati con assi leggere ma resistenti, dotati di maniglie in corda intecciata e utilizzati durante la vendemmia per raccogliere, trasportare e conservare temporaneamente i grappoli appena colti; diffuse nelle campagne pugliesi e nelle masserie fino alla metà del Novecento, venivano riempite manualmente dai vendemmiatori lungo i filari e poi impilate o caricate su carretti per il trasporto verso il palmento o la cantina, dove iniziava il processo di pigiatura; la loro struttura aperta favoriva l’aerazione, contribuendo a mantenere l’integrità dell’uva e a ridurre i danni durante le fasi di movimentazione, aspetto fondamentale in un momento delicato della produzione vinicola; strettamente legate al rito della vendemmia, attività di grande importanza economica e culturale nel mondo agricolo, queste cassette rappresentano ancora oggi un simbolo del lavoro collettivo e della tradizione vinicola, che coinvolgeva intere famiglie e comunità rurali; nella memoria locale, esse evocano i ritmi stagionali della campagna e l’atmosfera conviviale della raccolta, momento di fatica ma anche di condivisione, tramandato nel tempo come parte integrante dell’identità contadina"
+  },
+  {
+    "id": "INV-047",
+    "nome": "Valigie da viaggio",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "Valigie da viaggio in pelle",
+    "noteCorpo": "Le valigie da viaggio in pelle erano contenitori rigidi o semi‑rigidi realizzati in cuoio e dotati di manico, chiusure metalliche e talvolta scomparti interni, utilizzati tra la fine dell’Ottocento e la prima metà del Novecento per il trasporto di abiti e oggetti personali durante gli spostamenti; nate dall’evoluzione dei più ingombranti bauli, si diffusero con l’avvento del treno e dei primi viaggi moderni, quando divenne necessario disporre di bagagli più leggeri e facilmente trasportabili; il cuoio, materiale resistente e durevole, garantiva la protezione del contenuto durante viaggi spesso lunghi e disagevoli, rendendo queste valigie strumenti essenziali per chi si spostava per lavoro, commercio o necessità; anche nel contesto rurale pugliese, sebbene meno diffuse rispetto ai bauli domestici, le valigie rappresentavano un oggetto legato al viaggio e al cambiamento, utilizzato da chi partiva per lunghi spostamenti o per emigrare, racchiudendo non solo beni materiali ma anche aspettative e legami familiari; nella memoria collettiva restano simbolo di partenza e di distanza, come suggerisce il detto popolare secondo cui “cu la valìgia parte, se porta ‘na vita intra”, a indicare il valore affettivo degli oggetti custoditi al loro interno."
+  },
+  {
+    "id": "INV-048",
+    "nome": "",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "stessa valigia  047",
+    "noteCorpo": ""
+  },
+  {
+    "id": "INV-049",
+    "nome": "DISCHI PER CORSO DI LINGUA",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "DISCHI PER CORSO DI LINGUA",
+    "noteCorpo": "I corsi di lingua inglese su disco rappresentano uno dei primi sistemi di apprendimento audio utilizzati tra la prima metà e la metà del Novecento, costituiti da una serie di dischi in vinile o a 78 giri accompagnati da manuali e libretti didattici; prodotti da istituti specializzati come il Fonoglotta, questi corsi permettevano di imparare la pronuncia e la comprensione attraverso l’ascolto e la ripetizione delle lezioni registrate, integrando lo studio tradizionale con un innovativo supporto sonoro; diffusi a livello internazionale, venivano utilizzati soprattutto da studenti, lavoratori ed emigranti che desideravano apprendere una lingua straniera senza frequentare scuole, spesso conservati in cofanetti completi contenenti più dischi e materiali cartacei; questi strumenti riflettono un’importante fase di transizione nell’educazione, in cui la tecnologia analogica iniziava a entrare nella vita quotidiana e nell’insegnamento, anticipando i moderni metodi multimediali; oggi sono testimonianza non solo dell’evoluzione della didattica linguistica, ma anche del desiderio di apertura verso nuove opportunità culturali e lavorative, legato ai grandi cambiamenti sociali e migratori del Novecento."
+  },
+  {
+    "id": "INV-050",
+    "nome": "Baule",
+    "epoca": "fine ottocento",
+    "provenienza": "",
+    "descrizione": "Baule di Legno",
+    "noteTitolo": "BAULE DI LEGNO",
+    "noteCorpo": "Il baule di legno era un grande contenitore realizzato in legno massello, spesso rinforzato con elementi in ferro e dotato di coperchio apribile, utilizzato nelle case rurali tra la fine dell’Ottocento e la prima metà del Novecento per custodire indumenti, biancheria, tessuti e oggetti personali; rappresentava uno degli arredi principali della casa contadina, non solo per la sua funzione pratica di conservazione e trasporto, ma anche per il suo valore simbolico, essendo frequentemente legato alla dote matrimoniale e alla sfera privata e familiare; collocato in ambienti domestici spesso essenziali, il baule costituiva una vera e propria “cassaforte” della memoria, conservando beni materiali e affettivi tramandati di generazione in generazione, e rifletteva un modello di vita basato sull’autosufficienza, sulla parsimonia e sull’importanza del patrimonio familiare nella cultura agricola pugliese"
+  },
+  {
+    "id": "INV-051",
+    "nome": "SCARPA UOMO ANTINFORTUNISTICA",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "La scarpa antinfortunistica con chiodi rappresenta una delle forme più antiche di calzatura da lavoro, caratterizzata da una robusta struttura in cuoio e da una suola rinforzata con chiodi metallici; tali elementi venivano applicati per aumentare la resistenza all’usura, migliorare l’aderenza su terreni sconnessi e proteggere il piede da oggetti appuntiti o superfici accidentate, anticipando le moderne soluzioni antiscivolo e antiperforazione; prima dell’introduzione delle scarpe di sicurezza certificate, lavoratori agricoli e artigiani utilizzavano calzature rinforzate in modo empirico, adattandole alle esigenze quotidiane e ai rischi del mestiere; queste scarpe affondano le loro radici nelle più primitive forme di protezione, come gli zoccoli e le calzature rinforzate utilizzate già in ambito agricolo e proto‑industriale; con lo sviluppo dell’industria e l’aumento degli infortuni sul lavoro, tali soluzioni artigianali evolsero progressivamente in dispositivi di protezione sempre più strutturati, fino alle moderne scarpe antinfortunistiche regolamentate; oggi queste calzature chiodate rappresentano una preziosa testimonianza del passaggio da una cultura del lavoro basata sull’esperienza e sull’adattamento personale a una maggiore consapevolezza della sicurezza e della tutela del lavoratore.",
+    "noteCorpo": ""
+  },
+  {
+    "id": "INV-052",
+    "nome": "CAMPANA DI VITELLO",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "Piccolo campanaccio in metallo, fissato al collo dell’animale mediante una cinghia in cuoio, utilizzato in ambito agro‑pastorale per segnalare la presenza e il movimento del bestiame; il suono prodotto dal battacchio interno permette all’allevatore di localizzare facilmente il vitello durante il pascolo, anche a distanza o in condizioni di scarsa visibilità; tali campanelle, spesso di dimensioni ridotte rispetto a quelle delle vacche adulte, servono anche a distinguere i capi più giovani all’interno del gregge e a mantenerne il controllo; realizzate tradizionalmente in ferro, bronzo o ottone attraverso tecniche artigianali tramandate nel tempo, queste campane rappresentano un importante prodotto della cultura contadina e pastorale; già diffuse fin dall’antichità, le campane per animali costituiscono uno degli strumenti più semplici ed efficaci per la gestione del bestiame e la prevenzione dello smarrimento; nel contesto rurale locale, la campana di vitello non è solo un oggetto funzionale, ma anche un segno identitario, legato alla quotidianità dell’allevamento e alla relazione diretta tra uomo e animale.",
+    "noteCorpo": ""
+  },
+  {
+    "id": "INV-053",
+    "nome": "CHIUDITAPPI",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "Il chiuditappi, o tappatrice, è uno strumento utilizzato per inserire e fissare i tappi all’interno delle bottiglie, in particolare durante l’imbottigliamento del vino; si tratta di un attrezzo, manuale o a leva, che comprime il tappo – generalmente in sughero – e lo introduce nel collo della bottiglia, garantendo una chiusura ermetica utile alla conservazione del contenuto; la tappatura rappresenta una fase fondamentale del processo produttivo, poiché impedisce il contatto con l’aria e preserva le proprietà organolettiche del vino; già a partire dal XIX secolo, con la diffusione dell’imbottigliamento, furono sviluppati numerosi dispositivi per facilitare questa operazione, dalle semplici tappatrici manuali ai modelli più complessi destinati alla produzione artigianale e industriale; tradizionalmente realizzati in legno o metallo e azionati tramite pressione o leve, questi strumenti testimoniano l’evoluzione delle tecniche di conservazione del vino e l’ingegno della cultura contadina; nel contesto rurale, il chiuditappi era un attrezzo indispensabile nelle cantine domestiche, legato ai momenti collettivi della vendemmia e dell’imbottigliamento.",
+    "noteCorpo": ""
+  },
+  {
+    "id": "INV-054",
+    "nome": "CISTERNA",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "CISTERNA",
+    "noteCorpo": "La cisterna di pietra per la raccolta del mosto è un elemento fondamentale del palmento, destinato a raccogliere il succo d’uva ottenuto dalla pigiatura; collocata a un livello inferiore rispetto alla vasca di lavorazione, essa riceve il mosto per semplice caduta, sfruttando la forza di gravità, attraverso sistemi di canalizzazione; tali canalette, realizzate in pietra o rivestite in ceramica, convogliavano il liquido garantendo una raccolta pulita e ordinata durante le operazioni di vinificazione; la cisterna svolgeva una funzione essenziale nel primo stadio di trasformazione dell’uva, permettendo la raccolta e, in alcuni casi, l’avvio della fermentazione del mosto; costruita con materiali locali e tecniche semplici ma efficaci, testimonia l’ingegnosità delle pratiche rurali tradizionali, basate su un sistema integrato di vasche comunicanti; nel contesto delle cantine storiche, rappresentava un punto centrale nelle attività della vendemmia, momento collettivo di lavoro e condivisione all’interno della comunità contadina."
+  },
+  {
+    "id": "INV-055",
+    "nome": "ATTREZZI DI CUCINA IN FERRO",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "Attrezzi di cucina in ferro",
+    "noteCorpo": "Gli attrezzi di cucina in ferro comprendono utensili utilizzati nella preparazione quotidiana dei cibi, realizzati in materiale resistente e durevole, diffusi nelle abitazioni rurali e nelle masserie; questi strumenti – tra cui padelle, tegami, mestoli e graticole – erano progettati per resistere alle alte temperature e all’uso intensivo sul fuoco vivo, permettendo una cottura omogenea degli alimenti; il ferro, facilmente lavorabile e disponibile localmente, garantiva robustezza e lunga durata, rendendo tali utensili indispensabili nella vita domestica; spesso realizzati da artigiani locali, presentavano forme semplici e funzionali, adattate alle esigenze della cucina tradizionale; nel contesto contadino, questi attrezzi accompagnavano i momenti di preparazione dei pasti quotidiani e delle festività, diventando parte integrante della cultura materiale e della tradizione gastronomica del territorio."
+  },
+  {
+    "id": "INV-056",
+    "nome": "Arnesi del camino",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "Arnesi del camino",
+    "noteCorpo": "Gli arnesi del camino sono un insieme di utensili necessari per la gestione del fuoco domestico, utilizzati nel focolare per alimentare la combustione, spostare la legna e mantenere pulito lo spazio; tra i più comuni si trovano l’attizzatoio, la pinza, la paletta e la spazzola, strumenti progettati per controllare la brace e regolare l’intensità della fiamma; realizzati prevalentemente in ferro o ghisa, materiali resistenti al calore, questi attrezzi garantivano sicurezza e praticità durante l’uso quotidiano del camino; nelle abitazioni rurali, il focolare rappresentava il centro della vita domestica, destinato non solo al riscaldamento ma anche alla preparazione dei cibi; gli arnesi, spesso prodotti artigianalmente, univano funzionalità ed essenzialità, diventando parte integrante della cultura materiale contadina e delle tradizioni legate alla vita in casa."
+  },
+  {
+    "id": "INV-057",
+    "nome": "",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "come sopra",
+    "noteCorpo": ""
+  },
+  {
+    "id": "INV-058",
+    "nome": "",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "come sopra",
+    "noteCorpo": ""
+  },
+  {
+    "id": "INV-059",
+    "nome": "",
+    "epoca": "",
+    "provenienza": "",
+    "descrizione": "",
+    "noteTitolo": "come sopra",
+    "noteCorpo": ""
+  }
+]
