@@ -1,13 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
-import CardReperto from '@/components/CardReperto';
-import { getAllReperti } from '@/lib/reperti';
 
 export const metadata = {
   title: 'Museo Palmento Margarita — Francavilla Fontana',
 };
-
-const PREVIEW_IDS = ['INV-002', 'INV-004', 'INV-007', 'INV-024'];
 
 const UVE = [
   { n: '01 / autoctono', name: 'Primitivo', desc: 'Intenso e avvolgente. Il rosso che dà il nome al primo a maturare nell\'estate pugliese.' },
@@ -19,9 +14,6 @@ const UVE = [
 
 
 export default function HomePage() {
-  const allReperti = getAllReperti();
-  const preview = PREVIEW_IDS.map((id) => allReperti.find((r) => r.id === id)).filter(Boolean) as NonNullable<typeof allReperti[0]>[];
-
   return (
     <>
       {/* HERO */}
@@ -31,7 +23,6 @@ export default function HomePage() {
             <div>
               <h1>La memoria viva del palmento pugliese.</h1>
               <div className="cta-row">
-                <Link className="btn btn--lg" href="/collezione">Esplora i 59 reperti <span className="arrow" /></Link>
                 <Link className="btn btn--lg btn--ghost" href="/storia">Scopri la storia</Link>
               </div>
             </div>
@@ -76,21 +67,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* COLLEZIONE PREVIEW */}
-      <section className="section">
-        <div className="container">
-          <div className="coll-head">
-            <h2>La collezione, oggetto per oggetto.</h2>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 22 }}>
-              <div className="t-body" style={{ color: 'var(--ink-soft)', maxWidth: '48ch' }}>Cinquantanove reperti raccolti dalle masserie della provincia: utensili, anfore, lampade, strutture di sostegno per la pigiatura. Ognuno con la sua scheda, la sua epoca, la sua storia.</div>
-              <Link className="btn btn--accent" href="/collezione">Vedi tutta la collezione <span className="arrow" /></Link>
-            </div>
-          </div>
-          <div className="coll-grid">
-            {preview.map((r) => <CardReperto key={r.id} reperto={r} />)}
-          </div>
-        </div>
-      </section>
 
 {/* VISIT / ORARI */}
       <section className="visit">

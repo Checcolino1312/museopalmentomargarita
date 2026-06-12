@@ -25,7 +25,6 @@ export default function SiteFooter() {
           <div>
             <h6>Scopri</h6>
             <ul>
-              <li><Link href="/collezione">La collezione</Link></li>
               <li><Link href="/storia">Storia del palmento</Link></li>
             </ul>
           </div>

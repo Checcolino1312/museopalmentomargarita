@@ -13,15 +13,15 @@
   --lilla:   #8A99EF;
   --viola:   #450073;
   --verde:   #669921;
-  --verdes:  #003000;
+  --verdes:  #74123E;
 
   --bg:        var(--crema);
   --bg-paper:  var(--crema-2);
   --ink:       var(--verdes);
-  --ink-soft:  #2c4324;
-  --ink-mute:  rgba(0, 48, 0, 0.55);
-  --rule:      rgba(0, 48, 0, 0.18);
-  --rule-soft: rgba(0, 48, 0, 0.10);
+  --ink-soft:  #56102e;
+  --ink-mute:  rgba(116, 18, 62, 0.55);
+  --rule:      rgba(116, 18, 62, 0.18);
+  --rule-soft: rgba(116, 18, 62, 0.10);
   --accent:    var(--verde);
   --accent-2:  var(--magenta);
 
@@ -57,7 +57,7 @@
 
   --maxw: 1320px;
   --gutter: clamp(20px, 4vw, 56px);
-  --shadow-soft: 0 1px 0 rgba(0,48,0,0.06), 0 8px 24px -12px rgba(0,48,0,0.18);
+  --shadow-soft: 0 1px 0 rgba(116,18,62,0.06), 0 8px 24px -12px rgba(116,18,62,0.18);
 }
 
 /* ---------- 2. Base ---------- */

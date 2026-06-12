@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 export const metadata = {
   title: 'Storia del palmento — Museo Palmento Margarita',
 };
@@ -146,7 +144,6 @@ export default function StoriaPage() {
           <div>
             <p>Visita guidata in piccoli gruppi, ogni venerdì e sabato. Disponibili percorsi per scuole, degustazioni con i vini del territorio e laboratori per famiglie nei mesi della vendemmia.</p>
             <div className="row" style={{ gap: 16, marginTop: 24, flexWrap: 'wrap' }}>
-              <Link className="btn btn--lg btn--accent" href="/collezione">Sfoglia la collezione <span className="arrow" /></Link>
               <a className="btn btn--lg btn--ghost" href="mailto:info@palmentomargarita.it">Contattaci</a>
             </div>
           </div>

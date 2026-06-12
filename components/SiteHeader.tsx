@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 const NAV = [
-  { href: '/collezione', label: 'Collezione' },
   { href: '/storia', label: 'Storia' },
 ];
 
@@ -20,7 +19,7 @@ export default function SiteHeader() {
           <Link href="/home" className="site-logo" onClick={() => setOpen(false)}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/brand/logo/verdes.png"
+              src="/brand/logo/logonuovo.png"
               alt="Museo Palmento Margarita"
               style={{ height: 56, width: 'auto' }}
             />
@@ -110,7 +109,7 @@ export default function SiteHeader() {
           position: fixed;
           inset: 0;
           z-index: 49;
-          background: rgba(0,48,0,0.18);
+          background: rgba(116,18,62,0.18);
         }
         .mobile-drawer__nav {
           position: absolute;
