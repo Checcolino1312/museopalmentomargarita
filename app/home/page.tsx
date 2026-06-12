@@ -123,7 +123,7 @@ export default function HomePage() {
         .coll-head h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.6rem, 6vw, 5.4rem); line-height: 0.9; letter-spacing: -0.03em; margin: 0; }
         .coll-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px 24px; }
 
-.visit { background: var(--giallo); color: var(--verdes); padding-block: clamp(64px, 9vw, 110px); }
+.visit { background: #F5E8A0; color: var(--verdes); padding-block: clamp(64px, 9vw, 110px); }
         .visit__inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px, 7vw, 96px); align-items: start; }
         .visit__copy h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.6rem, 5.4vw, 4.6rem); line-height: 0.92; letter-spacing: -0.03em; margin: 0; }
         .visit__copy .body { font-size: 1.12rem; line-height: 1.5; max-width: 48ch; margin-top: 24px; }
