@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata = {
   title: 'Museo Palmento Margarita — Francavilla Fontana',
@@ -12,7 +13,15 @@ export default function HomePage() {
         <div className="container">
           <div className="hero__grid">
             <div className="hero__image">
-              <div className="hero__image-inner" aria-hidden="true" />
+              <div className="hero__image-inner">
+                <Image
+                  src="/hero-home_3x4.png"
+                  alt="Interno del palmento storico"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  priority
+                />
+              </div>
             </div>
             <div className="hero__copy">
               <p className="hero__label">Francavilla Fontana, Puglia</p>
@@ -27,10 +36,31 @@ export default function HomePage() {
       <section className="img-mosaic">
         <div className="container">
           <div className="img-mosaic__grid">
-            <div className="img-mosaic__wide" style={{ background: '#B0A090' }} aria-hidden="true" />
+            <div className="img-mosaic__wide">
+              <Image
+                src="/mosaico-principale_16x9.png"
+                alt="Cortile della masseria pugliese"
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
             <div className="img-mosaic__stack">
-              <div className="img-mosaic__tall" style={{ background: '#8A9870' }} aria-hidden="true" />
-              <div className="img-mosaic__sq" style={{ background: '#9A8070' }} aria-hidden="true" />
+              <div className="img-mosaic__tall">
+                <Image
+                  src="/mosaico-piccola-alta_3x4.png"
+                  alt="Grappolo d'uva su pietra"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div className="img-mosaic__sq">
+                <Image
+                  src="/mosaico-piccola-bassa_2x1.png"
+                  alt="Vasca in pietra leccese"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
             </div>
           </div>
           <p className="img-mosaic__caption">Il palmento di Francavilla Fontana · XVI–XIX sec.</p>
@@ -78,9 +108,10 @@ export default function HomePage() {
           align-items: end;
         }
         .hero__image-inner {
+          position: relative;
           aspect-ratio: 3 / 4;
-          background: linear-gradient(170deg, #c8b8a0 0%, #a89070 45%, #706050 100%);
           border-radius: 2px;
+          overflow: hidden;
         }
         .hero__copy {
           padding-bottom: clamp(16px, 2vw, 28px);
@@ -115,8 +146,10 @@ export default function HomePage() {
           align-items: stretch;
         }
         .img-mosaic__wide {
+          position: relative;
           aspect-ratio: 16 / 9;
           border-radius: 2px;
+          overflow: hidden;
         }
         .img-mosaic__stack {
           display: flex;
@@ -124,14 +157,18 @@ export default function HomePage() {
           gap: 6px;
         }
         .img-mosaic__tall {
+          position: relative;
           flex: 2;
-          border-radius: 2px;
           min-height: 0;
+          border-radius: 2px;
+          overflow: hidden;
         }
         .img-mosaic__sq {
+          position: relative;
           flex: 1;
-          border-radius: 2px;
           min-height: 0;
+          border-radius: 2px;
+          overflow: hidden;
         }
         .img-mosaic__caption {
           font-family: var(--font-mono);
@@ -190,7 +227,7 @@ export default function HomePage() {
           .hero h1 { font-size: clamp(3rem, 12vw, 5rem); }
           .img-mosaic__grid { grid-template-columns: 1fr; }
           .img-mosaic__stack { flex-direction: row; }
-          .img-mosaic__tall, .img-mosaic__sq { aspect-ratio: 1; }
+          .img-mosaic__tall, .img-mosaic__sq { aspect-ratio: 1; flex: 1; }
           .visit__inner { grid-template-columns: 1fr; }
         }
         @media (max-width: 560px) {

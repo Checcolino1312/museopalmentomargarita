@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export const metadata = {
   title: 'Storia del palmento — Museo Palmento Margarita',
 };
@@ -15,7 +17,15 @@ export default function StoriaPage() {
     <>
       {/* HERO — immagine larga, testo sotto */}
       <section className="storia-hero">
-        <div className="storia-hero__img" aria-hidden="true" />
+        <div className="storia-hero__img-wrap">
+          <Image
+            src="/hero-storia_21x8.png"
+            alt="Vigneto pugliese"
+            fill
+            style={{ objectFit: 'cover' }}
+            priority
+          />
+        </div>
         <div className="container">
           <div className="storia-hero__text">
             <h1>Il palmento e la tradizione del vino.</h1>
@@ -24,11 +34,18 @@ export default function StoriaPage() {
         </div>
       </section>
 
-      {/* SEZIONE 1 — immagine grande (65%), testo stretto */}
+      {/* SEZIONE 1 — immagine grande (5/8), testo stretto */}
       <section className="s1">
         <div className="container">
           <div className="s1__grid">
-            <div className="s1__img" style={{ background: '#B8A898' }} aria-hidden="true" />
+            <div className="s1__img-wrap">
+              <Image
+                src="/storia-sezione-1_4x3.png"
+                alt="Vendemmia tradizionale pugliese"
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
             <div className="s1__text">
               <span className="label">01 · La civiltà contadina</span>
               <h2>I «viddani» e la vendemmia.</h2>
@@ -45,7 +62,7 @@ export default function StoriaPage() {
         </div>
       </div>
 
-      {/* SEZIONE 2 — testo più spazio, immagine secondaria */}
+      {/* SEZIONE 2 — testo più stretto, immagine ritratto */}
       <section className="s2">
         <div className="container">
           <div className="s2__grid">
@@ -54,14 +71,28 @@ export default function StoriaPage() {
               <h2>Primitivo, Negroamaro, Malvasia Nera.</h2>
               <p>Il territorio pugliese, tra Salento e Valle d'Itria, porta con sé una vocazione antica per la coltivazione della vite. Uve autoctone che raccontano secoli di lavoro, di sole abbondante e di terreni calcarei.</p>
             </div>
-            <div className="s2__img" style={{ background: '#8A9870' }} aria-hidden="true" />
+            <div className="s2__img-wrap">
+              <Image
+                src="/storia-sezione-2_3x4.png"
+                alt="Grappolo d'uva rossa"
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SEZIONE 3 — immagine dominante (full container) + testo sotto */}
+      {/* SEZIONE 3 — immagine full-width + testo sotto */}
       <section className="s3">
-        <div className="s3__img" style={{ background: '#9A8878' }} aria-hidden="true" />
+        <div className="s3__img-wrap">
+          <Image
+            src="/storia-sezione-3_16x7.png"
+            alt="Portale in pietra della masseria"
+            fill
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
         <div className="container">
           <div className="s3__text">
             <span className="label">03 · Una famiglia, un nome</span>
@@ -109,10 +140,11 @@ export default function StoriaPage() {
         }
 
         /* ── Hero ── */
-        .storia-hero__img {
+        .storia-hero__img-wrap {
+          position: relative;
           width: 100%;
           aspect-ratio: 21 / 8;
-          background: linear-gradient(160deg, #c8b8a0 0%, #a89070 45%, #706050 100%);
+          overflow: hidden;
         }
         .storia-hero__text {
           padding: clamp(36px, 5vw, 64px) 0 clamp(40px, 5vw, 56px);
@@ -142,9 +174,11 @@ export default function StoriaPage() {
           gap: clamp(28px, 4vw, 52px);
           align-items: center;
         }
-        .s1__img {
+        .s1__img-wrap {
+          position: relative;
           aspect-ratio: 4 / 3;
           border-radius: 2px;
+          overflow: hidden;
         }
         .s1__text h2 {
           font-family: var(--font-display);
@@ -174,7 +208,7 @@ export default function StoriaPage() {
           max-width: 28ch;
         }
 
-        /* ── Sezione 2 — colonne bilanciate ── */
+        /* ── Sezione 2 ── */
         .s2 { padding-block: clamp(40px, 5vw, 64px); }
         .s2__grid {
           display: grid;
@@ -182,9 +216,11 @@ export default function StoriaPage() {
           gap: clamp(28px, 4vw, 52px);
           align-items: center;
         }
-        .s2__img {
+        .s2__img-wrap {
+          position: relative;
           aspect-ratio: 3 / 4;
           border-radius: 2px;
+          overflow: hidden;
         }
         .s2__text h2 {
           font-family: var(--font-display);
@@ -201,11 +237,13 @@ export default function StoriaPage() {
           margin: 0;
         }
 
-        /* ── Sezione 3 — immagine full-width + testo sotto ── */
+        /* ── Sezione 3 — full-width ── */
         .s3 { background: var(--crema-2); }
-        .s3__img {
+        .s3__img-wrap {
+          position: relative;
           width: 100%;
           aspect-ratio: 16 / 7;
+          overflow: hidden;
         }
         .s3__text {
           padding: clamp(32px, 4vw, 52px) 0 clamp(40px, 5vw, 64px);
@@ -274,9 +312,9 @@ export default function StoriaPage() {
         @media (max-width: 860px) {
           .s1__grid { grid-template-columns: 1fr; }
           .s2__grid { grid-template-columns: 1fr; }
-          .s2__img { aspect-ratio: 16/9; order: -1; }
-          .storia-hero__img { aspect-ratio: 16 / 9; }
-          .s3__img { aspect-ratio: 4 / 3; }
+          .s2__img-wrap { aspect-ratio: 16/9; order: -1; }
+          .storia-hero__img-wrap { aspect-ratio: 16 / 9; }
+          .s3__img-wrap { aspect-ratio: 4 / 3; }
         }
         @media (max-width: 560px) {
           .storia-hero h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
