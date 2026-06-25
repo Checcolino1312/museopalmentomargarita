@@ -79,9 +79,9 @@ export default function HomePage() {
           font-family: var(--font-display);
           font-weight: 600;
           font-style: italic;
-          font-size: clamp(3rem, 6.5vw, 5.8rem);
-          line-height: 1.05;
-          letter-spacing: 0.03em;
+          font-size: clamp(4rem, 9vw, 8.5rem);
+          line-height: 0.92;
+          letter-spacing: 0.02em;
           text-transform: uppercase;
           color: var(--verdes);
           margin: 0;
