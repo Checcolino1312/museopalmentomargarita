@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { IBM_Plex_Mono } from 'next/font/google';
+import { IBM_Plex_Mono, Cormorant_Garamond } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 import SiteHeader from '@/components/SiteHeader';
@@ -18,6 +18,14 @@ const poligrapher = localFont({
   display: 'swap',
 });
 
+const cormorant = Cormorant_Garamond({
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin', 'latin-ext'],
+  variable: '--font-cormorant',
+  display: 'swap',
+});
+
 const ibmMono = IBM_Plex_Mono({
   weight: ['400', '500', '600'],
   subsets: ['latin'],
@@ -33,12 +41,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="it" className={`${poligrapher.variable} ${ibmMono.variable}`}>
+    <html lang="it" className={`${poligrapher.variable} ${cormorant.variable} ${ibmMono.variable}`}>
       <head>
         <style>{`
           :root {
-            --font-display: var(--font-poligrapher), "Helvetica Neue", Helvetica, Arial, sans-serif;
-            --font-body: var(--font-poligrapher), "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, "Times New Roman", serif;
+            --font-body: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
             --font-mono: var(--font-ibm-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
           }
         `}</style>
