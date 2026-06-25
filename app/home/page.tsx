@@ -8,27 +8,20 @@ export const metadata = {
 export default function HomePage() {
   return (
     <>
-      {/* HERO — immagine dominante, testo stretto */}
+      {/* HERO — immagine full-height, testo sovrapposto */}
       <section className="hero">
-        <div className="container">
-          <div className="hero__grid">
-            <div className="hero__image">
-              <div className="hero__image-inner">
-                <Image
-                  src="/transformed_MUSEO-4.jpg"
-                  alt="Anfore e pompa antica nel palmento"
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
-                  priority
-                />
-              </div>
-            </div>
-            <div className="hero__copy">
-              <p className="hero__label">Francavilla Fontana, Puglia</p>
-              <h1>La<br />memo&shy;ria<br />prende<br />forma.</h1>
-              <Link className="btn" href="/storia">Scopri</Link>
-            </div>
-          </div>
+        <Image
+          src="/transformed_MUSEO-22.jpg"
+          alt="Facciata della masseria Margarita"
+          fill
+          style={{ objectFit: 'cover', objectPosition: 'center 35%' }}
+          priority
+        />
+        <div className="hero__overlay" aria-hidden="true" />
+        <div className="container hero__content">
+          <p className="hero__label">Francavilla Fontana, Puglia</p>
+          <h1>La<br />memo&shy;ria<br />prende<br />forma.</h1>
+          <Link className="btn hero__btn" href="/storia">Scopri</Link>
         </div>
       </section>
 
@@ -100,41 +93,56 @@ export default function HomePage() {
 
       <style>{`
         /* ── Hero ── */
-        .hero { padding: clamp(24px, 3vw, 40px) 0 clamp(40px, 5vw, 64px); }
-        .hero__grid {
-          display: grid;
-          grid-template-columns: 3fr 2fr;
-          gap: clamp(24px, 4vw, 48px);
-          align-items: end;
-        }
-        .hero__image-inner {
+        .hero {
           position: relative;
-          aspect-ratio: 3 / 4;
-          border-radius: 2px;
+          height: clamp(500px, 88vh, 900px);
           overflow: hidden;
         }
-        .hero__copy {
-          padding-bottom: clamp(16px, 2vw, 28px);
+        .hero__overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(
+            to top,
+            rgba(20, 12, 8, 0.72) 0%,
+            rgba(20, 12, 8, 0.28) 45%,
+            rgba(20, 12, 8, 0.04) 100%
+          );
+        }
+        .hero__content {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          padding-bottom: clamp(36px, 5vw, 72px);
         }
         .hero__label {
           font-family: var(--font-mono);
           font-size: 0.72rem;
           letter-spacing: 0.14em;
           text-transform: uppercase;
-          color: var(--ink-mute);
-          margin: 0 0 20px;
+          color: rgba(247, 244, 239, 0.6);
+          margin: 0 0 16px;
         }
         .hero h1 {
           font-family: var(--font-display);
           font-weight: 600;
           font-style: italic;
-          font-size: clamp(3.6rem, 8vw, 7.5rem);
-          line-height: 0.9;
+          font-size: clamp(4rem, 9vw, 9rem);
+          line-height: 0.88;
           letter-spacing: 0.01em;
           text-transform: uppercase;
-          color: var(--verdes);
+          color: var(--crema);
           margin: 0 0 36px;
           hyphens: manual;
+        }
+        .hero__btn {
+          background: transparent !important;
+          border: 1px solid rgba(247,244,239,0.7) !important;
+          color: var(--crema) !important;
+        }
+        .hero__btn:hover {
+          background: var(--crema) !important;
+          color: var(--verdes) !important;
         }
 
         /* ── Mosaico immagini asimmetrico ── */
@@ -221,18 +229,17 @@ export default function HomePage() {
 
         /* ── Responsive ── */
         @media (max-width: 860px) {
-          .hero__grid { grid-template-columns: 1fr; }
-          .hero__image { order: -1; }
-          .hero__image-inner { aspect-ratio: 4 / 3; }
-          .hero h1 { font-size: clamp(3rem, 12vw, 5rem); }
+          .hero { height: clamp(380px, 75vw, 600px); }
+          .hero h1 { font-size: clamp(3rem, 12vw, 5.5rem); }
           .img-mosaic__grid { grid-template-columns: 1fr; }
           .img-mosaic__stack { flex-direction: row; }
           .img-mosaic__tall, .img-mosaic__sq { aspect-ratio: 1; flex: 1; }
           .visit__inner { grid-template-columns: 1fr; }
         }
         @media (max-width: 560px) {
-          .hero { padding: 16px 0 28px; }
-          .hero h1 { font-size: clamp(2.8rem, 14vw, 4rem); margin-bottom: 24px; }
+          .hero { height: clamp(320px, 90vw, 480px); }
+          .hero h1 { font-size: clamp(2.6rem, 13vw, 4rem); margin-bottom: 20px; }
+          .hero__content { padding-bottom: 28px; }
           .img-mosaic__stack { display: none; }
           .img-mosaic__grid { grid-template-columns: 1fr; }
           .pull-quote { font-size: clamp(1.3rem, 5.5vw, 1.8rem); }

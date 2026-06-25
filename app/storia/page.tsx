@@ -87,10 +87,10 @@ export default function StoriaPage() {
       <section className="s3">
         <div className="s3__img-wrap">
           <Image
-            src="/transformed_MUSEO-22.jpg"
-            alt="Facciata della masseria Margarita"
+            src="/transformed_MUSEO-4.jpg"
+            alt="Anfore e pompa antica nel palmento"
             fill
-            style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
+            style={{ objectFit: 'cover', objectPosition: 'center center' }}
           />
         </div>
         <div className="container">
