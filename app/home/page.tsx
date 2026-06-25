@@ -20,7 +20,7 @@ export default function HomePage() {
         <div className="hero__overlay" aria-hidden="true" />
         <div className="container hero__content">
           <p className="hero__label">Francavilla Fontana, Puglia</p>
-          <h1>La<br />memo&shy;ria<br />prende<br />forma.</h1>
+          <h1>La memoria prende forma.</h1>
           <Link className="btn hero__btn" href="/storia">Scopri</Link>
         </div>
       </section>
@@ -127,13 +127,12 @@ export default function HomePage() {
           font-family: var(--font-display);
           font-weight: 600;
           font-style: italic;
-          font-size: clamp(4rem, 9vw, 9rem);
-          line-height: 0.88;
-          letter-spacing: 0.01em;
-          text-transform: uppercase;
+          font-size: clamp(2.2rem, 7vw, 7rem);
+          line-height: 1.0;
+          letter-spacing: -0.01em;
           color: var(--crema);
-          margin: 0 0 36px;
-          hyphens: manual;
+          margin: 0 0 32px;
+          white-space: nowrap;
         }
         .hero__btn {
           background: transparent !important;
@@ -238,7 +237,7 @@ export default function HomePage() {
         }
         @media (max-width: 560px) {
           .hero { height: clamp(320px, 90vw, 480px); }
-          .hero h1 { font-size: clamp(2.6rem, 13vw, 4rem); margin-bottom: 20px; }
+          .hero h1 { font-size: clamp(2rem, 10vw, 3.2rem); margin-bottom: 20px; white-space: normal; }
           .hero__content { padding-bottom: 28px; }
           .img-mosaic__stack { display: none; }
           .img-mosaic__grid { grid-template-columns: 1fr; }
