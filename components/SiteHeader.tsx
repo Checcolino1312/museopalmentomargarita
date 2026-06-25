@@ -23,7 +23,7 @@ export default function SiteHeader() {
             <img
               src="/brand/logo/logonuovo.png"
               alt="Museo Palmento Margarita"
-              style={{ height: 52, width: 'auto', flexShrink: 0 }}
+              style={{ height: 64, width: 'auto', flexShrink: 0 }}
             />
             <div className="site-logo__text">
               <span className="site-logo__museo">Museo</span>

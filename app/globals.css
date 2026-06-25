@@ -6,8 +6,8 @@
 /* ---------- 1. Tokens ---------- */
 
 :root {
-  --crema:   #F5F0EA;
-  --crema-2: #EDE4D8;
+  --crema:   #F7F4EF;
+  --crema-2: #EEE9E2;
   --giallo:  #FFBC25;
   --magenta: #EE1499;
   --lilla:   #8A99EF;
@@ -17,13 +17,13 @@
 
   --bg:        var(--crema);
   --bg-paper:  var(--crema-2);
-  --ink:       #3A1A2A;
-  --ink-soft:  #6B3A4A;
-  --ink-mute:  rgba(58, 26, 42, 0.50);
-  --rule:      rgba(139, 26, 74, 0.15);
-  --rule-soft: rgba(139, 26, 74, 0.08);
+  --ink:       #1C1410;
+  --ink-soft:  #4A3F35;
+  --ink-mute:  rgba(28, 20, 16, 0.45);
+  --rule:      rgba(28, 20, 16, 0.12);
+  --rule-soft: rgba(28, 20, 16, 0.07);
   --accent:    var(--verdes);
-  --accent-2:  var(--magenta);
+  --accent-2:  var(--verdes);
 
   --font-display: "Poligrapher Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-body:    "Poligrapher Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -57,7 +57,7 @@
 
   --maxw: 1320px;
   --gutter: clamp(20px, 4vw, 56px);
-  --shadow-soft: 0 1px 0 rgba(58,26,42,0.06), 0 8px 24px -12px rgba(58,26,42,0.18);
+  --shadow-soft: 0 1px 0 rgba(28,20,16,0.06), 0 8px 24px -12px rgba(28,20,16,0.14);
 }
 
 /* ---------- 2. Base ---------- */
@@ -75,7 +75,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-::selection { background: var(--giallo); color: var(--verdes); }
+::selection { background: color-mix(in oklab, var(--verdes) 18%, white); color: var(--ink); }
 
 img { max-width: 100%; display: block; }
 
