@@ -15,10 +15,10 @@ export default function HomePage() {
             <div className="hero__image">
               <div className="hero__image-inner">
                 <Image
-                  src="/hero-home_3x4.png"
-                  alt="Interno del palmento storico"
+                  src="/transformed_MUSEO-4.jpg"
+                  alt="Anfore e pompa antica nel palmento"
                   fill
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
                   priority
                 />
               </div>
@@ -38,27 +38,27 @@ export default function HomePage() {
           <div className="img-mosaic__grid">
             <div className="img-mosaic__wide">
               <Image
-                src="/mosaico-principale_16x9.png"
-                alt="Cortile della masseria pugliese"
+                src="/transformed_MUSEO-10.jpg"
+                alt="Sala ad archi del museo con abiti d'epoca"
                 fill
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'cover', objectPosition: 'center center' }}
               />
             </div>
             <div className="img-mosaic__stack">
               <div className="img-mosaic__tall">
                 <Image
-                  src="/mosaico-piccola-alta_3x4.png"
-                  alt="Grappolo d'uva su pietra"
+                  src="/transformed_MUSEO-7.jpg"
+                  alt="Teca con oggetti storici e anfore"
                   fill
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
                 />
               </div>
               <div className="img-mosaic__sq">
                 <Image
-                  src="/mosaico-piccola-bassa_2x1.png"
-                  alt="Vasca in pietra leccese"
+                  src="/transformed_MUSEO-13.jpg"
+                  alt="Camino con ceramiche antiche"
                   fill
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
                 />
               </div>
             </div>

@@ -19,10 +19,10 @@ export default function StoriaPage() {
       <section className="storia-hero">
         <div className="storia-hero__img-wrap">
           <Image
-            src="/hero-storia_21x8.png"
-            alt="Vigneto pugliese"
+            src="/transformed_MUSEO-19.jpg"
+            alt="Vigneto pugliese al tramonto"
             fill
-            style={{ objectFit: 'cover' }}
+            style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
             priority
           />
         </div>
@@ -40,10 +40,10 @@ export default function StoriaPage() {
           <div className="s1__grid">
             <div className="s1__img-wrap">
               <Image
-                src="/storia-sezione-1_4x3.png"
-                alt="Vendemmia tradizionale pugliese"
+                src="/transformed_MUSEO-14.jpg"
+                alt="Sala del museo con carrozza e ritratti di famiglia"
                 fill
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'cover', objectPosition: 'center center' }}
               />
             </div>
             <div className="s1__text">
@@ -73,10 +73,10 @@ export default function StoriaPage() {
             </div>
             <div className="s2__img-wrap">
               <Image
-                src="/storia-sezione-2_3x4.png"
-                alt="Grappolo d'uva rossa"
+                src="/transformed_MUSEO-18.jpg"
+                alt="Vigneto pugliese di giorno"
                 fill
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'cover', objectPosition: 'center 55%' }}
               />
             </div>
           </div>
@@ -87,10 +87,10 @@ export default function StoriaPage() {
       <section className="s3">
         <div className="s3__img-wrap">
           <Image
-            src="/storia-sezione-3_16x7.png"
-            alt="Portale in pietra della masseria"
+            src="/transformed_MUSEO-22.jpg"
+            alt="Facciata della masseria Margarita"
             fill
-            style={{ objectFit: 'cover' }}
+            style={{ objectFit: 'cover', objectPosition: 'center 30%' }}
           />
         </div>
         <div className="container">
@@ -212,13 +212,13 @@ export default function StoriaPage() {
         .s2 { padding-block: clamp(40px, 5vw, 64px); }
         .s2__grid {
           display: grid;
-          grid-template-columns: 2fr 3fr;
+          grid-template-columns: 3fr 2fr;
           gap: clamp(28px, 4vw, 52px);
           align-items: center;
         }
         .s2__img-wrap {
           position: relative;
-          aspect-ratio: 3 / 4;
+          aspect-ratio: 4 / 3;
           border-radius: 2px;
           overflow: hidden;
         }
@@ -312,7 +312,7 @@ export default function StoriaPage() {
         @media (max-width: 860px) {
           .s1__grid { grid-template-columns: 1fr; }
           .s2__grid { grid-template-columns: 1fr; }
-          .s2__img-wrap { aspect-ratio: 16/9; order: -1; }
+          .s2__img-wrap { order: -1; }
           .storia-hero__img-wrap { aspect-ratio: 16 / 9; }
           .s3__img-wrap { aspect-ratio: 4 / 3; }
         }
