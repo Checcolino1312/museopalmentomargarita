@@ -4,16 +4,10 @@ export const metadata = {
   title: 'Museo Palmento Margarita — Francavilla Fontana',
 };
 
-const STRIP = [
-  { label: 'Il palmento', bg: '#B8A898' },
-  { label: 'La vigna',    bg: '#8A9870' },
-  { label: 'La pietra',   bg: '#9A8878' },
-];
-
 export default function HomePage() {
   return (
     <>
-      {/* HERO */}
+      {/* HERO — immagine dominante, testo stretto */}
       <section className="hero">
         <div className="container">
           <div className="hero__grid">
@@ -21,33 +15,35 @@ export default function HomePage() {
               <div className="hero__image-inner" aria-hidden="true" />
             </div>
             <div className="hero__copy">
-              <h1>La memoria<br />prende forma.</h1>
-              <span className="diamond" aria-hidden="true">◆</span>
-              <p className="hero__lead">Museo della tradizione vitivinicola pugliese — Francavilla Fontana.</p>
-              <Link className="btn" href="/storia">Scopri il museo</Link>
+              <p className="hero__label">Francavilla Fontana, Puglia</p>
+              <h1>La<br />memo&shy;ria<br />prende<br />forma.</h1>
+              <Link className="btn" href="/storia">Scopri</Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* STRIP IMMAGINI */}
-      <section className="img-strip">
+      {/* IMMAGINI ASIMMETRICHE */}
+      <section className="img-mosaic">
         <div className="container">
-          <div className="img-strip__grid">
-            {STRIP.map(({ label, bg }) => (
-              <figure key={label} className="img-strip__item">
-                <div className="img-strip__ph" style={{ background: bg }} aria-hidden="true" />
-                <figcaption>{label}</figcaption>
-              </figure>
-            ))}
+          <div className="img-mosaic__grid">
+            <div className="img-mosaic__wide" style={{ background: '#B0A090' }} aria-hidden="true" />
+            <div className="img-mosaic__stack">
+              <div className="img-mosaic__tall" style={{ background: '#8A9870' }} aria-hidden="true" />
+              <div className="img-mosaic__sq" style={{ background: '#9A8070' }} aria-hidden="true" />
+            </div>
           </div>
+          <p className="img-mosaic__caption">Il palmento di Francavilla Fontana · XVI–XIX sec.</p>
         </div>
       </section>
 
-      {/* NOTA BREVE */}
-      <section className="museum-note">
+      {/* PULL QUOTE */}
+      <section className="pull-section">
         <div className="container container--narrow">
-          <p>Custode di cinquantanove reperti raccolti dalle masserie della provincia, il museo racconta la vendemmia pugliese attraverso gli strumenti, i luoghi e i volti di chi l'ha vissuta. <Link href="/storia" className="t-link">Leggi la storia →</Link></p>
+          <blockquote className="pull-quote">
+            «Cinquantanove oggetti raccolti dalle masserie della provincia. Ognuno con la sua storia.»
+          </blockquote>
+          <Link href="/storia" className="pull-link">Leggi la storia →</Link>
         </div>
       </section>
 
@@ -74,73 +70,98 @@ export default function HomePage() {
 
       <style>{`
         /* ── Hero ── */
-        .hero { padding: clamp(32px, 4vw, 52px) 0 clamp(48px, 6vw, 80px); }
+        .hero { padding: clamp(24px, 3vw, 40px) 0 clamp(40px, 5vw, 64px); }
         .hero__grid {
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: clamp(32px, 5vw, 64px);
-          align-items: center;
+          grid-template-columns: 3fr 2fr;
+          gap: clamp(24px, 4vw, 48px);
+          align-items: end;
         }
         .hero__image-inner {
-          aspect-ratio: 2 / 3;
-          background: linear-gradient(170deg, #c8b8a0 0%, #a89880 40%, #887060 100%);
+          aspect-ratio: 3 / 4;
+          background: linear-gradient(170deg, #c8b8a0 0%, #a89070 45%, #706050 100%);
           border-radius: 2px;
+        }
+        .hero__copy {
+          padding-bottom: clamp(16px, 2vw, 28px);
+        }
+        .hero__label {
+          font-family: var(--font-mono);
+          font-size: 0.72rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--ink-mute);
+          margin: 0 0 20px;
         }
         .hero h1 {
           font-family: var(--font-display);
           font-weight: 600;
           font-style: italic;
-          font-size: clamp(3.2rem, 7vw, 7rem);
-          line-height: 0.92;
-          letter-spacing: 0.02em;
+          font-size: clamp(3.6rem, 8vw, 7.5rem);
+          line-height: 0.9;
+          letter-spacing: 0.01em;
           text-transform: uppercase;
           color: var(--verdes);
-          margin: 0;
-        }
-        .diamond {
-          display: block;
-          color: var(--verdes);
-          font-size: 0.78rem;
-          margin: 20px 0 18px;
-          opacity: 0.6;
-        }
-        .hero__lead {
-          font-size: 1.05rem;
-          line-height: 1.6;
-          color: var(--ink-soft);
-          margin: 0 0 32px;
+          margin: 0 0 36px;
+          hyphens: manual;
         }
 
-        /* ── Strip immagini ── */
-        .img-strip { padding-block: clamp(40px, 5vw, 64px); background: var(--crema-2); }
-        .img-strip__grid {
+        /* ── Mosaico immagini asimmetrico ── */
+        .img-mosaic { padding-block: clamp(32px, 4vw, 56px); background: var(--crema-2); }
+        .img-mosaic__grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: clamp(12px, 2vw, 24px);
+          grid-template-columns: 5fr 2fr;
+          gap: 6px;
+          align-items: stretch;
         }
-        .img-strip__item { margin: 0; }
-        .img-strip__ph {
-          aspect-ratio: 4 / 3;
+        .img-mosaic__wide {
+          aspect-ratio: 16 / 9;
           border-radius: 2px;
-          margin-bottom: 10px;
         }
-        .img-strip__item figcaption {
+        .img-mosaic__stack {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .img-mosaic__tall {
+          flex: 2;
+          border-radius: 2px;
+          min-height: 0;
+        }
+        .img-mosaic__sq {
+          flex: 1;
+          border-radius: 2px;
+          min-height: 0;
+        }
+        .img-mosaic__caption {
           font-family: var(--font-mono);
-          font-size: 0.74rem;
-          letter-spacing: 0.12em;
+          font-size: 0.7rem;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
           color: var(--ink-mute);
+          margin: 12px 0 0;
         }
 
-        /* ── Nota breve ── */
-        .museum-note { padding-block: clamp(48px, 6vw, 80px); }
-        .museum-note p {
-          font-size: 1.18rem;
-          line-height: 1.7;
-          color: var(--ink-soft);
-          text-align: center;
-          max-width: 60ch;
-          margin: 0 auto;
+        /* ── Pull quote ── */
+        .pull-section { padding-block: clamp(56px, 8vw, 100px); }
+        .pull-quote {
+          font-family: var(--font-display);
+          font-style: italic;
+          font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+          line-height: 1.3;
+          color: var(--ink);
+          margin: 0 0 24px;
+          padding: 0;
+          border: none;
+        }
+        .pull-link {
+          font-family: var(--font-mono);
+          font-size: 0.78rem;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--verdes);
+          border-bottom: 1px solid var(--verdes);
+          padding-bottom: 2px;
         }
 
         /* ── Orari ── */
@@ -165,17 +186,20 @@ export default function HomePage() {
         @media (max-width: 860px) {
           .hero__grid { grid-template-columns: 1fr; }
           .hero__image { order: -1; }
-          .hero__image-inner { aspect-ratio: 16 / 9; }
+          .hero__image-inner { aspect-ratio: 4 / 3; }
+          .hero h1 { font-size: clamp(3rem, 12vw, 5rem); }
+          .img-mosaic__grid { grid-template-columns: 1fr; }
+          .img-mosaic__stack { flex-direction: row; }
+          .img-mosaic__tall, .img-mosaic__sq { aspect-ratio: 1; }
           .visit__inner { grid-template-columns: 1fr; }
         }
-        @media (max-width: 600px) {
-          .hero { padding: 24px 0 36px; }
-          .hero h1 { font-size: clamp(2.6rem, 11vw, 3.6rem); }
-          .img-strip__grid { grid-template-columns: 1fr; gap: 8px; }
-          .museum-note p { font-size: 1rem; text-align: left; }
+        @media (max-width: 560px) {
+          .hero { padding: 16px 0 28px; }
+          .hero h1 { font-size: clamp(2.8rem, 14vw, 4rem); margin-bottom: 24px; }
+          .img-mosaic__stack { display: none; }
+          .img-mosaic__grid { grid-template-columns: 1fr; }
+          .pull-quote { font-size: clamp(1.3rem, 5.5vw, 1.8rem); }
           .visit { padding-block: 44px; }
-          .visit__copy h2 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
-          .visit__hours { padding: 22px 18px; }
         }
       `}</style>
     </>
