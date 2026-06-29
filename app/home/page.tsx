@@ -20,7 +20,7 @@ export default function HomePage() {
         <div className="hero__overlay" aria-hidden="true" />
         <div className="container hero__content">
           <p className="hero__label">Francavilla Fontana, Puglia</p>
-          <h1>La memoria prende forma.</h1>
+          <h1>La memoria<br />prende forma.</h1>
           <Link className="btn hero__btn" href="/storia">Scopri</Link>
         </div>
       </section>
@@ -113,7 +113,7 @@ export default function HomePage() {
           bottom: 0;
           left: 0;
           right: 0;
-          padding-bottom: clamp(36px, 5vw, 72px);
+          padding-bottom: clamp(88px, 14vh, 180px);
         }
         .hero__label {
           font-family: var(--font-mono);
@@ -132,7 +132,6 @@ export default function HomePage() {
           letter-spacing: -0.01em;
           color: var(--crema);
           margin: 0 0 32px;
-          white-space: nowrap;
         }
         .hero__btn {
           background: transparent !important;

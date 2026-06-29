@@ -7,7 +7,7 @@ import { useState } from 'react';
 const NAV: Array<{ href: string; label: string; external?: boolean }> = [
   { href: '/home', label: 'Museo' },
   { href: '/storia', label: 'Storia' },
-  { href: 'mailto:info@palmentomargarita.it', label: 'Contatti', external: true },
+  { href: '/contatti', label: 'Contatti' },
 ];
 
 export default function SiteHeader() {
