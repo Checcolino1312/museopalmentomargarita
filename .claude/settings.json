@@ -28,7 +28,9 @@
       "Bash(ping -n 1 192.168.1.67)",
       "Bash(taskkill /PID 368 /F)",
       "PowerShell(Stop-Process -Id 368 -Force -ErrorAction SilentlyContinue; Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess | Sort-Object -Unique | ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue }; Write-Output \"done\")",
-      "Bash(ping -n 3 localhost)"
+      "Bash(ping -n 3 localhost)",
+      "Bash(npx vercel *)",
+      "WebSearch"
     ],
     "additionalDirectories": [
       "c:\\Users\\cicci\\OneDrive\\Desktop\\palmentomargarita\\app\\reperti"
