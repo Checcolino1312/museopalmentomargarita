@@ -33,9 +33,6 @@ export default function ContattiPage() {
           <div className="contatti-card contatti-card--email">
             <h2>Scrivici</h2>
             <p>Per informazioni, prenotazioni di gruppi e visite guidate.</p>
-            <a className="btn contatti-btn" href="mailto:info@palmentomargarita.it">
-              info@palmentomargarita.it
-            </a>
           </div>
 
         </div>
@@ -119,14 +116,6 @@ export default function ContattiPage() {
           text-align: right;
         }
         .orari-dl dd.closed { color: var(--ink-mute); }
-
-        .contatti-btn {
-          display: inline-block;
-          font-family: var(--font-mono);
-          font-size: 0.76rem;
-          letter-spacing: 0.08em;
-          word-break: break-all;
-        }
 
         @media (max-width: 860px) {
           .contatti-grid { grid-template-columns: 1fr 1fr; }
