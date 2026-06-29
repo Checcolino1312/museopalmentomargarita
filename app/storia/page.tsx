@@ -19,7 +19,7 @@ export default function StoriaPage() {
       <section className="storia-hero">
         <div className="storia-hero__img-wrap">
           <Image
-            src="/transformed_MUSEO-19.jpg"
+            src="/MUSEO-19.jpg"
             alt="Vigneto pugliese al tramonto"
             fill
             style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
@@ -40,7 +40,7 @@ export default function StoriaPage() {
           <div className="s1__grid">
             <div className="s1__img-wrap">
               <Image
-                src="/transformed_MUSEO-14.jpg"
+                src="/MUSEO-14.jpg"
                 alt="Sala del museo con carrozza e ritratti di famiglia"
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'center center' }}
@@ -73,7 +73,7 @@ export default function StoriaPage() {
             </div>
             <div className="s2__img-wrap">
               <Image
-                src="/transformed_MUSEO-18.jpg"
+                src="/MUSEO-18.jpg"
                 alt="Vigneto pugliese di giorno"
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'center 55%' }}
@@ -87,7 +87,7 @@ export default function StoriaPage() {
       <section className="s3">
         <div className="s3__img-wrap">
           <Image
-            src="/transformed_MUSEO-4.jpg"
+            src="/MUSEO-4.jpg"
             alt="Anfore e pompa antica nel palmento"
             fill
             style={{ objectFit: 'cover', objectPosition: 'center center' }}

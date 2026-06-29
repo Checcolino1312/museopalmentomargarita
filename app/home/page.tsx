@@ -31,7 +31,7 @@ export default function HomePage() {
           <div className="img-mosaic__grid">
             <div className="img-mosaic__wide">
               <Image
-                src="/transformed_MUSEO-10.jpg"
+                src="/MUSEO-10.jpg"
                 alt="Sala ad archi del museo con abiti d'epoca"
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'center center' }}
@@ -40,7 +40,7 @@ export default function HomePage() {
             <div className="img-mosaic__stack">
               <div className="img-mosaic__tall">
                 <Image
-                  src="/transformed_MUSEO-7.jpg"
+                  src="/MUSEO-7.jpg"
                   alt="Teca con oggetti storici e anfore"
                   fill
                   style={{ objectFit: 'cover', objectPosition: 'center center' }}
@@ -48,7 +48,7 @@ export default function HomePage() {
               </div>
               <div className="img-mosaic__sq">
                 <Image
-                  src="/transformed_MUSEO-13.jpg"
+                  src="/MUSEO-13.jpg"
                   alt="Camino con ceramiche antiche"
                   fill
                   style={{ objectFit: 'cover', objectPosition: 'center top' }}
