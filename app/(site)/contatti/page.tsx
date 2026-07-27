@@ -1,14 +1,28 @@
+import { Fragment } from 'react';
+import { sanityFetch } from '@/lib/sanity-fetch';
+import { contattiPageQuery, siteSettingsQuery, TAGS } from '@/lib/queries';
+import { formatOrario, righeIndirizzo } from '@/lib/site';
+import type { ContattiPage, SiteSettings } from '@/lib/types';
+
 export const metadata = {
   title: 'Contatti — Museo Palmento Margarita',
 };
 
-export default function ContattiPage() {
+export default async function ContattiPage() {
+  const [contatti, settings] = await Promise.all([
+    sanityFetch<ContattiPage | null>(contattiPageQuery, {}, [TAGS.contattiPage]),
+    sanityFetch<SiteSettings | null>(siteSettingsQuery, {}, [TAGS.siteSettings]),
+  ]);
+
+  const indirizzo = righeIndirizzo(settings?.indirizzo);
+  const orari = settings?.orari ?? [];
+
   return (
     <>
       <section className="contatti-hero">
         <div className="container">
-          <p className="contatti-label">Francavilla Fontana, Puglia</p>
-          <h1>Contatti.</h1>
+          {contatti?.label && <p className="contatti-label">{contatti.label}</p>}
+          <h1>{contatti?.titolo}</h1>
         </div>
       </section>
 
@@ -16,23 +30,45 @@ export default function ContattiPage() {
         <div className="container contatti-grid">
 
           <div className="contatti-card">
-            <h2>Dove siamo</h2>
-            <p>Museo Palmento Margarita<br />Francavilla Fontana (BR)<br />Puglia, Italia</p>
+            <h2>{contatti?.doveSiamoTitolo ?? 'Dove siamo'}</h2>
+            <p>
+              {settings?.titolo}
+              {indirizzo.map((riga) => (
+                <Fragment key={riga}>
+                  <br />
+                  {riga}
+                </Fragment>
+              ))}
+            </p>
           </div>
 
-          <div className="contatti-card">
-            <h2>Orari di apertura</h2>
-            <dl className="orari-dl">
-              <dt>Lunedì — martedì</dt><dd className="closed">Chiuso</dd>
-              <dt>Mercoledì — giovedì</dt><dd>10:00 — 13:00</dd>
-              <dt>Venerdì — sabato</dt><dd>10:00 — 18:30</dd>
-              <dt>Domenica</dt><dd>10:00 — 14:00</dd>
-            </dl>
-          </div>
+          {orari.length > 0 && (
+            <div className="contatti-card">
+              <h2>{contatti?.orariTitolo ?? 'Orari di apertura'}</h2>
+              <dl className="orari-dl">
+                {orari.map((o) => (
+                  <Fragment key={o.giorni}>
+                    <dt>{o.giorni}</dt>
+                    <dd className={o.chiuso ? 'closed' : undefined}>{formatOrario(o)}</dd>
+                  </Fragment>
+                ))}
+              </dl>
+            </div>
+          )}
 
           <div className="contatti-card contatti-card--email">
-            <h2>Scrivici</h2>
-            <p>Per informazioni, prenotazioni di gruppi e visite guidate.</p>
+            <h2>{contatti?.scriviciTitolo ?? 'Scrivici'}</h2>
+            <p>{contatti?.scriviciTesto}</p>
+            {settings?.email && (
+              <a className="btn contatti-btn" href={`mailto:${settings.email}`}>
+                {settings.email}
+              </a>
+            )}
+            {settings?.telefono && (
+              <p className="contatti-tel">
+                <a href={`tel:${settings.telefono.replace(/\s/g, '')}`}>{settings.telefono}</a>
+              </p>
+            )}
           </div>
 
         </div>
@@ -116,6 +152,20 @@ export default function ContattiPage() {
           text-align: right;
         }
         .orari-dl dd.closed { color: var(--ink-mute); }
+
+        /* Mostrati solo se email/telefono sono compilati nelle Impostazioni */
+        .contatti-btn {
+          display: inline-block;
+          font-family: var(--font-mono);
+          font-size: 0.76rem;
+          letter-spacing: 0.08em;
+          word-break: break-all;
+        }
+        .contatti-tel {
+          margin: 16px 0 0;
+          font-family: var(--font-mono);
+          font-size: 0.82rem;
+        }
 
         @media (max-width: 860px) {
           .contatti-grid { grid-template-columns: 1fr 1fr; }

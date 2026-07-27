@@ -1,130 +1,148 @@
-import Image from 'next/image';
+import { Fragment } from 'react';
+import Link from 'next/link';
+import { PortableText } from '@portabletext/react';
+import SanityImage from '@/components/SanityImage';
+import { sanityFetch } from '@/lib/sanity-fetch';
+import { storiaPageQuery, TAGS } from '@/lib/queries';
+import type { StoriaPage, StoriaSezione } from '@/lib/types';
 
 export const metadata = {
   title: 'Storia del palmento — Museo Palmento Margarita',
 };
 
-const TIMELINE = [
-  { year: 'XVI sec.', title: 'I primi palmenti', desc: 'Nelle campagne tra Francavilla Fontana e Villa Castelli si diffondono le prime costruzioni in pietra.' },
-  { year: '1700', title: "L'apogeo della tradizione", desc: 'Il palmento diventa parte integrante della masseria: vendemmia, pigiatura, conservazione, trasporto.' },
-  { year: '1800', title: 'Margarita & Carissimo', desc: "L'unione delle due famiglie segna la continuità del sito — Francavilla Fontana incontra Benevento." },
-  { year: '1950', title: 'La fine delle masserie', desc: "L'industrializzazione e l'esodo rurale segnano il declino. Molti palmenti vengono abbandonati." },
-  { year: '2024', title: 'Nasce il Museo', desc: "Il Palmento Margarita riapre. Cinquantanove oggetti diventano la voce di un'intera civiltà." },
-];
+/**
+ * Le tre disposizioni hanno markup diverso, non solo CSS diverso:
+ * `fullWidth` mette l'immagine fuori dal container per occupare tutta la larghezza.
+ * Le classi s1/s2/s3 restano quelle di prima, così il CSS non cambia.
+ */
+function Sezione({ sezione }: { sezione: StoriaSezione }) {
+  const { label, titolo, testo, immagine, layout } = sezione;
 
-export default function StoriaPage() {
+  const testoBlocco = (
+    <>
+      {label && <span className="label">{label}</span>}
+      {titolo && <h2>{titolo}</h2>}
+      {testo && <PortableText value={testo} />}
+    </>
+  );
+
+  if (layout === 'fullWidth') {
+    return (
+      <section className="s3">
+        <div className="s3__img-wrap">
+          <SanityImage image={immagine} sizes="100vw" />
+        </div>
+        <div className="container">
+          <div className="s3__text">{testoBlocco}</div>
+        </div>
+      </section>
+    );
+  }
+
+  if (layout === 'imgRight') {
+    return (
+      <section className="s2">
+        <div className="container">
+          <div className="s2__grid">
+            <div className="s2__text">{testoBlocco}</div>
+            <div className="s2__img-wrap">
+              <SanityImage
+                image={immagine}
+                objectPosition="center 55%"
+                sizes="(max-width: 860px) 100vw, 40vw"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="s1">
+      <div className="container">
+        <div className="s1__grid">
+          <div className="s1__img-wrap">
+            <SanityImage image={immagine} sizes="(max-width: 860px) 100vw, 60vw" />
+          </div>
+          <div className="s1__text">{testoBlocco}</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default async function StoriaPage() {
+  const storia = await sanityFetch<StoriaPage | null>(storiaPageQuery, {}, [TAGS.storiaPage]);
+
+  const sezioni = storia?.sezioni ?? [];
+  const timeline = storia?.timeline ?? [];
+  const cta = storia?.ctaFinale;
+
   return (
     <>
       {/* HERO — immagine larga, testo sotto */}
       <section className="storia-hero">
         <div className="storia-hero__img-wrap">
-          <Image
-            src="/MUSEO-19.jpg"
-            alt="Vigneto pugliese al tramonto"
-            fill
-            style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
+          <SanityImage
+            image={storia?.hero?.immagine}
+            objectPosition="center 40%"
             priority
+            sizes="100vw"
           />
         </div>
         <div className="container">
           <div className="storia-hero__text">
-            <h1>Il palmento e la tradizione del vino.</h1>
-            <p className="lead">Tra il XVI e il XIX secolo, nelle campagne pugliesi, il palmento in pietra era il cuore della trasformazione dell'uva in vino.</p>
+            <h1>{storia?.hero?.titolo}</h1>
+            {storia?.hero?.lead && <p className="lead">{storia.hero.lead}</p>}
           </div>
         </div>
       </section>
 
-      {/* SEZIONE 1 — immagine grande (5/8), testo stretto */}
-      <section className="s1">
-        <div className="container">
-          <div className="s1__grid">
-            <div className="s1__img-wrap">
-              <Image
-                src="/MUSEO-14.jpg"
-                alt="Sala del museo con carrozza e ritratti di famiglia"
-                fill
-                style={{ objectFit: 'cover', objectPosition: 'center center' }}
-              />
+      {/* Sezioni, con la citazione inserita dopo la prima */}
+      {sezioni.map((sezione, i) => (
+        <Fragment key={sezione._key}>
+          <Sezione sezione={sezione} />
+          {i === 0 && storia?.pullQuote && (
+            <div className="storia-pull">
+              <div className="container">
+                <blockquote>«{storia.pullQuote}»</blockquote>
+              </div>
             </div>
-            <div className="s1__text">
-              <span className="label">01 · La civiltà contadina</span>
-              <h2>I «viddani» e la vendemmia.</h2>
-              <p>La vendemmia era il momento centrale dell'anno rurale pugliese — tramandato oralmente, fatto di gesti antichi e collaborazione profonda con la terra. Il palmento non era solo uno strumento: era il luogo dove la comunità si ritrovava.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PULL QUOTE */}
-      <div className="storia-pull">
-        <div className="container">
-          <blockquote>«Puoi ancora sentire l'odore del mosto nelle pietre di questo cortile.»</blockquote>
-        </div>
-      </div>
-
-      {/* SEZIONE 2 — testo più stretto, immagine ritratto */}
-      <section className="s2">
-        <div className="container">
-          <div className="s2__grid">
-            <div className="s2__text">
-              <span className="label">02 · La terra e la vite</span>
-              <h2>Primitivo, Negroamaro, Malvasia Nera.</h2>
-              <p>Il territorio pugliese, tra Salento e Valle d'Itria, porta con sé una vocazione antica per la coltivazione della vite. Uve autoctone che raccontano secoli di lavoro, di sole abbondante e di terreni calcarei.</p>
-            </div>
-            <div className="s2__img-wrap">
-              <Image
-                src="/MUSEO-18.jpg"
-                alt="Vigneto pugliese di giorno"
-                fill
-                style={{ objectFit: 'cover', objectPosition: 'center 55%' }}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SEZIONE 3 — immagine full-width + testo sotto */}
-      <section className="s3">
-        <div className="s3__img-wrap">
-          <Image
-            src="/MUSEO-4.jpg"
-            alt="Anfore e pompa antica nel palmento"
-            fill
-            style={{ objectFit: 'cover', objectPosition: 'center center' }}
-          />
-        </div>
-        <div className="container">
-          <div className="s3__text">
-            <span className="label">03 · Una famiglia, un nome</span>
-            <p>«Margarita» è la famiglia originaria di Francavilla Fontana, unita ai Carissimo di origini beneventane. Un nome che intreccia radici familiari, tradizione agricola e identità locale — non un'astrazione, ma una storia con un cognome e una pietra.</p>
-          </div>
-        </div>
-      </section>
+          )}
+        </Fragment>
+      ))}
 
       {/* TIMELINE */}
-      <section className="timeline-section">
-        <div className="container">
-          <h2>Quattro secoli.</h2>
-          <div className="timeline-list">
-            {TIMELINE.map((t) => (
-              <div key={t.year} className="timeline-row">
-                <div className="year">{t.year}</div>
-                <div className="tl-body">
-                  <div className="title">{t.title}</div>
-                  <div className="desc">{t.desc}</div>
+      {timeline.length > 0 && (
+        <section className="timeline-section">
+          <div className="container">
+            <h2>{storia?.timelineTitolo}</h2>
+            <div className="timeline-list">
+              {timeline.map((t) => (
+                <div key={t._key} className="timeline-row">
+                  <div className="year">{t.anno}</div>
+                  <div className="tl-body">
+                    <div className="title">{t.titolo}</div>
+                    <div className="desc">{t.descrizione}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="cta-final">
         <div className="container">
-          <h2>Vieni a trovarci.</h2>
-          <p>Visite guidate ogni venerdì e sabato, in piccoli gruppi.</p>
-          <a className="btn" href="mailto:info@palmentomargarita.it">Contattaci</a>
+          <h2>{cta?.titolo}</h2>
+          <p>{cta?.testo}</p>
+          {cta?.linkLabel && cta.linkHref && (
+            <Link className="btn" href={cta.linkHref}>
+              {cta.linkLabel}
+            </Link>
+          )}
         </div>
       </section>
 

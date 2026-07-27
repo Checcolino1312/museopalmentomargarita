@@ -1,22 +1,27 @@
-'use client';
+import { sanityFetch } from '@/lib/sanity-fetch';
+import { collezionePageQuery, repertiListQuery, TAGS } from '@/lib/queries';
+import { imageUrl } from '@/sanity/image';
+import type { CollezionePage, RepertoCard } from '@/lib/types';
+import CollezioneCatalog, { type SchedaReperto } from './CollezioneCatalog';
 
-import { useState, useMemo } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { getAllReperti, imgPath, titleCase } from '@/lib/reperti';
+export const metadata = {
+  title: 'Collezione — Museo Palmento Margarita',
+};
 
-const ALL_REPERTI = getAllReperti();
+export default async function CollezionePage() {
+  const [reperti, pagina] = await Promise.all([
+    sanityFetch<RepertoCard[]>(repertiListQuery, {}, [TAGS.reperto]),
+    sanityFetch<CollezionePage | null>(collezionePageQuery, {}, [TAGS.collezionePage]),
+  ]);
 
-export default function CollezioneClient() {
-  const [query, setQuery] = useState('');
-
-  const filtered = useMemo(() => {
-    const q = query.toLowerCase().trim();
-    if (!q) return ALL_REPERTI;
-    return ALL_REPERTI.filter((it) =>
-      (it.nome + ' ' + it.epoca + ' ' + it.descrizione).toLowerCase().includes(q)
-    );
-  }, [query]);
+  // Gli URL delle immagini si calcolano qui: il componente client riceve stringhe
+  const schede: SchedaReperto[] = reperti.map((r) => ({
+    inventoryId: r.inventoryId,
+    nome: r.nome,
+    epoca: r.epoca,
+    descrizione: r.descrizione,
+    fotoUrl: imageUrl(r.foto, 800),
+  }));
 
   return (
     <>
@@ -25,76 +30,28 @@ export default function CollezioneClient() {
         <div className="container">
           <div className="page-hero__head">
             <div>
-              <h1>Cinquantanove oggetti, una sola vendemmia.</h1>
+              <h1>{pagina?.titolo}</h1>
             </div>
-            <p className="lead">Ogni reperto è una traccia: un gesto antico, un mestiere scomparso, un sapore conservato. Sfoglia la collezione o cerca un oggetto specifico.</p>
+            <p className="lead">{pagina?.lead}</p>
           </div>
           <div className="page-hero__meta">
-            <div><small>Totale reperti</small><strong>59</strong></div>
-            <div><small>Provenienza</small><strong>Francavilla Fontana</strong></div>
+            <div>
+              <small>{pagina?.etichettaTotale ?? 'Totale reperti'}</small>
+              <strong>{reperti.length}</strong>
+            </div>
+            <div>
+              <small>{pagina?.etichettaProvenienza ?? 'Provenienza'}</small>
+              <strong>{pagina?.valoreProvenienza}</strong>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* SEARCH BAR */}
-      <div className="filter-bar">
-        <div className="container container--wide">
-          <div className="filter-bar__inner">
-            <div className="search-box">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} style={{ width: 16, height: 16, color: 'var(--ink-mute)', flexShrink: 0 }}><circle cx="11" cy="11" r="7" /><path d="M21 21l-4-4" /></svg>
-              <input
-                placeholder="Cerca un oggetto, un'epoca…"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* CATALOG */}
-      <section className="catalog">
-        <div className="container container--wide">
-          <div className="catalog__head">
-            <div className="count"><strong>{filtered.length}</strong> · risultati</div>
-          </div>
-          {filtered.length === 0 ? (
-            <div className="catalog-grid--empty">Nessun reperto corrisponde alla ricerca.</div>
-          ) : (
-            <div className="catalog-grid">
-              {filtered.map((it, idx) => {
-                const src = imgPath(it.id);
-                return (
-                  <>
-                    {idx === 6 && !query && (
-                      <div key="editorial" className="editorial-card">
-                        <div>
-                          <div className="ec-title">La masseria come fabbrica di conservazione.</div>
-                          <p>Fino alla metà del Novecento, frutta, ortaggi, vino e olio venivano lavorati seguendo pratiche tradizionali tramandate di generazione in generazione.</p>
-                        </div>
-                        <Link href="/storia">Leggi la storia →</Link>
-                      </div>
-                    )}
-                    <Link key={it.id} className="card-reperto" href={`/reperti/${it.id}`}>
-                      <div className="card-reperto__media">
-                        {src ? (
-                          <Image src={src} alt={it.nome} fill style={{ objectFit: 'cover' }} sizes="25vw" />
-                        ) : (
-                          <div className="media-placeholder">Foto in archivio</div>
-                        )}
-                      </div>
-                      <div className="card-reperto__body">
-                        <h3 className="card-reperto__title">{titleCase(it.nome)}</h3>
-                        {it.epoca && <span className="card-reperto__epoca">{it.epoca}</span>}
-                      </div>
-                    </Link>
-                  </>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      </section>
+      <CollezioneCatalog
+        reperti={schede}
+        searchPlaceholder={pagina?.searchPlaceholder}
+        editorialCard={pagina?.editorialCard}
+      />
 
       <style>{`
         .page-hero { padding: clamp(72px, 9vw, 130px) 0 clamp(52px, 6vw, 80px); position: relative; overflow: hidden; }

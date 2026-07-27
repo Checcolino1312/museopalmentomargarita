@@ -1,27 +1,46 @@
+import { Fragment } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import SanityImage from '@/components/SanityImage';
+import { sanityFetch } from '@/lib/sanity-fetch';
+import { homePageQuery, siteSettingsQuery, TAGS } from '@/lib/queries';
+import { formatOrario } from '@/lib/site';
+import type { HomePage, SiteSettings } from '@/lib/types';
 
-export const metadata = {
-  title: 'Museo Palmento Margarita — Francavilla Fontana',
-};
+export default async function HomePage() {
+  const [home, settings] = await Promise.all([
+    sanityFetch<HomePage | null>(homePageQuery, {}, [TAGS.homePage]),
+    sanityFetch<SiteSettings | null>(siteSettingsQuery, {}, [TAGS.siteSettings]),
+  ]);
 
-export default function HomePage() {
+  const mosaico = home?.mosaico;
+  const orari = settings?.orari ?? [];
+
   return (
     <>
       {/* HERO — immagine full-height, testo sovrapposto */}
       <section className="hero">
-        <Image
-          src="/transformed_MUSEO-22.jpg"
-          alt="Facciata della masseria Margarita"
-          fill
-          style={{ objectFit: 'cover', objectPosition: 'center 35%' }}
+        <SanityImage
+          image={home?.heroImmagine}
+          objectPosition="center 35%"
           priority
+          sizes="100vw"
         />
         <div className="hero__overlay" aria-hidden="true" />
         <div className="container hero__content">
-          <p className="hero__label">Francavilla Fontana, Puglia</p>
-          <h1>La memoria<br />prende forma.</h1>
-          <Link className="btn hero__btn" href="/storia">Scopri</Link>
+          {home?.heroLabel && <p className="hero__label">{home.heroLabel}</p>}
+          <h1>
+            {home?.heroTitoloRighe?.map((riga, i) => (
+              <span key={riga}>
+                {i > 0 && <br />}
+                {riga}
+              </span>
+            ))}
+          </h1>
+          {home?.heroCta?.label && home.heroCta.href && (
+            <Link className="btn hero__btn" href={home.heroCta.href}>
+              {home.heroCta.label}
+            </Link>
+          )}
         </div>
       </section>
 
@@ -30,63 +49,60 @@ export default function HomePage() {
         <div className="container">
           <div className="img-mosaic__grid">
             <div className="img-mosaic__wide">
-              <Image
-                src="/MUSEO-10.jpg"
-                alt="Sala ad archi del museo con abiti d'epoca"
-                fill
-                style={{ objectFit: 'cover', objectPosition: 'center center' }}
-              />
+              <SanityImage image={mosaico?.immagineGrande} sizes="(max-width: 860px) 100vw, 70vw" />
             </div>
             <div className="img-mosaic__stack">
               <div className="img-mosaic__tall">
-                <Image
-                  src="/MUSEO-7.jpg"
-                  alt="Teca con oggetti storici e anfore"
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
-                />
+                <SanityImage image={mosaico?.immagineAlta} sizes="30vw" />
               </div>
               <div className="img-mosaic__sq">
-                <Image
-                  src="/MUSEO-13.jpg"
-                  alt="Camino con ceramiche antiche"
-                  fill
-                  style={{ objectFit: 'cover', objectPosition: 'center top' }}
+                <SanityImage
+                  image={mosaico?.immagineQuadrata}
+                  objectPosition="center top"
+                  sizes="30vw"
                 />
               </div>
             </div>
           </div>
-          <p className="img-mosaic__caption">Il palmento di Francavilla Fontana · XVI–XIX sec.</p>
+          {mosaico?.caption && <p className="img-mosaic__caption">{mosaico.caption}</p>}
         </div>
       </section>
 
       {/* PULL QUOTE */}
-      <section className="pull-section">
-        <div className="container container--narrow">
-          <blockquote className="pull-quote">
-            «Cinquantanove oggetti raccolti dalle masserie della provincia. Ognuno con la sua storia.»
-          </blockquote>
-          <Link href="/storia" className="pull-link">Leggi la storia →</Link>
-        </div>
-      </section>
+      {home?.pullQuote?.testo && (
+        <section className="pull-section">
+          <div className="container container--narrow">
+            <blockquote className="pull-quote">«{home.pullQuote.testo}»</blockquote>
+            {home.pullQuote.linkLabel && home.pullQuote.linkHref && (
+              <Link href={home.pullQuote.linkHref} className="pull-link">
+                {home.pullQuote.linkLabel} →
+              </Link>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* ORARI */}
       <section className="visit">
         <div className="container">
           <div className="visit__inner">
             <div className="visit__copy">
-              <h2>Vieni a trovarci.</h2>
-              <p>Visite guidate ogni venerdì e sabato.</p>
+              <h2>{home?.visita?.titolo}</h2>
+              <p>{home?.visita?.sottotitolo}</p>
             </div>
-            <div className="visit__hours">
-              <h3>Orari di apertura</h3>
-              <dl>
-                <dt>Lunedì — martedì</dt><dd className="closed">Chiuso</dd>
-                <dt>Mercoledì — giovedì</dt><dd>10:00 — 13:00</dd>
-                <dt>Venerdì — sabato</dt><dd>10:00 — 18:30</dd>
-                <dt>Domenica</dt><dd>10:00 — 14:00</dd>
-              </dl>
-            </div>
+            {orari.length > 0 && (
+              <div className="visit__hours">
+                <h3>{home?.visita?.titoloOrari ?? 'Orari di apertura'}</h3>
+                <dl>
+                  {orari.map((o) => (
+                    <Fragment key={o.giorni}>
+                      <dt>{o.giorni}</dt>
+                      <dd className={o.chiuso ? 'closed' : undefined}>{formatOrario(o)}</dd>
+                    </Fragment>
+                  ))}
+                </dl>
+              </div>
+            )}
           </div>
         </div>
       </section>

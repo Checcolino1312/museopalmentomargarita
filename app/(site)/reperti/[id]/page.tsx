@@ -1,36 +1,45 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getAllReperti, getReperto, imgPath, titleCase } from '@/lib/reperti';
+import { PortableText } from '@portabletext/react';
+import SanityImage from '@/components/SanityImage';
+import { sanityFetch } from '@/lib/sanity-fetch';
+import { repertiIdsQuery, repertiListQuery, repertoQuery, TAGS } from '@/lib/queries';
+import { titleCase } from '@/lib/format';
+import type { Reperto, RepertoCard } from '@/lib/types';
 
 export async function generateStaticParams() {
-  return getAllReperti().map((r) => ({ id: r.id }));
+  const ids = await sanityFetch<string[]>(repertiIdsQuery, {}, [TAGS.reperto]);
+  return ids.map((id) => ({ id }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const r = getReperto(id);
+  const r = await sanityFetch<Reperto | null>(repertoQuery, { id }, [TAGS.reperto, `reperto:${id}`]);
   if (!r) return {};
   return { title: `${titleCase(r.nome)} — Museo Palmento Margarita` };
 }
 
 export default async function RepertoPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const reperto = getReperto(id);
+
+  const [reperto, all] = await Promise.all([
+    sanityFetch<Reperto | null>(repertoQuery, { id }, [TAGS.reperto, `reperto:${id}`]),
+    sanityFetch<RepertoCard[]>(repertiListQuery, {}, [TAGS.reperto]),
+  ]);
+
   if (!reperto) notFound();
 
-  const all = getAllReperti();
-  const idx = all.findIndex((r) => r.id === id);
-  const src = imgPath(reperto.id);
+  const idx = all.findIndex((r) => r.inventoryId === id);
 
   const prevR = all[(idx - 1 + all.length) % all.length];
   const nextR = all[(idx + 1) % all.length];
 
-  const adjacent = all.filter((r) => r.id !== reperto.id).slice(idx % Math.max(all.length - 4, 1), idx % Math.max(all.length - 4, 1) + 4);
-  while (adjacent.length < 4) adjacent.push(all[(idx + adjacent.length + 1) % all.length]);
+  // I quattro successivi in ordine di inventario, scorrendo in modo circolare
+  const adjacent = [...all.slice(idx + 1), ...all.slice(0, Math.max(idx, 0))].slice(0, 4);
 
-  const bodyText = (reperto.noteCorpo || reperto.descrizione || '').trim();
-  const parts = bodyText.split(/\n\s*\n|\n/).filter(Boolean);
+  // La citazione va dopo il primo paragrafo, come nel resto del sito
+  const blocchi = reperto.noteCorpo ?? [];
+  const [primoBlocco, ...altriBlocchi] = blocchi;
 
   const titleHtml = titleCase(reperto.nome);
 
@@ -42,7 +51,7 @@ export default async function RepertoPage({ params }: { params: Promise<{ id: st
         <span className="sep">/</span>
         <Link href="/collezione">Collezione</Link>
         <span className="sep">/</span>
-        <span>{reperto.id}</span>
+        <span>{reperto.inventoryId}</span>
       </div>
 
       {/* HERO */}
@@ -50,18 +59,18 @@ export default async function RepertoPage({ params }: { params: Promise<{ id: st
         <div className="container container--wide">
           <div className="reperto-hero__grid">
             <div className="reperto-hero__media">
-              {src ? (
-                <Image src={src} alt={reperto.nome} fill style={{ objectFit: 'cover' }} sizes="50vw" priority />
+              {reperto.foto ? (
+                <SanityImage image={reperto.foto} alt={reperto.nome} sizes="50vw" priority />
               ) : (
-                <div className="media-placeholder">Foto in archivio<br />{reperto.id}</div>
+                <div className="media-placeholder">Foto in archivio<br />{reperto.inventoryId}</div>
               )}
-              <span className="badge">{reperto.id}</span>
+              <span className="badge">{reperto.inventoryId}</span>
             </div>
             <div className="reperto-hero__copy">
               <h1>{titleHtml}</h1>
               <p className="lead">{reperto.descrizione || reperto.noteTitolo}</p>
               <div className="meta-grid">
-                <div><small>Codice Inventario</small><strong style={{ fontFamily: 'var(--font-mono)' }}>{reperto.id}</strong></div>
+                <div><small>Codice Inventario</small><strong style={{ fontFamily: 'var(--font-mono)' }}>{reperto.inventoryId}</strong></div>
                 <div><small>Epoca</small><strong>{reperto.epoca || '—'}</strong></div>
                 <div><small>Provenienza</small><strong>{reperto.provenienza || '—'}</strong></div>
               </div>
@@ -84,17 +93,14 @@ export default async function RepertoPage({ params }: { params: Promise<{ id: st
               <small>{reperto.noteTitolo || titleHtml}</small>
             </div>
             <div className="storia__body">
-              {parts.map((p, i) => (
-                <>
-                  <p key={i}>{p.trim()}</p>
-                  {i === 0 && parts.length > 2 && parts[1] && (
-                    <blockquote key="pull" className="pull">
-                      «{parts[1].split(/(?<=\.) /)[0].replace(/[«»]/g, '').trim()}»
-                      <cite>— Note di archivio</cite>
-                    </blockquote>
-                  )}
-                </>
-              ))}
+              {primoBlocco && <PortableText value={[primoBlocco]} />}
+              {reperto.pullQuote && (
+                <blockquote className="pull">
+                  «{reperto.pullQuote}»
+                  <cite>— Note di archivio</cite>
+                </blockquote>
+              )}
+              {altriBlocchi.length > 0 && <PortableText value={altriBlocchi} />}
             </div>
           </div>
         </div>
@@ -105,31 +111,28 @@ export default async function RepertoPage({ params }: { params: Promise<{ id: st
         <div className="container container--wide">
           <h2>Continua a esplorare.</h2>
           <div className="adj-grid">
-            {adjacent.slice(0, 4).map((it) => {
-              const adjSrc = imgPath(it.id);
-              return (
-                <Link key={it.id} className="card-reperto" href={`/reperti/${it.id}`}>
-                  <div className="card-reperto__media">
-                    {adjSrc ? (
-                      <Image src={adjSrc} alt={it.nome} fill style={{ objectFit: 'cover' }} sizes="25vw" />
-                    ) : (
-                      <div className="media-placeholder">Foto in archivio</div>
-                    )}
-                  </div>
-                  <div className="card-reperto__body">
-                    <h3 className="card-reperto__title">{titleCase(it.nome)}</h3>
-                    {it.epoca && <span className="card-reperto__epoca">{it.epoca}</span>}
-                  </div>
-                </Link>
-              );
-            })}
+            {adjacent.map((it) => (
+              <Link key={it.inventoryId} className="card-reperto" href={`/reperti/${it.inventoryId}`}>
+                <div className="card-reperto__media">
+                  {it.foto ? (
+                    <SanityImage image={it.foto} alt={it.nome} sizes="25vw" width={800} />
+                  ) : (
+                    <div className="media-placeholder">Foto in archivio</div>
+                  )}
+                </div>
+                <div className="card-reperto__body">
+                  <h3 className="card-reperto__title">{titleCase(it.nome)}</h3>
+                  {it.epoca && <span className="card-reperto__epoca">{it.epoca}</span>}
+                </div>
+              </Link>
+            ))}
           </div>
           <div className="nav-pair">
-            <Link className="nav-link" href={`/reperti/${prevR.id}`}>
+            <Link className="nav-link" href={`/reperti/${prevR.inventoryId}`}>
               <small>← Reperto precedente</small>
               <strong>{titleCase(prevR.nome)}</strong>
             </Link>
-            <Link className="nav-link next" href={`/reperti/${nextR.id}`}>
+            <Link className="nav-link next" href={`/reperti/${nextR.inventoryId}`}>
               <small>Reperto successivo →</small>
               <strong>{titleCase(nextR.nome)}</strong>
             </Link>

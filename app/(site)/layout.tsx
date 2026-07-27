@@ -4,6 +4,17 @@ import localFont from 'next/font/local';
 import '../globals.css';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
+import { sanityFetch } from '@/lib/sanity-fetch';
+import { siteSettingsQuery, TAGS } from '@/lib/queries';
+import type { SiteSettings } from '@/lib/types';
+
+/**
+ * Letto sia da `generateMetadata` che dal layout: le due chiamate condividono
+ * la cache di Next, quindi la query parte una volta sola.
+ */
+function getSiteSettings() {
+  return sanityFetch<SiteSettings | null>(siteSettingsQuery, {}, [TAGS.siteSettings]);
+}
 
 const poligrapher = localFont({
   src: [
@@ -33,13 +44,17 @@ const ibmMono = IBM_Plex_Mono({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: 'Museo Palmento Margarita — Francavilla Fontana',
-  description:
-    'Un viaggio nella storia del vino, nelle tradizioni agricole e nella vita quotidiana delle comunità rurali pugliesi.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSiteSettings();
+  return {
+    title: `${settings?.titolo ?? 'Museo Palmento Margarita'} — Francavilla Fontana`,
+    description: settings?.descrizione,
+  };
+}
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const settings = await getSiteSettings();
+
   return (
     <html lang="it" className={`${poligrapher.variable} ${cormorant.variable} ${ibmMono.variable}`}>
       <head>
@@ -52,9 +67,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         `}</style>
       </head>
       <body>
-        <SiteHeader />
+        <SiteHeader settings={settings} />
         {children}
-        <SiteFooter />
+        <SiteFooter settings={settings} />
       </body>
     </html>
   );

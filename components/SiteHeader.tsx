@@ -3,43 +3,62 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { imageUrl } from '@/sanity/image';
+import type { LinkVoce, SiteSettings } from '@/lib/types';
 
-const NAV: Array<{ href: string; label: string; external?: boolean }> = [
+/** Voci di riserva: usate solo se le Impostazioni del sito non sono ancora compilate. */
+const NAV_FALLBACK: LinkVoce[] = [
   { href: '/home', label: 'Museo' },
   { href: '/storia', label: 'Storia' },
   { href: '/contatti', label: 'Contatti' },
 ];
 
-export default function SiteHeader() {
+/** Un indirizzo scritto nello Studio può anche puntare fuori dal sito. */
+const isExternal = (href: string) => /^(https?:|mailto:|tel:)/.test(href);
+
+const isCurrent = (pathname: string, href: string) =>
+  pathname === href || pathname.startsWith(href + '/');
+
+export default function SiteHeader({ settings }: { settings: SiteSettings | null }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  const nav = settings?.nav?.length ? settings.nav : NAV_FALLBACK;
+  const logoSrc = imageUrl(settings?.logo, 256);
+  const titolo = settings?.titolo ?? 'Museo Palmento Margarita';
+
+  // Il logotipo mostra la prima parola sopra e il resto sotto:
+  // «Museo» / «Palmento Margarita».
+  const [primaParola, ...restoTitolo] = titolo.split(' ');
 
   return (
     <>
       <header className="site-header">
         <div className="container container--wide site-header__inner">
           <Link href="/home" className="site-logo" onClick={() => setOpen(false)}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/brand/logo/logonuovo.png"
-              alt="Museo Palmento Margarita"
-              style={{ height: 64, width: 'auto', flexShrink: 0 }}
-            />
+            {logoSrc && (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img
+                src={logoSrc}
+                alt={titolo}
+                style={{ height: 64, width: 'auto', flexShrink: 0 }}
+              />
+            )}
             <div className="site-logo__text">
-              <span className="site-logo__museo">Museo</span>
-              <span className="site-logo__name">Palmento Margarita</span>
+              <span className="site-logo__museo">{primaParola}</span>
+              <span className="site-logo__name">{restoTitolo.join(' ')}</span>
             </div>
           </Link>
 
           <nav className="site-nav">
-            {NAV.map(({ href, label, external }) =>
-              external ? (
+            {nav.map(({ href, label }) =>
+              isExternal(href) ? (
                 <a key={label} href={href}>{label}</a>
               ) : (
                 <Link
                   key={label}
                   href={href}
-                  aria-current={pathname === href || pathname.startsWith(href + '/') ? 'page' : undefined}
+                  aria-current={isCurrent(pathname, href) ? 'page' : undefined}
                 >
                   {label}
                 </Link>
@@ -61,14 +80,14 @@ export default function SiteHeader() {
       {open && (
         <div className="mobile-drawer" onClick={() => setOpen(false)}>
           <nav className="mobile-drawer__nav" onClick={(e) => e.stopPropagation()}>
-            {NAV.map(({ href, label, external }) =>
-              external ? (
+            {nav.map(({ href, label }) =>
+              isExternal(href) ? (
                 <a key={label} href={href} className="mobile-drawer__link" onClick={() => setOpen(false)}>{label}</a>
               ) : (
                 <Link
                   key={label}
                   href={href}
-                  className={`mobile-drawer__link${pathname === href || pathname.startsWith(href + '/') ? ' is-active' : ''}`}
+                  className={`mobile-drawer__link${isCurrent(pathname, href) ? ' is-active' : ''}`}
                   onClick={() => setOpen(false)}
                 >
                   {label}
