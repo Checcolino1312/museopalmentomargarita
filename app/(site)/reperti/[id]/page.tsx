@@ -152,7 +152,9 @@ export default async function RepertoPage({ params }: { params: Promise<{ id: st
         .reperto-hero__media .badge { position: absolute; top: 18px; left: 18px; background: var(--crema); padding: 7px 13px 6px; border-radius: var(--radius-pill); font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; }
         .reperto-hero__copy { padding-top: 12px; }
         .reperto-hero__copy h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.6rem, 5.4vw, 4.8rem); line-height: 0.93; letter-spacing: -0.03em; margin: 0 0 28px; text-wrap: balance; }
-        .reperto-hero__copy .lead { font-size: 1.22rem; line-height: 1.5; color: var(--ink-soft); margin: 0; text-wrap: pretty; }
+        /* pre-line: alcune descrizioni d'archivio sono elenchi su più righe
+           (es. INV-001), che altrimenti finirebbero tutti su una riga sola */
+        .reperto-hero__copy .lead { font-size: 1.22rem; line-height: 1.5; color: var(--ink-soft); margin: 0; text-wrap: pretty; white-space: pre-line; }
         .reperto-hero__copy .meta-grid { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--rule); display: grid; grid-template-columns: 1fr 1fr; gap: 20px 24px; }
         .meta-grid > div small { display: block; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 4px; }
         .meta-grid strong { font-family: var(--font-display); font-weight: 600; font-size: 1.06rem; letter-spacing: -0.005em; }
