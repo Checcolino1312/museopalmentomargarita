@@ -1,18 +1,18 @@
 import type { Metadata } from 'next';
 import { IBM_Plex_Mono, Cormorant_Garamond } from 'next/font/google';
 import localFont from 'next/font/local';
-import './globals.css';
+import '../globals.css';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 
 const poligrapher = localFont({
   src: [
-    { path: '../public/brand/fonts/poligraphergrotesk-Regular.ttf', weight: '400', style: 'normal' },
-    { path: '../public/brand/fonts/poligraphergrotesk-Medium.ttf', weight: '500', style: 'normal' },
-    { path: '../public/brand/fonts/poligraphergrotesk-MediumItalic.ttf', weight: '500', style: 'italic' },
-    { path: '../public/brand/fonts/poligraphergrotesk-SemiBold.ttf', weight: '600', style: 'normal' },
-    { path: '../public/brand/fonts/poligraphergrotesk-Bold.ttf', weight: '700', style: 'normal' },
-    { path: '../public/brand/fonts/poligraphergrotesk-ExtraBold.ttf', weight: '800', style: 'normal' },
+    { path: '../../public/brand/fonts/poligraphergrotesk-Regular.ttf', weight: '400', style: 'normal' },
+    { path: '../../public/brand/fonts/poligraphergrotesk-Medium.ttf', weight: '500', style: 'normal' },
+    { path: '../../public/brand/fonts/poligraphergrotesk-MediumItalic.ttf', weight: '500', style: 'italic' },
+    { path: '../../public/brand/fonts/poligraphergrotesk-SemiBold.ttf', weight: '600', style: 'normal' },
+    { path: '../../public/brand/fonts/poligraphergrotesk-Bold.ttf', weight: '700', style: 'normal' },
+    { path: '../../public/brand/fonts/poligraphergrotesk-ExtraBold.ttf', weight: '800', style: 'normal' },
   ],
   variable: '--font-poligrapher',
   display: 'swap',
