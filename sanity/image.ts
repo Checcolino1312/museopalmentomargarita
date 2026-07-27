@@ -1,8 +1,8 @@
-import imageUrlBuilder from '@sanity/image-url';
+import { createImageUrlBuilder } from '@sanity/image-url';
 import type { Image } from 'sanity';
 import { dataset, projectId } from './env';
 
-const builder = imageUrlBuilder({ projectId, dataset });
+const builder = createImageUrlBuilder({ projectId, dataset });
 
 /** Costruisce un URL della CDN Sanity per un'immagine, con crop/hotspot applicati. */
 export function urlFor(source: Image) {
