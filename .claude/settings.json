@@ -68,7 +68,11 @@
       "Bash(curl -s https://palmentomargarita.vercel.app/collezione)",
       "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" -X POST https://palmentomargarita.vercel.app/api/revalidate)",
       "Bash(npx sanity *)",
-      "Bash(SANITY_AUTH_TOKEN=\"skfV8ffaLDtFY1GWSly3o1McnHRKvZAEGYNc1gaTx6dh244mNaRjRtz7LxUXYzIQ5kpA9DxoNHm2RvgGzhpiGrgeWTMQ4b2Q4Em43s1XX4g60EKqQFQj1fORBMSOMUulW0seXVQ8eaPGQx28OYziiVdJaKF2nblqceh3mMGoi3pXzIWZL5YZ\" npx sanity cors list)"
+      "Bash(SANITY_AUTH_TOKEN=\"skfV8ffaLDtFY1GWSly3o1McnHRKvZAEGYNc1gaTx6dh244mNaRjRtz7LxUXYzIQ5kpA9DxoNHm2RvgGzhpiGrgeWTMQ4b2Q4Em43s1XX4g60EKqQFQj1fORBMSOMUulW0seXVQ8eaPGQx28OYziiVdJaKF2nblqceh3mMGoi3pXzIWZL5YZ\" npx sanity cors list)",
+      "Bash(grep -vE \"telemetry|Learn more|^│|^╰|^╭|^$\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://museopalmentomargarita.vercel.app/)",
+      "Bash(curl -s -o /dev/null -w \"studio: HTTP %{http_code}\\\\n\" https://museopalmentomargarita.vercel.app/studio)",
+      "Bash(curl -s -D - -o /dev/null -H \"Origin: https://museopalmentomargarita.vercel.app\" \"https://l3onmmev.api.sanity.io/v2026-07-27/data/query/production?query=count\\(*\\)\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\cicci\\OneDrive\\Desktop\\palmentomargarita\\app\\reperti"
