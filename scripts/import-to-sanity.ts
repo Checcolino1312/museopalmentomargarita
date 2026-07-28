@@ -9,53 +9,13 @@
  *
  * Serve SANITY_API_WRITE_TOKEN in `.env.local`.
  */
-import { createClient } from '@sanity/client';
 import { createReadStream, existsSync, readFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
 
+import { client } from './lib/client';
+import { addMissingKeys } from './lib/keys';
 import { toPortableText } from './lib/portable-text';
 import { singletons, type ImagePlaceholder } from './seed-content';
-
-// ─── Env ──────────────────────────────────────────────────────────────────────
-// Caricato a mano: questo script gira fuori da Next, che altrimenti
-// si occuperebbe di leggere .env.local.
-function loadEnvLocal(): void {
-  const path = resolve(process.cwd(), '.env.local');
-  if (!existsSync(path)) {
-    throw new Error(
-      'File .env.local non trovato.\n' +
-        'Copia .env.local.example in .env.local e compila i valori del progetto Sanity.'
-    );
-  }
-
-  for (const line of readFileSync(path, 'utf-8').split('\n')) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#')) continue;
-
-    const eq = trimmed.indexOf('=');
-    if (eq === -1) continue;
-
-    const key = trimmed.slice(0, eq).trim();
-    const value = trimmed.slice(eq + 1).trim().replace(/^["']|["']$/g, '');
-    if (!(key in process.env)) process.env[key] = value;
-  }
-}
-
-loadEnvLocal();
-
-function requireEnv(name: string): string {
-  const value = process.env[name];
-  if (!value) throw new Error(`Variabile d'ambiente mancante in .env.local: ${name}`);
-  return value;
-}
-
-const client = createClient({
-  projectId: requireEnv('NEXT_PUBLIC_SANITY_PROJECT_ID'),
-  dataset: requireEnv('NEXT_PUBLIC_SANITY_DATASET'),
-  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION ?? '2026-07-27',
-  token: requireEnv('SANITY_API_WRITE_TOKEN'),
-  useCdn: false,
-});
 
 // ─── Immagini ─────────────────────────────────────────────────────────────────
 
@@ -181,7 +141,9 @@ async function importSingletons(): Promise<void> {
   console.log(`\n▸ Pagine e impostazioni (${singletons.length})`);
 
   for (const doc of singletons) {
-    const resolved = await resolveImages(doc);
+    // `addMissingKeys`: gli array di `seed-content` sono scritti senza `_key`,
+    // che invece Sanity richiede per ogni oggetto dentro un array.
+    const resolved = addMissingKeys(await resolveImages(doc));
     await client.createOrReplace(resolved as Parameters<typeof client.createOrReplace>[0]);
     console.log(`  ✓ ${doc._id}`);
   }

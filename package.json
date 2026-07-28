@@ -9,6 +9,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "sanity:import": "tsx scripts/import-to-sanity.ts",
+    "sanity:fix-keys": "tsx scripts/fix-missing-keys.ts",
     "sanity:backup": "sanity dataset export production"
   },
   "dependencies": {
