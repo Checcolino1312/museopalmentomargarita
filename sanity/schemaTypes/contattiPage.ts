@@ -17,6 +17,13 @@ export const contattiPage = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'intro',
+      title: 'Testo introduttivo',
+      type: 'array',
+      of: [{ type: 'block' }],
+      description: 'Compare sotto il titolo, prima dei riquadri.',
+    }),
+    defineField({
       name: 'doveSiamoTitolo',
       title: 'Titolo del blocco indirizzo',
       type: 'string',
@@ -26,7 +33,7 @@ export const contattiPage = defineType({
       name: 'orariTitolo',
       title: 'Titolo del blocco orari',
       type: 'string',
-      initialValue: 'Orari di apertura',
+      initialValue: 'Orari di contatto',
     }),
     defineField({
       name: 'scriviciTitolo',
@@ -39,6 +46,26 @@ export const contattiPage = defineType({
       title: 'Testo del blocco contatto',
       type: 'text',
       rows: 3,
+    }),
+    defineField({
+      name: 'contattaciTitolo',
+      title: 'Titolo dell’elenco «Contattaci per»',
+      type: 'string',
+      initialValue: 'Contattaci per',
+    }),
+    defineField({
+      name: 'contattaciVoci',
+      title: 'Voci dell’elenco',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'Una voce per motivo di contatto. L’elenco sparisce se lasciato vuoto.',
+    }),
+    defineField({
+      name: 'chiusura',
+      title: 'Frase di chiusura',
+      type: 'text',
+      rows: 2,
+      description: 'L’ultima riga della pagina, sotto l’elenco.',
     }),
   ],
   preview: {

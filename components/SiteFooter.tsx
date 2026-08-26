@@ -1,11 +1,15 @@
 import Link from 'next/link';
 import type { SiteSettings } from '@/lib/types';
-import { formatOrario, righeIndirizzo } from '@/lib/site';
+import { linkWhatsApp, righeIndirizzo } from '@/lib/site';
 
+/**
+ * Il footer non mostra orari: il museo riceve su appuntamento, e gli orari
+ * di contatto stanno nella pagina Contatti, dove servono davvero.
+ */
 export default function SiteFooter({ settings }: { settings: SiteSettings | null }) {
   const indirizzo = righeIndirizzo(settings?.indirizzo);
-  const orari = settings?.orari ?? [];
   const scopri = settings?.footerScopri ?? [];
+  const whatsapp = linkWhatsApp(settings?.whatsapp);
 
   return (
     <footer className="site-footer">
@@ -24,26 +28,6 @@ export default function SiteFooter({ settings }: { settings: SiteSettings | null
               </p>
             )}
           </div>
-          {orari.length > 0 && (
-            <div>
-              <h6>Orari</h6>
-              <ul>
-                {orari.map((o) => (
-                  <li key={o.giorni}>
-                    <span
-                      style={
-                        o.chiuso
-                          ? { color: 'color-mix(in oklab, var(--crema) 55%, transparent)' }
-                          : undefined
-                      }
-                    >
-                      {o.giorni}: {formatOrario(o)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
           {scopri.length > 0 && (
             <div>
               <h6>Scopri</h6>
@@ -56,16 +40,23 @@ export default function SiteFooter({ settings }: { settings: SiteSettings | null
               </ul>
             </div>
           )}
-          {(settings?.email || settings?.telefono) && (
+          {(settings?.email || settings?.telefono || whatsapp) && (
             <div>
               <h6>Contatti</h6>
               <ul>
-                {settings.email && (
+                {whatsapp && (
+                  <li>
+                    <a href={whatsapp} target="_blank" rel="noopener noreferrer">
+                      WhatsApp {settings?.whatsapp}
+                    </a>
+                  </li>
+                )}
+                {settings?.email && (
                   <li>
                     <a href={`mailto:${settings.email}`}>{settings.email}</a>
                   </li>
                 )}
-                {settings.telefono && (
+                {settings?.telefono && (
                   <li>
                     <a href={`tel:${settings.telefono.replace(/\s/g, '')}`}>{settings.telefono}</a>
                   </li>

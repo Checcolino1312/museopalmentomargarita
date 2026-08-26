@@ -72,7 +72,23 @@
       "Bash(grep -vE \"telemetry|Learn more|^│|^╰|^╭|^$\")",
       "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://museopalmentomargarita.vercel.app/)",
       "Bash(curl -s -o /dev/null -w \"studio: HTTP %{http_code}\\\\n\" https://museopalmentomargarita.vercel.app/studio)",
-      "Bash(curl -s -D - -o /dev/null -H \"Origin: https://museopalmentomargarita.vercel.app\" \"https://l3onmmev.api.sanity.io/v2026-07-27/data/query/production?query=count\\(*\\)\")"
+      "Bash(curl -s -D - -o /dev/null -H \"Origin: https://museopalmentomargarita.vercel.app\" \"https://l3onmmev.api.sanity.io/v2026-07-27/data/query/production?query=count\\(*\\)\")",
+      "Bash(grep -vE \"telemetry|^│|^╰|^╭|^$\")",
+      "Bash(curl -s -w '\\\\nHTTP %{http_code}\\\\n' -H 'Authorization: Bearer skfV8ffaLDtFY1GWSly3o1McnHRKvZAEGYNc1gaTx6dh244mNaRjRtz7LxUXYzIQ5kpA9DxoNHm2RvgGzhpiGrgeWTMQ4b2Q4Em43s1XX4g60EKqQFQj1fORBMSOMUulW0seXVQ8eaPGQx28OYziiVdJaKF2nblqceh3mMGoi3pXzIWZL5YZ' https://api.sanity.io/v2021-10-04/hooks/projects/l3onmmev)",
+      "Bash(curl -s -X POST https://l3onmmev.api.sanity.io/v2026-07-27/data/mutate/production -H 'Authorization: Bearer skfV8ffaLDtFY1GWSly3o1McnHRKvZAEGYNc1gaTx6dh244mNaRjRtz7LxUXYzIQ5kpA9DxoNHm2RvgGzhpiGrgeWTMQ4b2Q4Em43s1XX4g60EKqQFQj1fORBMSOMUulW0seXVQ8eaPGQx28OYziiVdJaKF2nblqceh3mMGoi3pXzIWZL5YZ' -H 'Content-Type: application/json' -d '{\"mutations\":[{\"patch\":{\"id\":\"siteSettings\",\"unset\":[\"webhookTestTemp\"]}}]}')",
+      "Bash(curl -s \"https://l3onmmev.api.sanity.io/v2026-07-27/data/query/production?query=*%5B_id%3D%3D%22siteSettings%22%5D%7BwebhookTestTemp%7D\")",
+      "Bash(curl -s https://museopalmentomargarita.vercel.app/home)",
+      "Bash(grep -oE \"<h1[^>]*>.{0,120}\")",
+      "Bash(curl -s \"https://l3onmmev.api.sanity.io/v2026-07-27/data/query/production?query=*%5B_type%3D%3D%22homePage%22%5D%7BheroTitoloRighe%2CheroLabel%7D\")",
+      "Bash(curl -s \"https://l3onmmev.api.sanity.io/v2026-07-27/data/query/production?query=*%5B_id%3D%3D%22siteSettings%22%5D%7Borari%2Cnav%2CfooterScopri%7D\")",
+      "Bash(curl -s \"https://l3onmmev.api.sanity.io/v2026-07-27/data/query/production?query=*%5B_id%3D%3D%22storiaPage%22%5D%7B%22timeline0%22%3Atimeline%5B0%5D%2C%22sezioni0%22%3Asezioni%5B0%5D%7D\")",
+      "Bash(curl -s \"https://l3onmmev.api.sanity.io/v2026-07-27/data/query/production?query=*%5B_type%3D%3D%22reperto%22%26%26defined\\(noteCorpo\\)%5D%5B0%5D%7B%22blocco%22%3AnoteCorpo%5B0%5D%7D\")",
+      "Bash(node \"C:/Users/cicci/AppData/Local/Temp/claude/c--Users-cicci-OneDrive-Desktop-palmentomargarita/7ef76f1f-1f71-4b7a-b49b-570fd11c0046/scratchpad/diagnosi-key.mjs\")",
+      "Bash(curl -s \"https://l3onmmev.api.sanity.io/v2026-07-27/data/query/production?query=*%5B_id%3D%3D%22siteSettings%22%5D%7Borari%7D\")",
+      "Bash(curl -s \"https://l3onmmev.api.sanity.io/v2026-07-27/data/query/production?query=*%5B_id%3D%3D%22homePage%22%5D%7BheroTitoloRighe%7D\")",
+      "Bash(curl -s -o /dev/null \"https://museopalmentomargarita.vercel.app/home\")",
+      "Bash(grep -oE \"<h1[^>]*>.{0,80}\")",
+      "Bash(grep -rnoE \">[A-ZÀ-Ù][a-zà-ù'][^<>{}]{6,60}<\" \"app/\\(site\\)/\" components/ --include=\"*.tsx\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\cicci\\OneDrive\\Desktop\\palmentomargarita\\app\\reperti"

@@ -6,6 +6,7 @@ export const homePage = defineType({
   type: 'document',
   groups: [
     { name: 'hero', title: 'Hero', default: true },
+    { name: 'testi', title: 'Introduzione e mission' },
     { name: 'mosaico', title: 'Mosaico immagini' },
     { name: 'resto', title: 'Citazione e visita' },
   ],
@@ -42,6 +43,51 @@ export const homePage = defineType({
       fields: [
         defineField({ name: 'label', title: 'Etichetta', type: 'string' }),
         defineField({ name: 'href', title: 'Indirizzo', type: 'string' }),
+      ],
+    }),
+
+    defineField({
+      name: 'introduzione',
+      title: 'Introduzione',
+      type: 'object',
+      group: 'testi',
+      description: 'Il blocco di presentazione subito sotto l’immagine di apertura.',
+      fields: [
+        defineField({ name: 'titolo', title: 'Titolo', type: 'string' }),
+        defineField({
+          name: 'testo',
+          title: 'Testo',
+          type: 'array',
+          of: [{ type: 'block' }],
+        }),
+        defineField({
+          name: 'immagine',
+          title: 'Immagine',
+          type: 'immagine',
+          description: 'Facoltativa. Senza immagine il testo occupa tutta la larghezza.',
+        }),
+      ],
+    }),
+    defineField({
+      name: 'mission',
+      title: 'Mission',
+      type: 'object',
+      group: 'testi',
+      fields: [
+        defineField({ name: 'titolo', title: 'Titolo', type: 'string' }),
+        defineField({
+          name: 'citazione',
+          title: 'Citazione',
+          type: 'text',
+          rows: 4,
+          description: 'Le virgolette « » vengono aggiunte da sole: scrivere il testo senza.',
+        }),
+        defineField({
+          name: 'testo',
+          title: 'Testo di accompagnamento',
+          type: 'array',
+          of: [{ type: 'block' }],
+        }),
       ],
     }),
 
@@ -90,15 +136,22 @@ export const homePage = defineType({
       title: 'Sezione «Vieni a trovarci»',
       type: 'object',
       group: 'resto',
-      description: 'Gli orari mostrati qui vengono dalle Impostazioni del sito.',
+      description:
+        'Il museo riceve su appuntamento: qui non ci sono orari, ma un invito a contattare.',
       fields: [
         defineField({ name: 'titolo', title: 'Titolo', type: 'string' }),
         defineField({ name: 'sottotitolo', title: 'Sottotitolo', type: 'string' }),
         defineField({
-          name: 'titoloOrari',
-          title: 'Titolo del riquadro orari',
+          name: 'linkLabel',
+          title: 'Etichetta del pulsante',
           type: 'string',
-          initialValue: 'Orari di apertura',
+          description: 'Il pulsante appare solo se etichetta e indirizzo sono compilati.',
+        }),
+        defineField({
+          name: 'linkHref',
+          title: 'Indirizzo del pulsante',
+          type: 'string',
+          description: 'Es. /contatti',
         }),
       ],
     }),

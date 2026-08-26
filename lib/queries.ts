@@ -6,8 +6,10 @@ export const TAGS = {
   siteSettings: 'siteSettings',
   homePage: 'homePage',
   storiaPage: 'storiaPage',
+  percorsiPage: 'percorsiPage',
   collezionePage: 'collezionePage',
   contattiPage: 'contattiPage',
+  popupEvento: 'popupEvento',
 } as const;
 
 /** Campi mostrati nelle griglie di schede. */
@@ -33,7 +35,7 @@ export const repertoQuery = defineQuery(`
 
 export const siteSettingsQuery = defineQuery(`
   *[_type == "siteSettings"][0] {
-    titolo, descrizione, logo, indirizzo, email, telefono,
+    titolo, descrizione, logo, indirizzo, email, telefono, whatsapp,
     orari[] { giorni, orario, chiuso },
     nav[] { label, href },
     footerScopri[] { label, href },
@@ -44,6 +46,7 @@ export const siteSettingsQuery = defineQuery(`
 export const homePageQuery = defineQuery(`
   *[_type == "homePage"][0] {
     heroLabel, heroTitoloRighe, heroImmagine, heroCta,
+    introduzione, mission,
     mosaico, pullQuote, visita
   }
 `);
@@ -67,6 +70,24 @@ export const collezionePageQuery = defineQuery(`
 
 export const contattiPageQuery = defineQuery(`
   *[_type == "contattiPage"][0] {
-    label, titolo, doveSiamoTitolo, orariTitolo, scriviciTitolo, scriviciTesto
+    label, titolo, intro, doveSiamoTitolo, orariTitolo,
+    scriviciTitolo, scriviciTesto,
+    contattaciTitolo, contattaciVoci, chiusura
+  }
+`);
+
+export const percorsiPageQuery = defineQuery(`
+  *[_type == "percorsiPage"][0] {
+    label, titolo, intro, heroImmagine,
+    attivitaTitolo, attivitaIntro, attivita,
+    oltreTitolo, oltreTesto, oltreImmagine,
+    ctaFinale
+  }
+`);
+
+/** Il pop-up è servito solo quando è acceso: da spento la query non torna nulla. */
+export const popupEventoQuery = defineQuery(`
+  *[_type == "popupEvento" && attivo == true][0] {
+    titolo, testo, immagine, linkLabel, linkHref
   }
 `);

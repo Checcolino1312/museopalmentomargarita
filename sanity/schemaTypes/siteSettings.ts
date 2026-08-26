@@ -66,11 +66,22 @@ export const siteSettings = defineType({
       description: 'Lasciare vuoto se non c’è un numero attivo: il link non verrà mostrato.',
     }),
     defineField({
+      name: 'whatsapp',
+      title: 'WhatsApp',
+      type: 'string',
+      group: 'contatti',
+      description:
+        'Numero senza prefisso internazionale, es. «338 834 6910». ' +
+        'Il collegamento a WhatsApp viene composto da solo.',
+    }),
+    defineField({
       name: 'orari',
-      title: 'Orari di apertura',
+      title: 'Orari di contatto',
       type: 'array',
       group: 'contatti',
-      description: 'Compaiono in home, nella pagina contatti e nel footer.',
+      description:
+        'Quando si può telefonare o scrivere. Il museo riceve su appuntamento, ' +
+        'quindi questi non sono orari di apertura al pubblico. Compaiono nella pagina Contatti.',
       of: [
         defineArrayMember({
           type: 'object',

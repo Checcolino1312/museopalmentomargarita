@@ -1,19 +1,17 @@
-import { Fragment } from 'react';
 import Link from 'next/link';
+import { PortableText } from '@portabletext/react';
 import SanityImage from '@/components/SanityImage';
 import { sanityFetch } from '@/lib/sanity-fetch';
-import { homePageQuery, siteSettingsQuery, TAGS } from '@/lib/queries';
-import { formatOrario } from '@/lib/site';
-import type { HomePage, SiteSettings } from '@/lib/types';
+import { homePageQuery, TAGS } from '@/lib/queries';
+import type { HomePage } from '@/lib/types';
 
 export default async function HomePage() {
-  const [home, settings] = await Promise.all([
-    sanityFetch<HomePage | null>(homePageQuery, {}, [TAGS.homePage]),
-    sanityFetch<SiteSettings | null>(siteSettingsQuery, {}, [TAGS.siteSettings]),
-  ]);
+  const home = await sanityFetch<HomePage | null>(homePageQuery, {}, [TAGS.homePage]);
 
   const mosaico = home?.mosaico;
-  const orari = settings?.orari ?? [];
+  const intro = home?.introduzione;
+  const mission = home?.mission;
+  const visita = home?.visita;
 
   return (
     <>
@@ -44,6 +42,25 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* INTRODUZIONE — «La storia prende vita» */}
+      {(intro?.titolo || intro?.testo) && (
+        <section className="intro">
+          <div className="container">
+            <div className={`intro__grid${intro.immagine ? '' : ' intro__grid--solo-testo'}`}>
+              <div className="intro__testo">
+                {intro.titolo && <h2>{intro.titolo}</h2>}
+                {intro.testo && <PortableText value={intro.testo} />}
+              </div>
+              {intro.immagine && (
+                <div className="intro__img">
+                  <SanityImage image={intro.immagine} sizes="(max-width: 860px) 100vw, 40vw" />
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* IMMAGINI ASIMMETRICHE */}
       <section className="img-mosaic">
         <div className="container">
@@ -68,6 +85,23 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* MISSION */}
+      {(mission?.citazione || mission?.testo) && (
+        <section className="mission">
+          <div className="container container--narrow">
+            {mission.titolo && <span className="mission__label">{mission.titolo}</span>}
+            {mission.citazione && (
+              <blockquote className="mission__quote">«{mission.citazione}»</blockquote>
+            )}
+            {mission.testo && (
+              <div className="mission__testo">
+                <PortableText value={mission.testo} />
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* PULL QUOTE */}
       {home?.pullQuote?.testo && (
         <section className="pull-section">
@@ -82,30 +116,26 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* ORARI */}
-      <section className="visit">
-        <div className="container">
-          <div className="visit__inner">
-            <div className="visit__copy">
-              <h2>{home?.visita?.titolo}</h2>
-              <p>{home?.visita?.sottotitolo}</p>
-            </div>
-            {orari.length > 0 && (
-              <div className="visit__hours">
-                <h3>{home?.visita?.titoloOrari ?? 'Orari di apertura'}</h3>
-                <dl>
-                  {orari.map((o) => (
-                    <Fragment key={o.giorni}>
-                      <dt>{o.giorni}</dt>
-                      <dd className={o.chiuso ? 'closed' : undefined}>{formatOrario(o)}</dd>
-                    </Fragment>
-                  ))}
-                </dl>
+      {/* VISITA — su appuntamento, quindi un invito a contattare invece degli orari */}
+      {(visita?.titolo || visita?.sottotitolo) && (
+        <section className="visit">
+          <div className="container">
+            <div className="visit__inner">
+              <div className="visit__copy">
+                <h2>{visita.titolo}</h2>
+                {visita.sottotitolo && <p>{visita.sottotitolo}</p>}
               </div>
-            )}
+              {visita.linkLabel && visita.linkHref && (
+                <div className="visit__cta">
+                  <Link className="btn" href={visita.linkHref}>
+                    {visita.linkLabel}
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <style>{`
         /* ── Hero ── */
@@ -202,6 +232,67 @@ export default async function HomePage() {
         }
 
         /* ── Pull quote ── */
+        /* ── Introduzione ── */
+        .intro { padding-block: clamp(56px, 7vw, 96px); }
+        .intro__grid {
+          display: grid;
+          grid-template-columns: 3fr 2fr;
+          gap: clamp(32px, 5vw, 64px);
+          align-items: start;
+        }
+        /* Senza immagine il testo non deve restare in una colonna stretta. */
+        .intro__grid--solo-testo { grid-template-columns: minmax(0, 68ch); }
+        .intro__testo h2 {
+          font-family: var(--font-display);
+          font-weight: 600;
+          font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+          line-height: 1.1;
+          color: var(--ink);
+          margin: 0 0 20px;
+        }
+        .intro__testo p {
+          font-size: 1.05rem;
+          line-height: 1.75;
+          color: var(--ink-soft);
+          margin: 0 0 16px;
+        }
+        .intro__testo p:last-child { margin-bottom: 0; }
+        .intro__img {
+          position: relative;
+          aspect-ratio: 3 / 4;
+          border-radius: 2px;
+          overflow: hidden;
+        }
+
+        /* ── Mission ── */
+        .mission { background: var(--verdes); color: var(--crema); padding-block: clamp(56px, 7vw, 96px); }
+        .mission__label {
+          display: block;
+          font-family: var(--font-mono);
+          font-size: 0.72rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: color-mix(in oklab, var(--crema) 55%, transparent);
+          margin-bottom: 18px;
+        }
+        .mission__quote {
+          font-family: var(--font-display);
+          font-style: italic;
+          font-size: clamp(1.4rem, 3vw, 2.3rem);
+          line-height: 1.35;
+          margin: 0 0 28px;
+          padding: 0;
+          border: none;
+          text-wrap: pretty;
+        }
+        .mission__testo p {
+          font-size: 1.02rem;
+          line-height: 1.75;
+          color: color-mix(in oklab, var(--crema) 78%, transparent);
+          margin: 0 0 14px;
+        }
+        .mission__testo p:last-child { margin-bottom: 0; }
+
         .pull-section { padding-block: clamp(56px, 8vw, 100px); }
         .pull-quote {
           font-family: var(--font-display);
@@ -234,12 +325,7 @@ export default async function HomePage() {
           margin: 0 0 12px;
         }
         .visit__copy p { font-size: 1.05rem; color: var(--ink-soft); margin: 0; }
-        .visit__hours { background: var(--verdes); color: var(--crema); padding: clamp(28px, 4vw, 44px); border-radius: 2px; }
-        .visit__hours h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.4rem; margin: 0 0 24px; }
-        .visit__hours dl { display: grid; grid-template-columns: 1fr auto; gap: 11px 20px; margin: 0; }
-        .visit__hours dt { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: color-mix(in oklab, var(--crema) 60%, transparent); align-self: center; }
-        .visit__hours dd { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: 1.05rem; }
-        .visit__hours dd.closed { color: color-mix(in oklab, var(--crema) 40%, transparent); }
+        .visit__cta { justify-self: start; align-self: center; }
 
         /* ── Responsive ── */
         @media (max-width: 860px) {
@@ -248,7 +334,10 @@ export default async function HomePage() {
           .img-mosaic__grid { grid-template-columns: 1fr; }
           .img-mosaic__stack { flex-direction: row; }
           .img-mosaic__tall, .img-mosaic__sq { aspect-ratio: 1; flex: 1; }
+          .intro__grid { grid-template-columns: 1fr; }
+          .intro__img { aspect-ratio: 16 / 9; }
           .visit__inner { grid-template-columns: 1fr; }
+          .visit__cta { align-self: start; }
         }
         @media (max-width: 560px) {
           .hero { height: clamp(320px, 90vw, 480px); }
@@ -257,6 +346,7 @@ export default async function HomePage() {
           .img-mosaic__stack { display: none; }
           .img-mosaic__grid { grid-template-columns: 1fr; }
           .pull-quote { font-size: clamp(1.3rem, 5.5vw, 1.8rem); }
+          .intro, .mission { padding-block: 44px; }
           .visit { padding-block: 44px; }
         }
       `}</style>

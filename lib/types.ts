@@ -49,6 +49,7 @@ export interface SiteSettings {
   };
   email?: string;
   telefono?: string;
+  whatsapp?: string;
   orari?: Orario[];
   nav?: LinkVoce[];
   footerScopri?: LinkVoce[];
@@ -66,8 +67,10 @@ export interface HomePage {
     immagineQuadrata?: Immagine;
     caption?: string;
   };
+  introduzione?: { titolo?: string; testo?: PortableTextBlock[]; immagine?: Immagine };
+  mission?: { titolo?: string; citazione?: string; testo?: PortableTextBlock[] };
   pullQuote?: { testo?: string; linkLabel?: string; linkHref?: string };
-  visita?: { titolo?: string; sottotitolo?: string; titoloOrari?: string };
+  visita?: { titolo?: string; sottotitolo?: string; linkLabel?: string; linkHref?: string };
 }
 
 export type SezioneLayout = 'imgLeft' | 'imgRight' | 'fullWidth';
@@ -109,8 +112,34 @@ export interface CollezionePage {
 export interface ContattiPage {
   label?: string;
   titolo?: string;
+  intro?: PortableTextBlock[];
   doveSiamoTitolo?: string;
   orariTitolo?: string;
   scriviciTitolo?: string;
   scriviciTesto?: string;
+  contattaciTitolo?: string;
+  contattaciVoci?: string[];
+  chiusura?: string;
+}
+
+export interface PercorsiPage {
+  label?: string;
+  titolo?: string;
+  intro?: PortableTextBlock[];
+  heroImmagine?: Immagine;
+  attivitaTitolo?: string;
+  attivitaIntro?: PortableTextBlock[];
+  attivita?: string[];
+  oltreTitolo?: string;
+  oltreTesto?: PortableTextBlock[];
+  oltreImmagine?: Immagine;
+  ctaFinale?: { titolo?: string; testo?: string; linkLabel?: string; linkHref?: string };
+}
+
+export interface PopupEvento {
+  titolo?: string;
+  testo?: string;
+  immagine?: Immagine;
+  linkLabel?: string;
+  linkHref?: string;
 }

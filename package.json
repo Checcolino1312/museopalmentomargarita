@@ -10,11 +10,13 @@
     "typecheck": "tsc --noEmit",
     "sanity:import": "tsx scripts/import-to-sanity.ts",
     "sanity:fix-keys": "tsx scripts/fix-missing-keys.ts",
+    "sanity:contenuti": "tsx scripts/aggiorna-contenuti.ts",
     "sanity:backup": "sanity dataset export production"
   },
   "dependencies": {
     "@portabletext/react": "^7.0.1",
     "@sanity/image-url": "^2.1.1",
+    "@vercel/analytics": "^2.0.1",
     "next": "16.2.6",
     "next-sanity": "^13.2.2",
     "react": "19.2.4",

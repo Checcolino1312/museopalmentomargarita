@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import { IBM_Plex_Mono, Cormorant_Garamond } from 'next/font/google';
 import localFont from 'next/font/local';
+import { Analytics } from '@vercel/analytics/next';
 import '../globals.css';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
+import PopupEvento from '@/components/PopupEvento';
 import { sanityFetch } from '@/lib/sanity-fetch';
-import { siteSettingsQuery, TAGS } from '@/lib/queries';
-import type { SiteSettings } from '@/lib/types';
+import { popupEventoQuery, siteSettingsQuery, TAGS } from '@/lib/queries';
+import type { PopupEvento as PopupEventoData, SiteSettings } from '@/lib/types';
 
 /**
  * Letto sia da `generateMetadata` che dal layout: le due chiamate condividono
@@ -53,7 +55,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const settings = await getSiteSettings();
+  const [settings, popup] = await Promise.all([
+    getSiteSettings(),
+    sanityFetch<PopupEventoData | null>(popupEventoQuery, {}, [TAGS.popupEvento]),
+  ]);
 
   return (
     <html lang="it" className={`${poligrapher.variable} ${cormorant.variable} ${ibmMono.variable}`}>
@@ -70,6 +75,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <SiteHeader settings={settings} />
         {children}
         <SiteFooter settings={settings} />
+        <PopupEvento popup={popup} />
+        <Analytics />
       </body>
     </html>
   );
