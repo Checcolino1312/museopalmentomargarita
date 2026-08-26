@@ -62,14 +62,31 @@ voci di impostazioni/pagine. Poi controllare le pagine del sito.
 
 Lo Studio è su `/studio`. Il menu è diviso in:
 
-- **Impostazioni del sito** — orari, indirizzo, email, telefono, voci di menu,
-  footer. Gli orari sono **un unico posto**: compaiono in home, in contatti e nel
-  footer, e cambiarli qui li cambia in tutti e tre.
-- **Pagine** — Home, Storia, Collezione, Contatti: i testi di ciascuna.
+- **Impostazioni del sito** — indirizzo, WhatsApp, email, telefono, orari di
+  contatto, voci di menu, footer.
+- **Pop-up eventi** — l'avviso in sovrimpressione sulla home. Vedi sotto.
+- **Pagine** — Home, Storia, Percorsi, Collezione, Contatti.
 - **Reperti** — i 59 oggetti, ordinati per codice inventario.
 
 Email e telefono sono volutamente vuoti: finché restano così, il sito non mostra
 i relativi link. Basta compilarli per farli comparire.
+
+### Orari: sono di contatto, non di apertura
+
+Il museo riceve **su appuntamento**. Il campo `orari` non indica quindi
+l'apertura al pubblico ma quando si può telefonare o scrivere, e compare **solo
+nella pagina Contatti**: mostrarlo in home o nel footer farebbe credere che il
+museo sia aperto in quelle fasce.
+
+### Pop-up eventi
+
+Serve per annunci temporanei. L'interruttore è **Mostra il pop-up**: finché è
+spento non appare nulla, quindi si può preparare in anticipo e accendere al
+momento giusto.
+
+Chi lo chiude non lo rivede più. Il ricordo è legato al **titolo**: cambiando
+titolo, il pop-up ricompare anche a chi aveva già chiuso il precedente. Per un
+evento nuovo, quindi, basta cambiare il titolo.
 
 ## Dare accesso al museo
 
@@ -112,7 +129,28 @@ Senza webhook i contenuti si aggiornano comunque, ma entro un'ora
 | `lib/queries.ts` | query GROQ e tag di cache |
 | `lib/sanity-fetch.ts` | fetch con la cache di Next |
 | `app/api/revalidate/` | webhook di revalidation |
-| `scripts/` | import iniziale (usa e getta) |
+| `scripts/` | import e manutenzione dei contenuti |
+
+### Script disponibili
+
+| Comando | Cosa fa |
+| --- | --- |
+| `npm run sanity:import` | import iniziale. **Sovrascrive tutto**: non va più rilanciato ora che ci sono modifiche fatte nello Studio |
+| `npm run sanity:contenuti` | aggiorna i testi delle pagine campo per campo, lasciando intatto il resto |
+| `npm run sanity:fix-keys` | ripara gli elementi di array privi di `_key` («Missing keys» nello Studio) |
+| `npm run sanity:backup` | esporta il dataset |
+
+Gli ultimi tre mostrano un'anteprima e scrivono solo con `-- --apply`.
+
+## Statistiche
+
+Il sito usa **Vercel Analytics** (`@vercel/analytics`, montato in
+`app/(site)/layout.tsx`). Non usa cookie, quindi non servono banner di consenso
+né cookie policy.
+
+Va attivato una volta dal pannello Vercel: Project → **Analytics** → *Enable*.
+Senza quel passaggio il componente non raccoglie nulla. Lo Studio non è
+tracciato: il componente sta solo nel layout del sito pubblico.
 
 ## Note su Next.js 16
 
