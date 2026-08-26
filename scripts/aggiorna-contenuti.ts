@@ -21,10 +21,16 @@ import {
   homeVisita,
   impostazioni,
   percorsi,
+  sfondiProvvisori,
   storiaSezioni,
 } from './contenuti-nuovi';
 
 type Campi = Record<string, unknown>;
+
+/** Riferimento a un'immagine già caricata, nella forma che Sanity si aspetta. */
+function riferimentoImmagine({ _ref, alt }: { _ref: string; alt: string }) {
+  return { _type: 'immagine', alt, asset: { _type: 'reference', _ref } };
+}
 type Modifica = { tipo: string; campi: Campi };
 
 /**
@@ -41,6 +47,16 @@ const DA_CREARE: Record<string, string> = {
   // Creato vuoto e spento; i suoi campi non vengono mai sovrascritti da questo
   // script, così un pop-up acceso dalla proprietaria non si spegne da solo.
   popupEvento: 'popupEvento',
+};
+
+/**
+ * Campi rimossi dallo schema, da cancellare anche dai documenti.
+ * Lasciarli renderebbe lo Studio pieno di avvisi «campo non previsto».
+ */
+const DA_CANCELLARE: Record<string, string[]> = {
+  storiaPage: ['timeline', 'timelineTitolo'],
+  percorsiPage: ['attivita'],
+  homePage: ['visita.titoloOrari'],
 };
 
 /** Immagini già presenti nelle sezioni della storia, per posizione. */
@@ -60,12 +76,14 @@ async function raccogliModifiche(): Promise<Map<string, Modifica>> {
     campi: {
       introduzione: {
         titolo: homeIntroduzione.titolo,
+        apribile: homeIntroduzione.apribile,
         testo: toPortableText(homeIntroduzione.testo),
       },
       mission: {
         titolo: homeMission.titolo,
         citazione: homeMission.citazione,
         testo: toPortableText(homeMission.testo),
+        immagine: riferimentoImmagine(sfondiProvvisori.homeMission),
       },
       visita: homeVisita,
     },
@@ -78,10 +96,12 @@ async function raccogliModifiche(): Promise<Map<string, Modifica>> {
   modifiche.set('storiaPage', {
     tipo: 'storiaPage',
     campi: {
+      pullQuoteImmagine: riferimentoImmagine(sfondiProvvisori.storiaPullQuote),
       sezioni: storiaSezioni.map((s, i) => ({
         _type: 'sezione',
         titolo: s.titolo,
         layout: s.layout,
+        apribile: s.apribile,
         testo: toPortableText(s.testo),
         ...(immagini[i] ? { immagine: immagini[i] } : {}),
       })),
@@ -97,7 +117,11 @@ async function raccogliModifiche(): Promise<Map<string, Modifica>> {
       intro: toPortableText(percorsi.intro),
       attivitaTitolo: percorsi.attivitaTitolo,
       attivitaIntro: toPortableText(percorsi.attivitaIntro),
-      attivita: percorsi.attivita,
+      gruppiAttivita: percorsi.gruppiAttivita.map((g) => ({
+        _type: 'gruppoAttivita',
+        titolo: g.titolo,
+        voci: g.voci,
+      })),
       oltreTitolo: percorsi.oltreTitolo,
       oltreTesto: toPortableText(percorsi.oltreTesto),
     },
@@ -164,13 +188,17 @@ async function main(): Promise<void> {
       console.log(`    ${campo}: ${riassumi(valore)}`);
     }
 
+    const daCancellare = DA_CANCELLARE[id] ?? [];
+    for (const campo of daCancellare) {
+      console.log(`    ${campo}: RIMOSSO`);
+    }
+
     if (apply) {
       // `addMissingKeys`: gli array di oggetti scritti qui non hanno `_key`,
       // che Sanity richiede per ogni elemento di un array.
-      await client
-        .patch(id)
-        .set(addMissingKeys(campi) as Campi)
-        .commit();
+      let patch = client.patch(id).set(addMissingKeys(campi) as Campi);
+      if (daCancellare.length > 0) patch = patch.unset(daCancellare);
+      await patch.commit();
     }
   }
 

@@ -13,6 +13,7 @@
 
 export const homeIntroduzione = {
   titolo: 'La storia prende vita',
+  apribile: true,
   testo: [
     "Il Museo Palmento Margarita nasce dal desiderio di custodire e tramandare la memoria di un mondo che ha rappresentato per secoli il cuore della vita rurale pugliese. Un patrimonio fatto di lavoro, sacrificio, saperi tramandati di generazione in generazione e di un profondo legame con la terra.",
     "Attraverso la raccolta di attrezzi agricoli, oggetti d'uso quotidiano, fotografie storiche, documenti e testimonianze, il museo racconta la storia dell'agricoltura pugliese tra Ottocento e Novecento, con particolare attenzione alle attività che hanno caratterizzato l'economia e la cultura del territorio: la produzione del vino, dell'olio d'oliva, delle conserve e di molti altri prodotti che ancora oggi rappresentano l'identità gastronomica della Puglia.",
@@ -45,8 +46,11 @@ export const homeVisita = {
  */
 export const storiaSezioni = [
   {
+    // Aperta: è la prima che si incontra, e trovare solo titoli chiusi
+    // all'inizio della pagina scoraggia la lettura.
     titolo: 'Origine del nome',
     layout: 'imgLeft' as const,
+    apribile: false,
     testo: [
       'Il nome "Palmento Margarita" racchiude l\'identità e la memoria di questo luogo.',
       '"Margarita" prende il nome dall\'omonima famiglia originaria di Francavilla Fontana che, unendosi alla famiglia Carissimo, di origini beneventane, ha contribuito a scrivere la storia e a garantire la continuità di questo patrimonio nel tempo.',
@@ -56,6 +60,7 @@ export const storiaSezioni = [
   {
     titolo: 'Il Palmento e la tradizione del vino in Puglia',
     layout: 'imgRight' as const,
+    apribile: true,
     testo: [
       "Il palmento è un'antica struttura rurale utilizzata per la pigiatura dell'uva e la fermentazione del mosto, cuore della tradizione vinicola prima dell'avvento delle tecnologie moderne. Si tratta di un ambiente semplice ma ingegnoso, composto da vasche comunicanti: nella vasca superiore l'uva veniva pigiata, mentre il mosto scorreva naturalmente in quella inferiore, dove iniziava il processo di fermentazione.",
       'Diffuso per secoli nelle campagne pugliesi, il palmento rappresenta una testimonianza preziosa della civiltà contadina e del lavoro dei "villani", i contadini che con esperienza e dedizione trasformavano l\'uva in vino. La vendemmia era un momento centrale, tramandato di generazione in generazione, fatto di gesti antichi, collaborazione e profondo legame con la terra.',
@@ -66,6 +71,7 @@ export const storiaSezioni = [
   {
     titolo: 'La località: crocevia tra storia e territorio',
     layout: 'fullWidth' as const,
+    apribile: true,
     testo: [
       'Il Museo Palmento Margarita è situato lungo la strada provinciale Francavilla Fontana – Villa Castelli, in una posizione strategica tra le province di Taranto e Brindisi.',
       'Questo territorio rappresentava in passato un importante crocevia della Via Appia, antica arteria romana che collegava Roma al sud Italia. Lungo questo percorso transitavano viandanti, mercanti e pellegrini, che trovavano ristoro nelle campagne circostanti, fermandosi per recuperare le energie e degustare il vino locale.',
@@ -87,20 +93,46 @@ export const percorsi = {
   attivitaTitolo: 'Vivi il museo',
   attivitaIntro:
     "Ogni esperienza è pensata per far riscoprire il valore del lavoro della terra, delle antiche tecniche produttive e delle tradizioni che hanno contribuito a costruire l'identità culturale della Puglia. Tra le attività e i servizi offerti:",
-  attivita: [
-    'Visite guidate al museo con approfondimenti sulla civiltà contadina tra Ottocento e Novecento.',
-    'Percorsi didattici per scuole, con attività interattive dedicate al mondo agricolo e alle tradizioni alimentari.',
-    'Laboratori sulla preparazione delle tradizionali orecchiette pugliesi e altre antiche ricette.',
-    'Dimostrazioni sulla trasformazione del grano e altri cereali',
-    "Attività dedicate alla cultura dell'olio extravergine d'oliva, con approfondimenti sui metodi di raccolta e trasformazione.",
-    'Percorsi tematici sulla storia del vino, dalla vendemmia alla vinificazione nei palmenti.',
-    'Degustazioni nelle vigne e negli spazi adiacenti al museo.',
-    'Eventi culturali e rievocazioni storiche dedicati alle tradizioni popolari del territorio.',
-    'Incontri, conferenze e mostre tematiche sulla storia agricola e sulle eccellenze pugliesi.',
-    'Itinerari turistici integrati alla scoperta del patrimonio rurale, delle masserie, dei vigneti e dei luoghi di interesse del territorio.',
-    'Attività per famiglie e bambini, pensate per avvicinare le nuove generazioni alla cultura contadina.',
-    'Esperienze stagionali, legate alla vendemmia, alla raccolta delle olive e alle produzioni tipiche del territorio.',
-    'Visite personalizzate per gruppi organizzati, associazioni e tour operator.',
+
+  /**
+   * Le tredici attività dell'elenco originale, raggruppate per tema: un elenco
+   * unico di tredici righe si legge male. I titoli dei gruppi sono l'unica
+   * aggiunta rispetto al testo consegnato, e si cambiano dallo Studio.
+   */
+  gruppiAttivita: [
+    {
+      titolo: 'Visite e itinerari',
+      voci: [
+        'Visite guidate al museo con approfondimenti sulla civiltà contadina tra Ottocento e Novecento.',
+        'Itinerari turistici integrati alla scoperta del patrimonio rurale, delle masserie, dei vigneti e dei luoghi di interesse del territorio.',
+        'Visite personalizzate per gruppi organizzati, associazioni e tour operator.',
+      ],
+    },
+    {
+      titolo: 'Scuole e famiglie',
+      voci: [
+        'Percorsi didattici per scuole, con attività interattive dedicate al mondo agricolo e alle tradizioni alimentari.',
+        'Attività per famiglie e bambini, pensate per avvicinare le nuove generazioni alla cultura contadina.',
+      ],
+    },
+    {
+      titolo: 'Laboratori e degustazioni',
+      voci: [
+        'Laboratori sulla preparazione delle tradizionali orecchiette pugliesi e altre antiche ricette.',
+        'Dimostrazioni sulla trasformazione del grano e altri cereali',
+        "Attività dedicate alla cultura dell'olio extravergine d'oliva, con approfondimenti sui metodi di raccolta e trasformazione.",
+        'Percorsi tematici sulla storia del vino, dalla vendemmia alla vinificazione nei palmenti.',
+        'Degustazioni nelle vigne e negli spazi adiacenti al museo.',
+      ],
+    },
+    {
+      titolo: 'Eventi e stagioni',
+      voci: [
+        'Eventi culturali e rievocazioni storiche dedicati alle tradizioni popolari del territorio.',
+        'Incontri, conferenze e mostre tematiche sulla storia agricola e sulle eccellenze pugliesi.',
+        'Esperienze stagionali, legate alla vendemmia, alla raccolta delle olive e alle produzioni tipiche del territorio.',
+      ],
+    },
   ],
 
   oltreTitolo: 'Oltre il museo',
@@ -132,6 +164,28 @@ export const contatti = {
   // Nell'originale finiva con due punti fermi.
   chiusura:
     "Ti aspettiamo per accompagnarti in un viaggio tra storia, tradizioni, sapori e paesaggi dell'autentica Puglia rurale.",
+};
+
+// ─── Foto di sfondo per i testi sovrapposti ───────────────────────────────────
+
+/**
+ * PROVVISORIE: riusano fotografie già caricate, perché per questi due blocchi
+ * non ne esistono di dedicate. Servono a rendere visibile il testo su foto;
+ * vanno sostituite dallo Studio appena ci sono immagini proprie.
+ *
+ * Scelte in modo da non ripetere una foto due volte nella stessa pagina.
+ */
+export const sfondiProvvisori = {
+  // Vigneto al tramonto: largo e caldo, il testo chiaro ci si legge bene.
+  homeMission: {
+    _ref: 'image-dfc119789c3486b8906dc1d83854d9a92bfc56db-7008x4672-jpg',
+    alt: 'Vigneto pugliese al tramonto',
+  },
+  // Camino in pietra: richiama «le pietre di questo cortile» della citazione.
+  storiaPullQuote: {
+    _ref: 'image-cc484395c21e7e6a92fdb37d12fff08ee0aeeda6-7008x4672-jpg',
+    alt: 'Camino con ceramiche antiche',
+  },
 };
 
 // ─── Impostazioni del sito ────────────────────────────────────────────────────

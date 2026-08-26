@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity';
+import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export const percorsiPage = defineType({
   name: 'percorsiPage',
@@ -53,12 +53,41 @@ export const percorsiPage = defineType({
       group: 'attivita',
     }),
     defineField({
-      name: 'attivita',
-      title: 'Elenco delle attività',
+      name: 'gruppiAttivita',
+      title: 'Attività, raggruppate',
       type: 'array',
-      of: [{ type: 'string' }],
       group: 'attivita',
-      description: 'Una voce per attività. Vengono mostrate su due colonne, una sola su telefono.',
+      description:
+        'Ogni gruppo diventa una voce a fisarmonica: si apre cliccando sul titolo. ' +
+        'Il primo gruppo è aperto di partenza, così si capisce che gli altri si aprono.',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'gruppoAttivita',
+          fields: [
+            defineField({
+              name: 'titolo',
+              title: 'Titolo del gruppo',
+              type: 'string',
+              description: 'Es. «Visite e percorsi»',
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'voci',
+              title: 'Attività del gruppo',
+              type: 'array',
+              of: [{ type: 'string' }],
+            }),
+          ],
+          preview: {
+            select: { title: 'titolo', voci: 'voci' },
+            prepare: ({ title, voci }: { title?: string; voci?: string[] }) => ({
+              title: title ?? 'Gruppo senza titolo',
+              subtitle: `${voci?.length ?? 0} attività`,
+            }),
+          },
+        }),
+      ],
     }),
 
     defineField({

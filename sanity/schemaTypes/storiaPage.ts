@@ -7,7 +7,7 @@ export const storiaPage = defineType({
   groups: [
     { name: 'hero', title: 'Hero', default: true },
     { name: 'sezioni', title: 'Sezioni' },
-    { name: 'timeline', title: 'Timeline' },
+    { name: 'chiusura', title: 'Invito finale' },
   ],
   fields: [
     defineField({
@@ -61,6 +61,16 @@ export const storiaPage = defineType({
               },
               validation: (Rule) => Rule.required(),
             }),
+            defineField({
+              name: 'apribile',
+              title: 'Testo a fisarmonica',
+              type: 'boolean',
+              initialValue: false,
+              description:
+                'Il testo resta chiuso e si apre cliccando sul titolo. Utile per le ' +
+                'sezioni lunghe. Da evitare sulla prima sezione: chi arriva troverebbe ' +
+                'solo titoli chiusi.',
+            }),
           ],
           preview: {
             select: { title: 'titolo', subtitle: 'label', media: 'immagine' },
@@ -76,42 +86,20 @@ export const storiaPage = defineType({
       group: 'sezioni',
       description: 'Mostrata fra la prima e la seconda sezione. Le virgolette « » sono automatiche.',
     }),
+    defineField({
+      name: 'pullQuoteImmagine',
+      title: 'Foto di sfondo della citazione',
+      type: 'immagine',
+      group: 'sezioni',
+      description:
+        'La citazione viene scritta sopra questa foto. Senza foto resta su fondo verde.',
+    }),
 
-    defineField({
-      name: 'timelineTitolo',
-      title: 'Titolo della timeline',
-      type: 'string',
-      group: 'timeline',
-      initialValue: 'Quattro secoli.',
-    }),
-    defineField({
-      name: 'timeline',
-      title: 'Voci della timeline',
-      type: 'array',
-      group: 'timeline',
-      of: [
-        defineArrayMember({
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'anno',
-              title: 'Anno',
-              type: 'string',
-              description: 'Es. «XVI sec.» oppure «1700»',
-              validation: (Rule) => Rule.required(),
-            }),
-            defineField({ name: 'titolo', title: 'Titolo', type: 'string' }),
-            defineField({ name: 'descrizione', title: 'Descrizione', type: 'text', rows: 3 }),
-          ],
-          preview: { select: { title: 'titolo', subtitle: 'anno' } },
-        }),
-      ],
-    }),
     defineField({
       name: 'ctaFinale',
       title: 'Invito finale',
       type: 'object',
-      group: 'timeline',
+      group: 'chiusura',
       fields: [
         defineField({ name: 'titolo', title: 'Titolo', type: 'string' }),
         defineField({ name: 'testo', title: 'Testo', type: 'string' }),

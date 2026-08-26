@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
 import SanityImage from '@/components/SanityImage';
+import Fisarmonica from '@/components/Fisarmonica';
 import { sanityFetch } from '@/lib/sanity-fetch';
 import { percorsiPageQuery, TAGS } from '@/lib/queries';
 import type { PercorsiPage } from '@/lib/types';
@@ -14,7 +15,7 @@ export default async function PercorsiPage() {
     TAGS.percorsiPage,
   ]);
 
-  const attivita = percorsi?.attivita ?? [];
+  const gruppi = percorsi?.gruppiAttivita ?? [];
   const cta = percorsi?.ctaFinale;
 
   return (
@@ -44,8 +45,8 @@ export default async function PercorsiPage() {
         </div>
       </section>
 
-      {/* ATTIVITÀ */}
-      {(percorsi?.attivitaIntro || attivita.length > 0) && (
+      {/* ATTIVITÀ — un gruppo per voce a fisarmonica */}
+      {(percorsi?.attivitaIntro || gruppi.length > 0) && (
         <section className="perc-attivita">
           <div className="container">
             {percorsi?.attivitaTitolo && <h2>{percorsi.attivitaTitolo}</h2>}
@@ -54,12 +55,19 @@ export default async function PercorsiPage() {
                 <PortableText value={percorsi.attivitaIntro} />
               </div>
             )}
-            {attivita.length > 0 && (
-              <ul className="perc-elenco">
-                {attivita.map((voce) => (
-                  <li key={voce}>{voce}</li>
+            {gruppi.length > 0 && (
+              <div className="perc-gruppi">
+                {gruppi.map((gruppo, i) => (
+                  // Il primo aperto: fa capire a colpo d'occhio che gli altri si aprono.
+                  <Fisarmonica key={gruppo._key} titolo={gruppo.titolo} apertoDiDefault={i === 0}>
+                    <ul className="perc-elenco">
+                      {(gruppo.voci ?? []).map((voce) => (
+                        <li key={voce}>{voce}</li>
+                      ))}
+                    </ul>
+                  </Fisarmonica>
                 ))}
-              </ul>
+              </div>
             )}
           </div>
         </section>
@@ -163,18 +171,18 @@ export default async function PercorsiPage() {
         }
         .perc-attivita__intro p:last-child { margin-bottom: 0; }
 
+        .perc-gruppi { max-width: 92ch; }
         .perc-elenco {
           list-style: none;
           margin: 0;
           padding: 0;
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 0 clamp(28px, 4vw, 56px);
+          gap: 10px clamp(28px, 4vw, 56px);
         }
         .perc-elenco li {
           position: relative;
-          padding: 15px 0 15px 26px;
-          border-top: 1px solid var(--rule-soft);
+          padding-left: 26px;
           font-size: 1rem;
           line-height: 1.55;
           color: var(--ink-soft);

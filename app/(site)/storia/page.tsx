@@ -2,6 +2,8 @@ import { Fragment } from 'react';
 import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
 import SanityImage from '@/components/SanityImage';
+import Fisarmonica from '@/components/Fisarmonica';
+import TestoSuFoto from '@/components/TestoSuFoto';
 import { sanityFetch } from '@/lib/sanity-fetch';
 import { storiaPageQuery, TAGS } from '@/lib/queries';
 import type { StoriaPage, StoriaSezione } from '@/lib/types';
@@ -16,15 +18,24 @@ export const metadata = {
  * Le classi s1/s2/s3 restano quelle di prima, così il CSS non cambia.
  */
 function Sezione({ sezione }: { sezione: StoriaSezione }) {
-  const { label, titolo, testo, immagine, layout } = sezione;
+  const { label, titolo, testo, immagine, layout, apribile } = sezione;
 
-  const testoBlocco = (
-    <>
-      {label && <span className="label">{label}</span>}
-      {titolo && <h2>{titolo}</h2>}
-      {testo && <PortableText value={testo} />}
-    </>
-  );
+  // Da apribile il titolo diventa il comando che apre: non va ripetuto sopra.
+  const testoBlocco =
+    apribile && titolo ? (
+      <>
+        {label && <span className="label">{label}</span>}
+        <Fisarmonica titolo={titolo}>
+          {testo && <PortableText value={testo} />}
+        </Fisarmonica>
+      </>
+    ) : (
+      <>
+        {label && <span className="label">{label}</span>}
+        {titolo && <h2>{titolo}</h2>}
+        {testo && <PortableText value={testo} />}
+      </>
+    );
 
   if (layout === 'fullWidth') {
     return (
@@ -76,7 +87,6 @@ export default async function StoriaPage() {
   const storia = await sanityFetch<StoriaPage | null>(storiaPageQuery, {}, [TAGS.storiaPage]);
 
   const sezioni = storia?.sezioni ?? [];
-  const timeline = storia?.timeline ?? [];
   const cta = storia?.ctaFinale;
 
   return (
@@ -104,34 +114,12 @@ export default async function StoriaPage() {
         <Fragment key={sezione._key}>
           <Sezione sezione={sezione} />
           {i === 0 && storia?.pullQuote && (
-            <div className="storia-pull">
-              <div className="container">
-                <blockquote>«{storia.pullQuote}»</blockquote>
-              </div>
-            </div>
+            <TestoSuFoto immagine={storia.pullQuoteImmagine}>
+              <blockquote className="storia-pull__quote">«{storia.pullQuote}»</blockquote>
+            </TestoSuFoto>
           )}
         </Fragment>
       ))}
-
-      {/* TIMELINE */}
-      {timeline.length > 0 && (
-        <section className="timeline-section">
-          <div className="container">
-            <h2>{storia?.timelineTitolo}</h2>
-            <div className="timeline-list">
-              {timeline.map((t) => (
-                <div key={t._key} className="timeline-row">
-                  <div className="year">{t.anno}</div>
-                  <div className="tl-body">
-                    <div className="title">{t.titolo}</div>
-                    <div className="desc">{t.descrizione}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* CTA */}
       <section className="cta-final">
@@ -214,16 +202,17 @@ export default async function StoriaPage() {
         }
 
         /* ── Pull quote ── */
-        .storia-pull { padding-block: clamp(48px, 6vw, 80px); background: var(--crema-2); }
-        .storia-pull blockquote {
+        /* Il colore lo dà TestoSuFoto: su fotografia il testo è chiaro. */
+        .storia-pull__quote {
           font-family: var(--font-display);
           font-style: italic;
           font-size: clamp(1.5rem, 3.2vw, 2.6rem);
           line-height: 1.3;
-          color: var(--verdes);
           margin: 0;
           padding: 0;
+          border: none;
           max-width: 28ch;
+          text-wrap: pretty;
         }
 
         /* ── Sezione 2 ── */
@@ -274,47 +263,6 @@ export default async function StoriaPage() {
           margin: 0;
         }
 
-        /* ── Timeline ── */
-        .timeline-section { background: var(--verdes); color: var(--crema); padding-block: clamp(56px, 7vw, 96px); }
-        .timeline-section h2 {
-          font-family: var(--font-display);
-          font-weight: 600;
-          font-style: italic;
-          font-size: clamp(2.4rem, 5vw, 4.8rem);
-          line-height: 0.95;
-          letter-spacing: 0.02em;
-          margin: 0 0 52px;
-        }
-        .timeline-list { display: grid; gap: 0; }
-        .timeline-row {
-          display: grid;
-          grid-template-columns: 100px 1fr;
-          gap: 32px;
-          padding: 20px 0;
-          border-top: 1px solid rgba(247,244,239,0.12);
-          align-items: baseline;
-        }
-        .timeline-row:last-child { border-bottom: 1px solid rgba(247,244,239,0.12); }
-        .timeline-row .year {
-          font-family: var(--font-mono);
-          font-size: 0.72rem;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: rgba(247,244,239,0.45);
-          padding-top: 3px;
-        }
-        .tl-body .title {
-          font-family: var(--font-display);
-          font-weight: 600;
-          font-size: 1.1rem;
-          margin-bottom: 4px;
-        }
-        .tl-body .desc {
-          font-size: 0.92rem;
-          line-height: 1.55;
-          color: rgba(247,244,239,0.65);
-        }
-
         /* ── CTA ── */
         .cta-final { padding-block: clamp(56px, 7vw, 90px); text-align: center; }
         .cta-final h2 {
@@ -336,9 +284,7 @@ export default async function StoriaPage() {
         }
         @media (max-width: 560px) {
           .storia-hero h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
-          .storia-pull blockquote { font-size: clamp(1.2rem, 5vw, 1.6rem); }
-          .timeline-section h2 { font-size: clamp(1.8rem, 7vw, 2.6rem); margin-bottom: 32px; }
-          .timeline-row { grid-template-columns: 1fr; gap: 4px; padding: 16px 0; }
+          .storia-pull__quote { font-size: clamp(1.2rem, 5vw, 1.6rem); }
           .cta-final { padding-block: 44px; }
         }
       `}</style>

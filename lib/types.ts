@@ -67,8 +67,18 @@ export interface HomePage {
     immagineQuadrata?: Immagine;
     caption?: string;
   };
-  introduzione?: { titolo?: string; testo?: PortableTextBlock[]; immagine?: Immagine };
-  mission?: { titolo?: string; citazione?: string; testo?: PortableTextBlock[] };
+  introduzione?: {
+    titolo?: string;
+    testo?: PortableTextBlock[];
+    immagine?: Immagine;
+    apribile?: boolean;
+  };
+  mission?: {
+    titolo?: string;
+    citazione?: string;
+    testo?: PortableTextBlock[];
+    immagine?: Immagine;
+  };
   pullQuote?: { testo?: string; linkLabel?: string; linkHref?: string };
   visita?: { titolo?: string; sottotitolo?: string; linkLabel?: string; linkHref?: string };
 }
@@ -82,14 +92,14 @@ export interface StoriaSezione {
   testo?: PortableTextBlock[];
   immagine?: Immagine;
   layout: SezioneLayout;
+  apribile?: boolean;
 }
 
 export interface StoriaPage {
   hero?: { immagine?: Immagine; titolo?: string; lead?: string };
   sezioni?: StoriaSezione[];
   pullQuote?: string;
-  timelineTitolo?: string;
-  timeline?: { _key: string; anno: string; titolo?: string; descrizione?: string }[];
+  pullQuoteImmagine?: Immagine;
   ctaFinale?: { titolo?: string; testo?: string; linkLabel?: string; linkHref?: string };
 }
 
@@ -129,7 +139,7 @@ export interface PercorsiPage {
   heroImmagine?: Immagine;
   attivitaTitolo?: string;
   attivitaIntro?: PortableTextBlock[];
-  attivita?: string[];
+  gruppiAttivita?: { _key: string; titolo: string; voci?: string[] }[];
   oltreTitolo?: string;
   oltreTesto?: PortableTextBlock[];
   oltreImmagine?: Immagine;

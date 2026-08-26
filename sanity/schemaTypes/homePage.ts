@@ -66,6 +66,15 @@ export const homePage = defineType({
           type: 'immagine',
           description: 'Facoltativa. Senza immagine il testo occupa tutta la larghezza.',
         }),
+        defineField({
+          name: 'apribile',
+          title: 'Testo a fisarmonica',
+          type: 'boolean',
+          initialValue: false,
+          description:
+            'Mostra solo il primo capoverso, il resto si apre cliccando. Il titolo ' +
+            'resta sempre visibile.',
+        }),
       ],
     }),
     defineField({
@@ -87,6 +96,13 @@ export const homePage = defineType({
           title: 'Testo di accompagnamento',
           type: 'array',
           of: [{ type: 'block' }],
+        }),
+        defineField({
+          name: 'immagine',
+          title: 'Foto di sfondo',
+          type: 'immagine',
+          description:
+            'La citazione viene scritta sopra questa foto. Senza foto resta su fondo verde.',
         }),
       ],
     }),

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
 import SanityImage from '@/components/SanityImage';
+import Fisarmonica from '@/components/Fisarmonica';
+import TestoSuFoto from '@/components/TestoSuFoto';
 import { sanityFetch } from '@/lib/sanity-fetch';
 import { homePageQuery, TAGS } from '@/lib/queries';
 import type { HomePage } from '@/lib/types';
@@ -48,8 +50,16 @@ export default async function HomePage() {
           <div className="container">
             <div className={`intro__grid${intro.immagine ? '' : ' intro__grid--solo-testo'}`}>
               <div className="intro__testo">
-                {intro.titolo && <h2>{intro.titolo}</h2>}
-                {intro.testo && <PortableText value={intro.testo} />}
+                {intro.apribile && intro.titolo ? (
+                  <Fisarmonica titolo={intro.titolo}>
+                    {intro.testo && <PortableText value={intro.testo} />}
+                  </Fisarmonica>
+                ) : (
+                  <>
+                    {intro.titolo && <h2>{intro.titolo}</h2>}
+                    {intro.testo && <PortableText value={intro.testo} />}
+                  </>
+                )}
               </div>
               {intro.immagine && (
                 <div className="intro__img">
@@ -85,10 +95,10 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* MISSION */}
+      {/* MISSION — citazione scritta sopra la fotografia, se caricata */}
       {(mission?.citazione || mission?.testo) && (
-        <section className="mission">
-          <div className="container container--narrow">
+        <TestoSuFoto immagine={mission.immagine}>
+          <div className="mission">
             {mission.titolo && <span className="mission__label">{mission.titolo}</span>}
             {mission.citazione && (
               <blockquote className="mission__quote">«{mission.citazione}»</blockquote>
@@ -99,7 +109,7 @@ export default async function HomePage() {
               </div>
             )}
           </div>
-        </section>
+        </TestoSuFoto>
       )}
 
       {/* PULL QUOTE */}
@@ -264,8 +274,8 @@ export default async function HomePage() {
           overflow: hidden;
         }
 
-        /* ── Mission ── */
-        .mission { background: var(--verdes); color: var(--crema); padding-block: clamp(56px, 7vw, 96px); }
+        /* ── Mission ── (sfondo e colore li dà TestoSuFoto) */
+        .mission { max-width: 62ch; }
         .mission__label {
           display: block;
           font-family: var(--font-mono);
@@ -346,7 +356,7 @@ export default async function HomePage() {
           .img-mosaic__stack { display: none; }
           .img-mosaic__grid { grid-template-columns: 1fr; }
           .pull-quote { font-size: clamp(1.3rem, 5.5vw, 1.8rem); }
-          .intro, .mission { padding-block: 44px; }
+          .intro { padding-block: 44px; }
           .visit { padding-block: 44px; }
         }
       `}</style>

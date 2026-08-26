@@ -54,9 +54,8 @@ export const homePageQuery = defineQuery(`
 export const storiaPageQuery = defineQuery(`
   *[_type == "storiaPage"][0] {
     hero,
-    sezioni[] { _key, label, titolo, testo, immagine, layout },
-    pullQuote, timelineTitolo,
-    timeline[] { _key, anno, titolo, descrizione },
+    sezioni[] { _key, label, titolo, testo, immagine, layout, apribile },
+    pullQuote, pullQuoteImmagine,
     ctaFinale
   }
 `);
@@ -79,7 +78,8 @@ export const contattiPageQuery = defineQuery(`
 export const percorsiPageQuery = defineQuery(`
   *[_type == "percorsiPage"][0] {
     label, titolo, intro, heroImmagine,
-    attivitaTitolo, attivitaIntro, attivita,
+    attivitaTitolo, attivitaIntro,
+    gruppiAttivita[] { _key, titolo, voci },
     oltreTitolo, oltreTesto, oltreImmagine,
     ctaFinale
   }
