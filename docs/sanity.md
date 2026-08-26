@@ -65,7 +65,8 @@ Lo Studio è su `/studio`. Il menu è diviso in:
 - **Impostazioni del sito** — indirizzo, WhatsApp, email, telefono, orari di
   contatto, voci di menu, footer.
 - **Pop-up eventi** — l'avviso in sovrimpressione sulla home. Vedi sotto.
-- **Pagine** — Home, Storia, Percorsi, Collezione, Contatti.
+- **Pagine** — Home, Storia, Percorsi, Collezione, Contatti. La pagina Storia
+  non ha più la timeline «Quattro secoli»: è stata rimossa.
 - **Reperti** — i 59 oggetti, ordinati per codice inventario.
 
 Email e telefono sono volutamente vuoti: finché restano così, il sito non mostra
@@ -77,6 +78,33 @@ Il museo riceve **su appuntamento**. Il campo `orari` non indica quindi
 l'apertura al pubblico ma quando si può telefonare o scrivere, e compare **solo
 nella pagina Contatti**: mostrarlo in home o nel footer farebbe credere che il
 museo sia aperto in quelle fasce.
+
+### Testi a fisarmonica
+
+Alcuni testi lunghi stanno chiusi e si aprono cliccando sul titolo. Si comanda
+con l'interruttore **Testo a fisarmonica**, presente su ogni sezione della
+Storia e sull'introduzione della Home.
+
+Il testo resta comunque nella pagina anche da chiuso: Google lo legge e la
+ricerca del browser lo trova. Chiudere non nasconde il contenuto ai motori.
+
+Una raccomandazione: **lasciare aperta la prima sezione** di una pagina. Chi
+arriva e trova solo titoli chiusi tende a non aprirli e ad andarsene.
+
+Le attività della pagina Percorsi sono organizzate in **gruppi**, ognuno una
+voce a fisarmonica; il primo è aperto di partenza, così si capisce a colpo
+d'occhio che gli altri si aprono. Titoli e composizione dei gruppi si cambiano
+dallo Studio.
+
+### Testo sopra una fotografia
+
+La citazione della Home (mission) e quella della pagina Storia possono essere
+scritte sopra una foto: basta caricarla nel campo **Foto di sfondo**. Un velo
+scuro viene applicato da solo per tenere il testo leggibile.
+
+Senza foto il blocco resta su fondo verde pieno — non si rompe nulla, cambia
+solo l'aspetto. Le due foto attualmente impostate sono **provvisorie**: riusano
+immagini già presenti, in attesa di scatti dedicati.
 
 ### Pop-up eventi
 
