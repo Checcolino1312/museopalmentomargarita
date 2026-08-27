@@ -310,16 +310,6 @@ hr {
   font-size: 0.94rem;
   letter-spacing: 0.02em;
 }
-.site-logo__text { display: flex; flex-direction: column; gap: 1px; }
-.site-logo__text small {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 0.66rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-}
-
 .site-nav {
   display: flex;
   gap: var(--space-6);

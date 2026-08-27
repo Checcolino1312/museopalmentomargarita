@@ -17,7 +17,7 @@ export const siteSettings = {
   titolo: 'Museo Palmento Margarita',
   descrizione:
     'Un viaggio nella storia del vino, nelle tradizioni agricole e nella vita quotidiana delle comunità rurali pugliesi.',
-  logo: img('public/brand/logo/logonuovo.png', 'Museo Palmento Margarita'),
+  logo: img('public/brand/logo/logo-laterale.png', 'Museo Palmento Margarita'),
   indirizzo: {
     via: 'S.P. Francavilla Fontana – Villa Castelli',
     cap: '72021',

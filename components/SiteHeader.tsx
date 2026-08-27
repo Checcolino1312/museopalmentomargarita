@@ -24,30 +24,23 @@ export default function SiteHeader({ settings }: { settings: SiteSettings | null
   const [open, setOpen] = useState(false);
 
   const nav = settings?.nav?.length ? settings.nav : NAV_FALLBACK;
-  const logoSrc = imageUrl(settings?.logo, 256);
+  // Chiesta al doppio della misura a schermo, per gli schermi ad alta densità.
+  const logoSrc = imageUrl(settings?.logo, 560);
   const titolo = settings?.titolo ?? 'Museo Palmento Margarita';
-
-  // Il logotipo mostra la prima parola sopra e il resto sotto:
-  // «Museo» / «Palmento Margarita».
-  const [primaParola, ...restoTitolo] = titolo.split(' ');
 
   return (
     <>
       <header className="site-header">
         <div className="container container--wide site-header__inner">
+          {/* Il logo contiene già la scritta «Museo Palmento Margarita»:
+              affiancargliela di nuovo la farebbe leggere due volte. */}
           <Link href="/home" className="site-logo" onClick={() => setOpen(false)}>
-            {logoSrc && (
+            {logoSrc ? (
               /* eslint-disable-next-line @next/next/no-img-element */
-              <img
-                src={logoSrc}
-                alt={titolo}
-                style={{ height: 64, width: 'auto', flexShrink: 0 }}
-              />
+              <img className="site-logo__img" src={logoSrc} alt={titolo} />
+            ) : (
+              <span className="site-logo__ripiego">{titolo}</span>
             )}
-            <div className="site-logo__text">
-              <span className="site-logo__museo">{primaParola}</span>
-              <span className="site-logo__name">{restoTitolo.join(' ')}</span>
-            </div>
           </Link>
 
           <nav className="site-nav">
@@ -99,24 +92,20 @@ export default function SiteHeader({ settings }: { settings: SiteSettings | null
       )}
 
       <style>{`
-        .site-logo { display: inline-flex; align-items: center; gap: 14px; }
-        .site-logo__text { display: flex; flex-direction: column; gap: 2px; }
-        .site-logo__museo {
-          font-family: var(--font-display);
-          font-size: 0.62rem;
-          letter-spacing: 0.26em;
-          text-transform: uppercase;
-          color: var(--ink-mute);
-          font-weight: 600;
+        .site-logo { display: inline-flex; align-items: center; flex-shrink: 0; }
+        /* Il logo è orizzontale (rapporto 1,69) e contiene la scritta: sotto una
+           certa altezza le tre righe diventano illeggibili, da qui i 72px. */
+        .site-logo__img {
+          height: 72px;
+          width: auto;
+          display: block;
         }
-        .site-logo__name {
+        /* Mostrato solo se nelle Impostazioni non c'è ancora un logo. */
+        .site-logo__ripiego {
           font-family: var(--font-display);
-          font-size: 1.08rem;
-          font-weight: 500;
-          font-style: italic;
-          letter-spacing: 0.01em;
+          font-weight: 600;
+          font-size: 1.1rem;
           color: var(--ink);
-          line-height: 1;
         }
 
         .burger {
@@ -192,7 +181,12 @@ export default function SiteHeader({ settings }: { settings: SiteSettings | null
         @media (max-width: 700px) {
           .burger { display: inline-flex; }
           .mobile-drawer { display: block; }
-          .site-logo__text { display: none; }
+          /* Il logo si rimpicciolisce invece di sparire: senza, in cima alla
+             pagina non resterebbe scritto da nessuna parte il nome del museo. */
+          .site-logo__img { height: 54px; }
+        }
+        @media (max-width: 380px) {
+          .site-logo__img { height: 46px; }
         }
       `}</style>
     </>
