@@ -69,8 +69,10 @@ export const storiaSezioni = [
     ].join('\n'),
   },
   {
+    // Su desktop tutte e tre le sezioni stanno a due colonne, testo da un lato
+    // e immagine dall'altro, alternando il lato per non renderle monotone.
     titolo: 'La località: crocevia tra storia e territorio',
-    layout: 'fullWidth' as const,
+    layout: 'imgLeft' as const,
     apribile: true,
     testo: [
       'Il Museo Palmento Margarita è situato lungo la strada provinciale Francavilla Fontana – Villa Castelli, in una posizione strategica tra le province di Taranto e Brindisi.',
@@ -164,28 +166,6 @@ export const contatti = {
   // Nell'originale finiva con due punti fermi.
   chiusura:
     "Ti aspettiamo per accompagnarti in un viaggio tra storia, tradizioni, sapori e paesaggi dell'autentica Puglia rurale.",
-};
-
-// ─── Foto di sfondo per i testi sovrapposti ───────────────────────────────────
-
-/**
- * PROVVISORIE: riusano fotografie già caricate, perché per questi due blocchi
- * non ne esistono di dedicate. Servono a rendere visibile il testo su foto;
- * vanno sostituite dallo Studio appena ci sono immagini proprie.
- *
- * Scelte in modo da non ripetere una foto due volte nella stessa pagina.
- */
-export const sfondiProvvisori = {
-  // Vigneto al tramonto: largo e caldo, il testo chiaro ci si legge bene.
-  homeMission: {
-    _ref: 'image-dfc119789c3486b8906dc1d83854d9a92bfc56db-7008x4672-jpg',
-    alt: 'Vigneto pugliese al tramonto',
-  },
-  // Camino in pietra: richiama «le pietre di questo cortile» della citazione.
-  storiaPullQuote: {
-    _ref: 'image-cc484395c21e7e6a92fdb37d12fff08ee0aeeda6-7008x4672-jpg',
-    alt: 'Camino con ceramiche antiche',
-  },
 };
 
 // ─── Impostazioni del sito ────────────────────────────────────────────────────

@@ -49,12 +49,12 @@ export const homePage = {
   _type: 'homePage',
   heroLabel: 'Francavilla Fontana, Puglia',
   heroTitoloRighe: ['La memoria', 'prende forma.'],
-  heroImmagine: img('public/transformed_MUSEO-22.jpg', 'Facciata della masseria Margarita'),
+  heroImmagine: img('public/immagini/masseria.png', 'La masseria Margarita in pietra, con il vigneto accanto'),
   heroCta: { label: 'Scopri', href: '/storia' },
   mosaico: {
-    immagineGrande: img('public/MUSEO-10.jpg', "Sala ad archi del museo con abiti d'epoca"),
-    immagineAlta: img('public/MUSEO-7.jpg', 'Teca con oggetti storici e anfore'),
-    immagineQuadrata: img('public/MUSEO-13.jpg', 'Camino con ceramiche antiche'),
+    immagineGrande: img('public/immagini/cucina.png', 'La cucina del museo con focolare, ceste e utensili in rame'),
+    immagineAlta: img('public/immagini/damigiane.png', 'Damigiane in vetro verde in una stanza in pietra'),
+    immagineQuadrata: img('public/immagini/vigneto.jpg', 'Filari di vigneto nella campagna pugliese'),
     caption: 'Il palmento di Francavilla Fontana · XVI–XIX sec.',
   },
   pullQuote: {
@@ -75,7 +75,7 @@ export const storiaPage = {
   _id: 'storiaPage',
   _type: 'storiaPage',
   hero: {
-    immagine: img('public/MUSEO-19.jpg', 'Vigneto pugliese al tramonto'),
+    immagine: img('public/immagini/vigneto.jpg', 'Filari di vigneto nella campagna pugliese'),
     titolo: 'Il palmento e la tradizione del vino.',
     lead: "Tra il XVI e il XIX secolo, nelle campagne pugliesi, il palmento in pietra era il cuore della trasformazione dell'uva in vino.",
   },
@@ -87,7 +87,7 @@ export const storiaPage = {
       testo: toPortableText(
         "La vendemmia era il momento centrale dell'anno rurale pugliese — tramandato oralmente, fatto di gesti antichi e collaborazione profonda con la terra. Il palmento non era solo uno strumento: era il luogo dove la comunità si ritrovava."
       ),
-      immagine: img('public/MUSEO-14.jpg', 'Sala del museo con carrozza e ritratti di famiglia'),
+      immagine: img('public/immagini/masseria.png', 'La masseria Margarita in pietra, con il vigneto accanto'),
       layout: 'imgLeft',
     },
     {
@@ -97,7 +97,7 @@ export const storiaPage = {
       testo: toPortableText(
         "Il territorio pugliese, tra Salento e Valle d'Itria, porta con sé una vocazione antica per la coltivazione della vite. Uve autoctone che raccontano secoli di lavoro, di sole abbondante e di terreni calcarei."
       ),
-      immagine: img('public/MUSEO-18.jpg', 'Vigneto pugliese di giorno'),
+      immagine: img('public/immagini/damigiane.png', 'Damigiane in vetro verde in una stanza in pietra'),
       layout: 'imgRight',
     },
     {
@@ -108,7 +108,7 @@ export const storiaPage = {
       testo: toPortableText(
         "«Margarita» è la famiglia originaria di Francavilla Fontana, unita ai Carissimo di origini beneventane. Un nome che intreccia radici familiari, tradizione agricola e identità locale — non un'astrazione, ma una storia con un cognome e una pietra."
       ),
-      immagine: img('public/MUSEO-4.jpg', 'Anfore e pompa antica nel palmento'),
+      immagine: img('public/immagini/vigneto.jpg', 'Filari di vigneto nella campagna pugliese'),
       layout: 'fullWidth',
     },
   ],

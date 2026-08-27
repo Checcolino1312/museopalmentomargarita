@@ -21,16 +21,10 @@ import {
   homeVisita,
   impostazioni,
   percorsi,
-  sfondiProvvisori,
   storiaSezioni,
 } from './contenuti-nuovi';
 
 type Campi = Record<string, unknown>;
-
-/** Riferimento a un'immagine già caricata, nella forma che Sanity si aspetta. */
-function riferimentoImmagine({ _ref, alt }: { _ref: string; alt: string }) {
-  return { _type: 'immagine', alt, asset: { _type: 'reference', _ref } };
-}
 type Modifica = { tipo: string; campi: Campi };
 
 /**
@@ -83,7 +77,6 @@ async function raccogliModifiche(): Promise<Map<string, Modifica>> {
         titolo: homeMission.titolo,
         citazione: homeMission.citazione,
         testo: toPortableText(homeMission.testo),
-        immagine: riferimentoImmagine(sfondiProvvisori.homeMission),
       },
       visita: homeVisita,
     },
@@ -96,7 +89,6 @@ async function raccogliModifiche(): Promise<Map<string, Modifica>> {
   modifiche.set('storiaPage', {
     tipo: 'storiaPage',
     campi: {
-      pullQuoteImmagine: riferimentoImmagine(sfondiProvvisori.storiaPullQuote),
       sezioni: storiaSezioni.map((s, i) => ({
         _type: 'sezione',
         titolo: s.titolo,
