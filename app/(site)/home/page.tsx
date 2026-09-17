@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
 import SanityImage from '@/components/SanityImage';
-import Fisarmonica from '@/components/Fisarmonica';
+import SeguitoTesto from '@/components/SeguitoTesto';
 import TestoSuFoto from '@/components/TestoSuFoto';
+import { dividiTesto } from '@/lib/testo';
 import { sanityFetch } from '@/lib/sanity-fetch';
 import { homePageQuery, TAGS } from '@/lib/queries';
 import type { HomePage } from '@/lib/types';
@@ -14,6 +15,11 @@ export default async function HomePage() {
   const intro = home?.introduzione;
   const mission = home?.mission;
   const visita = home?.visita;
+
+  // Titolo e inizio del testo restano sempre visibili: il «+» rivela il seguito.
+  const { visibile: introVisibile, resto: introResto } = intro?.apribile
+    ? dividiTesto(intro.testo)
+    : { visibile: intro?.testo ?? [], resto: [] };
 
   return (
     <>
@@ -50,15 +56,12 @@ export default async function HomePage() {
           <div className="container">
             <div className={`intro__grid${intro.immagine ? '' : ' intro__grid--solo-testo'}`}>
               <div className="intro__testo">
-                {intro.apribile && intro.titolo ? (
-                  <Fisarmonica titolo={intro.titolo}>
-                    {intro.testo && <PortableText value={intro.testo} />}
-                  </Fisarmonica>
-                ) : (
-                  <>
-                    {intro.titolo && <h2>{intro.titolo}</h2>}
-                    {intro.testo && <PortableText value={intro.testo} />}
-                  </>
+                {intro.titolo && <h2>{intro.titolo}</h2>}
+                {introVisibile.length > 0 && <PortableText value={introVisibile} />}
+                {introResto.length > 0 && (
+                  <SeguitoTesto>
+                    <PortableText value={introResto} />
+                  </SeguitoTesto>
                 )}
               </div>
               {intro.immagine && (

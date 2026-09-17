@@ -68,12 +68,13 @@ export const homePage = defineType({
         }),
         defineField({
           name: 'apribile',
-          title: 'Testo a fisarmonica',
+          title: 'Nascondi il seguito dietro il «+»',
           type: 'boolean',
           initialValue: false,
           description:
-            'Mostra solo il primo capoverso, il resto si apre cliccando. Il titolo ' +
-            'resta sempre visibile.',
+            'Titolo e inizio del testo restano comunque visibili: si nasconde solo ' +
+            'il seguito, che si apre con «Continua a leggere». Se il seguito è ' +
+            'breve non viene nascosto per niente.',
         }),
       ],
     }),

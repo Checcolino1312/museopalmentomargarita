@@ -63,13 +63,13 @@ export const storiaPage = defineType({
             }),
             defineField({
               name: 'apribile',
-              title: 'Testo a fisarmonica',
+              title: 'Nascondi il seguito dietro il «+»',
               type: 'boolean',
               initialValue: false,
               description:
-                'Il testo resta chiuso e si apre cliccando sul titolo. Utile per le ' +
-                'sezioni lunghe. Da evitare sulla prima sezione: chi arriva troverebbe ' +
-                'solo titoli chiusi.',
+                'Titolo e inizio del testo restano comunque visibili: si nasconde solo ' +
+                'il seguito, che si apre con «Continua a leggere». Se il seguito è ' +
+                'breve non viene nascosto per niente.',
             }),
           ],
           preview: {

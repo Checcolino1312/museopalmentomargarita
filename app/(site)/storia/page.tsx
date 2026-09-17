@@ -2,8 +2,9 @@ import { Fragment } from 'react';
 import Link from 'next/link';
 import { PortableText } from '@portabletext/react';
 import SanityImage from '@/components/SanityImage';
-import Fisarmonica from '@/components/Fisarmonica';
+import SeguitoTesto from '@/components/SeguitoTesto';
 import TestoSuFoto from '@/components/TestoSuFoto';
+import { dividiTesto } from '@/lib/testo';
 import { sanityFetch } from '@/lib/sanity-fetch';
 import { storiaPageQuery, TAGS } from '@/lib/queries';
 import type { StoriaPage, StoriaSezione } from '@/lib/types';
@@ -20,22 +21,24 @@ export const metadata = {
 function Sezione({ sezione }: { sezione: StoriaSezione }) {
   const { label, titolo, testo, immagine, layout, apribile } = sezione;
 
-  // Da apribile il titolo diventa il comando che apre: non va ripetuto sopra.
-  const testoBlocco =
-    apribile && titolo ? (
-      <>
-        {label && <span className="label">{label}</span>}
-        <Fisarmonica titolo={titolo}>
-          {testo && <PortableText value={testo} />}
-        </Fisarmonica>
-      </>
-    ) : (
-      <>
-        {label && <span className="label">{label}</span>}
-        {titolo && <h2>{titolo}</h2>}
-        {testo && <PortableText value={testo} />}
-      </>
-    );
+  // Titolo e inizio del testo restano sempre visibili: il «+» rivela il seguito.
+  // Se il seguito è troppo breve, `dividiTesto` non ne nasconde nessuno.
+  const { visibile, resto } = apribile
+    ? dividiTesto(testo)
+    : { visibile: testo ?? [], resto: [] };
+
+  const testoBlocco = (
+    <>
+      {label && <span className="label">{label}</span>}
+      {titolo && <h2>{titolo}</h2>}
+      {visibile.length > 0 && <PortableText value={visibile} />}
+      {resto.length > 0 && (
+        <SeguitoTesto>
+          <PortableText value={resto} />
+        </SeguitoTesto>
+      )}
+    </>
+  );
 
   if (layout === 'fullWidth') {
     return (
