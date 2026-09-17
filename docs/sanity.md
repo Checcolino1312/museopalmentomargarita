@@ -79,22 +79,27 @@ l'apertura al pubblico ma quando si può telefonare o scrivere, e compare **solo
 nella pagina Contatti**: mostrarlo in home o nel footer farebbe credere che il
 museo sia aperto in quelle fasce.
 
-### Testi a fisarmonica
+### Testi lunghi: il «+ Continua a leggere»
 
-Alcuni testi lunghi stanno chiusi e si aprono cliccando sul titolo. Si comanda
-con l'interruttore **Testo a fisarmonica**, presente su ogni sezione della
-Storia e sull'introduzione della Home.
+Titolo e inizio del testo sono **sempre visibili**. Solo il seguito può stare
+nascosto dietro un comando «+ Continua a leggere», che da aperto diventa
+«Riduci». Si comanda con l'interruttore **Nascondi il seguito dietro il «+»**,
+presente su ogni sezione della Storia e sull'introduzione della Home.
 
-Il testo resta comunque nella pagina anche da chiuso: Google lo legge e la
-ricerca del browser lo trova. Chiudere non nasconde il contenuto ai motori.
+Quanto resta visibile lo decide il sito da sé: si tengono aperti capoversi
+interi finché si superano i 250 caratteri, così chi legge trova sempre qualcosa
+di compiuto. E se quel che resterebbe nascosto è meno di 200 caratteri, **non si
+nasconde niente**: un comando che rivela due righe fa perdere più tempo di
+quanto ne faccia risparmiare. Per questo la sezione «La località», che è breve,
+resta tutta aperta anche con l'interruttore acceso.
 
-Una raccomandazione: **lasciare aperta la prima sezione** di una pagina. Chi
-arriva e trova solo titoli chiusi tende a non aprirli e ad andarsene.
+Il testo nascosto resta comunque nella pagina: Google lo legge e la ricerca del
+browser lo trova. Chiuderlo non lo sottrae ai motori di ricerca.
 
-Le attività della pagina Percorsi sono organizzate in **gruppi**, ognuno una
-voce a fisarmonica; il primo è aperto di partenza, così si capisce a colpo
-d'occhio che gli altri si aprono. Titoli e composizione dei gruppi si cambiano
-dallo Studio.
+Le attività della pagina Percorsi funzionano diversamente, perché sono un
+elenco per categorie e non un testo continuo: sono organizzate in **gruppi**
+richiudibili, col primo aperto di partenza. Titoli e composizione dei gruppi si
+cambiano dallo Studio.
 
 ### Testo sopra una fotografia
 
@@ -103,8 +108,7 @@ scritte sopra una foto: basta caricarla nel campo **Foto di sfondo**. Un velo
 scuro viene applicato da solo per tenere il testo leggibile.
 
 Senza foto il blocco resta su fondo verde pieno — non si rompe nulla, cambia
-solo l'aspetto. Le due foto attualmente impostate sono **provvisorie**: riusano
-immagini già presenti, in attesa di scatti dedicati.
+solo l'aspetto.
 
 ### Pop-up eventi
 
@@ -165,10 +169,16 @@ Senza webhook i contenuti si aggiornano comunque, ma entro un'ora
 | --- | --- |
 | `npm run sanity:import` | import iniziale. **Sovrascrive tutto**: non va più rilanciato ora che ci sono modifiche fatte nello Studio |
 | `npm run sanity:contenuti` | aggiorna i testi delle pagine campo per campo, lasciando intatto il resto |
+| `npm run sanity:immagini` | carica le immagini da `public/immagini/` e le assegna alle sezioni |
 | `npm run sanity:fix-keys` | ripara gli elementi di array privi di `_key` («Missing keys» nello Studio) |
 | `npm run sanity:backup` | esporta il dataset |
 
-Gli ultimi tre mostrano un'anteprima e scrivono solo con `-- --apply`.
+`sanity:contenuti`, `sanity:immagini` e `sanity:fix-keys` mostrano un'anteprima
+e scrivono solo con `-- --apply`.
+
+C'è poi `npx tsx scripts/logo-trasparente.ts <ingresso> <uscita>`, che toglie lo
+sfondo a un logo a tinta unita: serve quando il file consegnato ha il fondo
+bianco pieno, che sul crema del sito si vedrebbe come un rettangolo.
 
 ## Statistiche
 
