@@ -67,20 +67,23 @@ async function raccogliModifiche(): Promise<Map<string, Modifica>> {
   const modifiche = new Map<string, Modifica>();
 
   // ── Home ──
+  // Campo per campo con i percorsi puntati, non `introduzione: {...}`:
+  // `set` su un oggetto lo sostituisce per intero, e cancellerebbe il
+  // sottocampo `immagine` che assegna `sanity:immagini`. I due script devono
+  // poter girare in qualsiasi ordine senza pestarsi i piedi.
   modifiche.set('homePage', {
     tipo: 'homePage',
     campi: {
-      introduzione: {
-        titolo: homeIntroduzione.titolo,
-        apribile: homeIntroduzione.apribile,
-        testo: toPortableText(homeIntroduzione.testo),
-      },
-      mission: {
-        titolo: homeMission.titolo,
-        citazione: homeMission.citazione,
-        testo: toPortableText(homeMission.testo),
-      },
-      visita: homeVisita,
+      'introduzione.titolo': homeIntroduzione.titolo,
+      'introduzione.apribile': homeIntroduzione.apribile,
+      'introduzione.testo': toPortableText(homeIntroduzione.testo),
+      'mission.titolo': homeMission.titolo,
+      'mission.citazione': homeMission.citazione,
+      'mission.testo': toPortableText(homeMission.testo),
+      'visita.titolo': homeVisita.titolo,
+      'visita.sottotitolo': homeVisita.sottotitolo,
+      'visita.linkLabel': homeVisita.linkLabel,
+      'visita.linkHref': homeVisita.linkHref,
     },
   });
 
