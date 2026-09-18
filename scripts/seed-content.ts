@@ -51,10 +51,12 @@ export const homePage = {
   heroTitoloRighe: ['La memoria', 'prende forma.'],
   heroImmagine: img('public/immagini/masseria.png', 'La masseria Margarita in pietra, con il vigneto accanto'),
   heroCta: { label: 'Scopri', href: '/storia' },
-  mosaico: {
-    immagineGrande: img('public/immagini/cucina.png', 'La cucina del museo con focolare, ceste e utensili in rame'),
-    immagineAlta: img('public/immagini/damigiane.png', 'Damigiane in vetro verde in una stanza in pietra'),
-    immagineQuadrata: img('public/immagini/vigneto.jpg', 'Filari di vigneto nella campagna pugliese'),
+  galleria: {
+    immagini: [
+      img('public/immagini/abiti.png', "Sala a volte del museo con abiti d'epoca, cassapanca e ceramiche"),
+      img('public/immagini/cucina.png', 'La cucina del museo con focolare, ceste e utensili in rame'),
+      img('public/immagini/vendemmia.png', 'Contadini durante la vendemmia, fra vigneto e uliveto'),
+    ],
     caption: 'Il palmento di Francavilla Fontana · XVI–XIX sec.',
   },
   pullQuote: {

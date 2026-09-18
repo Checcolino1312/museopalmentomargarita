@@ -7,7 +7,7 @@ export const homePage = defineType({
   groups: [
     { name: 'hero', title: 'Hero', default: true },
     { name: 'testi', title: 'Introduzione e mission' },
-    { name: 'mosaico', title: 'Mosaico immagini' },
+    { name: 'mosaico', title: 'Galleria immagini' },
     { name: 'resto', title: 'Citazione e visita' },
   ],
   fields: [
@@ -109,25 +109,22 @@ export const homePage = defineType({
     }),
 
     defineField({
-      name: 'mosaico',
-      title: 'Mosaico',
+      name: 'galleria',
+      title: 'Galleria',
       type: 'object',
       group: 'mosaico',
+      description:
+        'Le immagini vengono mostrate in griglia, tutte della stessa dimensione: ' +
+        'tre per riga su computer, due su tablet, una su telefono.',
       fields: [
         defineField({
-          name: 'immagineGrande',
-          title: 'Immagine grande (sinistra)',
-          type: 'immagine',
-        }),
-        defineField({
-          name: 'immagineAlta',
-          title: 'Immagine alta (destra, in alto)',
-          type: 'immagine',
-        }),
-        defineField({
-          name: 'immagineQuadrata',
-          title: 'Immagine quadrata (destra, in basso)',
-          type: 'immagine',
+          name: 'immagini',
+          title: 'Immagini',
+          type: 'array',
+          of: [{ type: 'immagine' }],
+          description:
+            'Il numero migliore è un multiplo di tre, così le righe restano piene. ' +
+            'Con due immagini la griglia si adatta a due colonne.',
         }),
         defineField({
           name: 'caption',

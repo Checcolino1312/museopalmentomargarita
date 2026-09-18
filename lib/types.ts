@@ -61,10 +61,8 @@ export interface HomePage {
   heroTitoloRighe?: string[];
   heroImmagine?: Immagine;
   heroCta?: { label?: string; href?: string };
-  mosaico?: {
-    immagineGrande?: Immagine;
-    immagineAlta?: Immagine;
-    immagineQuadrata?: Immagine;
+  galleria?: {
+    immagini?: (Immagine & { _key: string })[];
     caption?: string;
   };
   introduzione?: {

@@ -47,7 +47,8 @@ export const homePageQuery = defineQuery(`
   *[_type == "homePage"][0] {
     heroLabel, heroTitoloRighe, heroImmagine, heroCta,
     introduzione, mission,
-    mosaico, pullQuote, visita
+    galleria { immagini[] { _key, alt, asset }, caption },
+    pullQuote, visita
   }
 `);
 

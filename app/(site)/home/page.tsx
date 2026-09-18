@@ -11,7 +11,8 @@ import type { HomePage } from '@/lib/types';
 export default async function HomePage() {
   const home = await sanityFetch<HomePage | null>(homePageQuery, {}, [TAGS.homePage]);
 
-  const mosaico = home?.mosaico;
+  const galleria = home?.galleria;
+  const immagini = galleria?.immagini ?? [];
   const intro = home?.introduzione;
   const mission = home?.mission;
   const visita = home?.visita;
@@ -74,29 +75,24 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* IMMAGINI ASIMMETRICHE */}
-      <section className="img-mosaic">
-        <div className="container">
-          <div className="img-mosaic__grid">
-            <div className="img-mosaic__wide">
-              <SanityImage image={mosaico?.immagineGrande} sizes="(max-width: 860px) 100vw, 70vw" />
+      {/* GALLERIA — immagini tutte della stessa dimensione, in griglia */}
+      {immagini.length > 0 && (
+        <section className="galleria">
+          <div className="container">
+            <div className="galleria__grid">
+              {immagini.map((immagine) => (
+                <div key={immagine._key} className="galleria__cella">
+                  <SanityImage
+                    image={immagine}
+                    sizes="(max-width: 560px) 100vw, (max-width: 860px) 50vw, 33vw"
+                  />
+                </div>
+              ))}
             </div>
-            <div className="img-mosaic__stack">
-              <div className="img-mosaic__tall">
-                <SanityImage image={mosaico?.immagineAlta} sizes="30vw" />
-              </div>
-              <div className="img-mosaic__sq">
-                <SanityImage
-                  image={mosaico?.immagineQuadrata}
-                  objectPosition="center top"
-                  sizes="30vw"
-                />
-              </div>
-            </div>
+            {galleria?.caption && <p className="galleria__caption">{galleria.caption}</p>}
           </div>
-          {mosaico?.caption && <p className="img-mosaic__caption">{mosaico.caption}</p>}
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* MISSION — citazione scritta sopra la fotografia, se caricata */}
       {(mission?.citazione || mission?.testo) && (
@@ -202,46 +198,28 @@ export default async function HomePage() {
           color: var(--verdes) !important;
         }
 
-        /* ── Mosaico immagini asimmetrico ── */
-        .img-mosaic { padding-block: clamp(32px, 4vw, 56px); background: var(--crema-2); }
-        .img-mosaic__grid {
+        /* ── Galleria ──
+           Celle tutte uguali, niente più una grande con due piccole accostate:
+           ogni immagine ha lo stesso spazio e la stessa proporzione. */
+        .galleria { padding-block: clamp(40px, 5vw, 72px); background: var(--crema-2); }
+        .galleria__grid {
           display: grid;
-          grid-template-columns: 5fr 2fr;
-          gap: 6px;
-          align-items: stretch;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
         }
-        .img-mosaic__wide {
+        .galleria__cella {
           position: relative;
-          aspect-ratio: 16 / 9;
+          aspect-ratio: 4 / 3;
           border-radius: 2px;
           overflow: hidden;
         }
-        .img-mosaic__stack {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-        .img-mosaic__tall {
-          position: relative;
-          flex: 2;
-          min-height: 0;
-          border-radius: 2px;
-          overflow: hidden;
-        }
-        .img-mosaic__sq {
-          position: relative;
-          flex: 1;
-          min-height: 0;
-          border-radius: 2px;
-          overflow: hidden;
-        }
-        .img-mosaic__caption {
+        .galleria__caption {
           font-family: var(--font-mono);
           font-size: 0.7rem;
           letter-spacing: 0.1em;
           text-transform: uppercase;
           color: var(--ink-mute);
-          margin: 12px 0 0;
+          margin: 14px 0 0;
         }
 
         /* ── Pull quote ── */
@@ -344,9 +322,7 @@ export default async function HomePage() {
         @media (max-width: 860px) {
           .hero { height: clamp(380px, 75vw, 600px); }
           .hero h1 { font-size: clamp(3rem, 12vw, 5.5rem); }
-          .img-mosaic__grid { grid-template-columns: 1fr; }
-          .img-mosaic__stack { flex-direction: row; }
-          .img-mosaic__tall, .img-mosaic__sq { aspect-ratio: 1; flex: 1; }
+          .galleria__grid { grid-template-columns: repeat(2, 1fr); }
           .intro__grid { grid-template-columns: 1fr; }
           .intro__img { aspect-ratio: 16 / 9; }
           .visit__inner { grid-template-columns: 1fr; }
@@ -356,8 +332,7 @@ export default async function HomePage() {
           .hero { height: clamp(320px, 90vw, 480px); }
           .hero h1 { font-size: clamp(2rem, 10vw, 3.2rem); margin-bottom: 20px; white-space: normal; }
           .hero__content { padding-bottom: 28px; }
-          .img-mosaic__stack { display: none; }
-          .img-mosaic__grid { grid-template-columns: 1fr; }
+          .galleria__grid { grid-template-columns: 1fr; }
           .pull-quote { font-size: clamp(1.3rem, 5.5vw, 1.8rem); }
           .intro { padding-block: 44px; }
           .visit { padding-block: 44px; }
