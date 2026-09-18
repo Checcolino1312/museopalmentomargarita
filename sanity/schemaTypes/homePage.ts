@@ -8,7 +8,7 @@ export const homePage = defineType({
     { name: 'hero', title: 'Hero', default: true },
     { name: 'testi', title: 'Introduzione e mission' },
     { name: 'mosaico', title: 'Galleria immagini' },
-    { name: 'resto', title: 'Citazione e visita' },
+    { name: 'resto', title: 'Sezione visita' },
   ],
   fields: [
     defineField({
@@ -134,17 +134,6 @@ export const homePage = defineType({
       ],
     }),
 
-    defineField({
-      name: 'pullQuote',
-      title: 'Citazione',
-      type: 'object',
-      group: 'resto',
-      fields: [
-        defineField({ name: 'testo', title: 'Testo', type: 'text', rows: 3 }),
-        defineField({ name: 'linkLabel', title: 'Etichetta del link', type: 'string' }),
-        defineField({ name: 'linkHref', title: 'Indirizzo del link', type: 'string' }),
-      ],
-    }),
     defineField({
       name: 'visita',
       title: 'Sezione «Vieni a trovarci»',

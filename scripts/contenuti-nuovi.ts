@@ -171,7 +171,8 @@ export const contatti = {
 // ─── Impostazioni del sito ────────────────────────────────────────────────────
 
 export const impostazioni = {
-  whatsapp: '338 834 6910',
+  // Col prefisso: `linkWhatsApp` riconosce il «+» iniziale e non lo raddoppia.
+  whatsapp: '+39 338 834 6910',
   /** Non sono orari di apertura: il museo riceve su appuntamento. */
   orari: [
     { giorni: 'Lunedì — venerdì', orario: '09:30 — 12:30 / 17:00 — 19:00', chiuso: false },

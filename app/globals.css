@@ -310,6 +310,36 @@ hr {
   font-size: 0.94rem;
   letter-spacing: 0.02em;
 }
+/* ---------- Prosa giustificata ----------
+
+   Tutti i testi di lettura del sito vanno allineati su entrambi i margini.
+   Elencati qui in un punto solo, invece che sparsi nei fogli di stile delle
+   singole pagine, così si vede a colpo d'occhio cosa è coinvolto.
+
+   `hyphens: auto` non è un dettaglio: senza sillabazione la giustificazione
+   allarga gli spazi fra le parole fino ad aprire "fiumi" bianchi verticali, e
+   in italiano — che ha parole lunghe — nelle colonne strette si nota molto.
+   Funziona perché <html> dichiara lang="it".
+
+   Restano allineati a sinistra di proposito: titoli, sopratitoli, citazioni ed
+   elenchi. Giustificare due righe di citazione le sganghera. */
+.intro__testo p,
+.mission__testo p,
+.storia-hero .lead,
+.s1__text p,
+.s2__text p,
+.s3__text p,
+.perc-lead p,
+.perc-attivita__intro p,
+.perc-oltre__testo p,
+.contatti-intro p,
+.contatti-card p,
+.reperto-hero__copy .lead,
+.storia__body p {
+  text-align: justify;
+  hyphens: auto;
+}
+
 .site-nav {
   display: flex;
   gap: var(--space-6);

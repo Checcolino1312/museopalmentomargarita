@@ -59,13 +59,6 @@ export const homePage = {
     ],
     caption: 'Il palmento di Francavilla Fontana · XVI–XIX sec.',
   },
-  pullQuote: {
-    // Senza virgolette: le « » le aggiunge il componente
-    testo:
-      'Cinquantanove oggetti raccolti dalle masserie della provincia. Ognuno con la sua storia.',
-    linkLabel: 'Leggi la storia',
-    linkHref: '/storia',
-  },
   visita: {
     titolo: 'Vieni a trovarci.',
     sottotitolo: 'Visite guidate ogni venerdì e sabato.',

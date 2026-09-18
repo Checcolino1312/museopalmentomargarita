@@ -51,28 +51,21 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* INTRODUZIONE — «La storia prende vita» */}
-      {(intro?.titolo || intro?.testo) && (
-        <section className="intro">
-          <div className="container">
-            <div className={`intro__grid${intro.immagine ? '' : ' intro__grid--solo-testo'}`}>
-              <div className="intro__testo">
-                {intro.titolo && <h2>{intro.titolo}</h2>}
-                {introVisibile.length > 0 && <PortableText value={introVisibile} />}
-                {introResto.length > 0 && (
-                  <SeguitoTesto>
-                    <PortableText value={introResto} />
-                  </SeguitoTesto>
-                )}
+      {/* MISSION — citazione scritta sopra la fotografia, se caricata */}
+      {(mission?.citazione || mission?.testo) && (
+        <TestoSuFoto immagine={mission.immagine}>
+          <div className="mission">
+            {mission.titolo && <span className="mission__label">{mission.titolo}</span>}
+            {mission.citazione && (
+              <blockquote className="mission__quote">«{mission.citazione}»</blockquote>
+            )}
+            {mission.testo && (
+              <div className="mission__testo">
+                <PortableText value={mission.testo} />
               </div>
-              {intro.immagine && (
-                <div className="intro__img">
-                  <SanityImage image={intro.immagine} sizes="(max-width: 860px) 100vw, 40vw" />
-                </div>
-              )}
-            </div>
+            )}
           </div>
-        </section>
+        </TestoSuFoto>
       )}
 
       {/* GALLERIA — immagini tutte della stessa dimensione, in griglia */}
@@ -94,33 +87,26 @@ export default async function HomePage() {
         </section>
       )}
 
-      {/* MISSION — citazione scritta sopra la fotografia, se caricata */}
-      {(mission?.citazione || mission?.testo) && (
-        <TestoSuFoto immagine={mission.immagine}>
-          <div className="mission">
-            {mission.titolo && <span className="mission__label">{mission.titolo}</span>}
-            {mission.citazione && (
-              <blockquote className="mission__quote">«{mission.citazione}»</blockquote>
-            )}
-            {mission.testo && (
-              <div className="mission__testo">
-                <PortableText value={mission.testo} />
+      {/* INTRODUZIONE — «La storia prende vita» */}
+      {(intro?.titolo || intro?.testo) && (
+        <section className="intro">
+          <div className="container">
+            <div className={`intro__grid${intro.immagine ? '' : ' intro__grid--solo-testo'}`}>
+              <div className="intro__testo">
+                {intro.titolo && <h2>{intro.titolo}</h2>}
+                {introVisibile.length > 0 && <PortableText value={introVisibile} />}
+                {introResto.length > 0 && (
+                  <SeguitoTesto>
+                    <PortableText value={introResto} />
+                  </SeguitoTesto>
+                )}
               </div>
-            )}
-          </div>
-        </TestoSuFoto>
-      )}
-
-      {/* PULL QUOTE */}
-      {home?.pullQuote?.testo && (
-        <section className="pull-section">
-          <div className="container container--narrow">
-            <blockquote className="pull-quote">«{home.pullQuote.testo}»</blockquote>
-            {home.pullQuote.linkLabel && home.pullQuote.linkHref && (
-              <Link href={home.pullQuote.linkHref} className="pull-link">
-                {home.pullQuote.linkLabel} →
-              </Link>
-            )}
+              {intro.immagine && (
+                <div className="intro__img">
+                  <SanityImage image={intro.immagine} sizes="(max-width: 860px) 100vw, 40vw" />
+                </div>
+              )}
+            </div>
           </div>
         </section>
       )}
@@ -284,28 +270,7 @@ export default async function HomePage() {
         }
         .mission__testo p:last-child { margin-bottom: 0; }
 
-        .pull-section { padding-block: clamp(56px, 8vw, 100px); }
-        .pull-quote {
-          font-family: var(--font-display);
-          font-style: italic;
-          font-size: clamp(1.6rem, 3.5vw, 2.8rem);
-          line-height: 1.3;
-          color: var(--ink);
-          margin: 0 0 24px;
-          padding: 0;
-          border: none;
-        }
-        .pull-link {
-          font-family: var(--font-mono);
-          font-size: 0.78rem;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          color: var(--verdes);
-          border-bottom: 1px solid var(--verdes);
-          padding-bottom: 2px;
-        }
-
-        /* ── Orari ── */
+        /* ── Visita ── */
         .visit { background: var(--crema-2); padding-block: clamp(56px, 7vw, 96px); }
         .visit__inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
         .visit__copy h2 {
@@ -333,7 +298,6 @@ export default async function HomePage() {
           .hero h1 { font-size: clamp(2rem, 10vw, 3.2rem); margin-bottom: 20px; white-space: normal; }
           .hero__content { padding-bottom: 28px; }
           .galleria__grid { grid-template-columns: 1fr; }
-          .pull-quote { font-size: clamp(1.3rem, 5.5vw, 1.8rem); }
           .intro { padding-block: 44px; }
           .visit { padding-block: 44px; }
         }

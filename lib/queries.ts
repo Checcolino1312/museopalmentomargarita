@@ -48,7 +48,7 @@ export const homePageQuery = defineQuery(`
     heroLabel, heroTitoloRighe, heroImmagine, heroCta,
     introduzione, mission,
     galleria { immagini[] { _key, alt, asset }, caption },
-    pullQuote, visita
+    visita
   }
 `);
 

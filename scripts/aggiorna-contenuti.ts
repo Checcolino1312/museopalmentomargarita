@@ -50,7 +50,9 @@ const DA_CREARE: Record<string, string> = {
 const DA_CANCELLARE: Record<string, string[]> = {
   storiaPage: ['timeline', 'timelineTitolo'],
   percorsiPage: ['attivita'],
-  homePage: ['visita.titoloOrari'],
+  // `pullQuote`: la citazione «Cinquantanove oggetti…» è stata rimossa dalla
+  // home. `mosaico`: sostituito dalla galleria a celle uguali.
+  homePage: ['visita.titoloOrari', 'pullQuote', 'mosaico'],
 };
 
 /** Immagini già presenti nelle sezioni della storia, per posizione. */

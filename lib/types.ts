@@ -77,7 +77,6 @@ export interface HomePage {
     testo?: PortableTextBlock[];
     immagine?: Immagine;
   };
-  pullQuote?: { testo?: string; linkLabel?: string; linkHref?: string };
   visita?: { titolo?: string; sottotitolo?: string; linkLabel?: string; linkHref?: string };
 }
 
