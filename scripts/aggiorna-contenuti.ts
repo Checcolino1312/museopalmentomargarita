@@ -21,6 +21,8 @@ import {
   homeVisita,
   impostazioni,
   percorsi,
+  percorsiCta,
+  storiaCta,
   storiaSezioni,
 } from './contenuti-nuovi';
 
@@ -94,6 +96,7 @@ async function raccogliModifiche(): Promise<Map<string, Modifica>> {
   modifiche.set('storiaPage', {
     tipo: 'storiaPage',
     campi: {
+      ctaFinale: storiaCta,
       sezioni: storiaSezioni.map((s, i) => ({
         _type: 'sezione',
         titolo: s.titolo,
@@ -121,6 +124,7 @@ async function raccogliModifiche(): Promise<Map<string, Modifica>> {
       })),
       oltreTitolo: percorsi.oltreTitolo,
       oltreTesto: toPortableText(percorsi.oltreTesto),
+      ctaFinale: percorsiCta,
     },
   });
 

@@ -68,7 +68,6 @@ export default function SiteFooter({ settings }: { settings: SiteSettings | null
         <div className="footer-wordmark">Palmento<br />Margarita.</div>
         <div className="footer-meta">
           <div>{settings?.copyright}</div>
-          <div>Sito · Privacy · Cookie · Crediti</div>
         </div>
       </div>
     </footer>

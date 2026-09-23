@@ -168,6 +168,31 @@ export const contatti = {
     "Ti aspettiamo per accompagnarti in un viaggio tra storia, tradizioni, sapori e paesaggi dell'autentica Puglia rurale.",
 };
 
+/**
+ * Inviti finali delle pagine Storia e Percorsi.
+ *
+ * Il testo della Storia prometteva ancora «visite guidate ogni venerdì e
+ * sabato»: era rimasto indietro rispetto alla decisione del museo di ricevere
+ * su appuntamento, e contraddiceva home e contatti.
+ *
+ * Quello dei Percorsi non esisteva. Le parole riprendono quelle della
+ * proprietaria («costruire insieme un'esperienza su misura»): vanno riviste,
+ * sono comunque parole mie.
+ */
+export const storiaCta = {
+  titolo: 'Vieni a trovarci.',
+  testo: 'Visite su appuntamento, in piccoli gruppi.',
+  linkLabel: 'Contattaci',
+  linkHref: '/contatti',
+};
+
+export const percorsiCta = {
+  titolo: 'Costruiamo il tuo percorso.',
+  testo: "Raccontaci cosa ti interessa: prepariamo insieme un'esperienza su misura.",
+  linkLabel: 'Contattaci',
+  linkHref: '/contatti',
+};
+
 // ─── Impostazioni del sito ────────────────────────────────────────────────────
 
 export const impostazioni = {
