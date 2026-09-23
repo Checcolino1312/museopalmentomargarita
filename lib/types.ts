@@ -4,27 +4,6 @@ import type { PortableTextBlock } from '@portabletext/react';
 /** Immagine con testo alternativo, come definita nello schema `immagine`. */
 export type Immagine = Image & { alt?: string };
 
-export interface Reperto {
-  inventoryId: string;
-  nome: string;
-  epoca?: string;
-  provenienza?: string;
-  descrizione?: string;
-  noteTitolo?: string;
-  noteCorpo?: PortableTextBlock[];
-  pullQuote?: string;
-  foto?: Immagine;
-}
-
-/** Versione ridotta usata nelle griglie e per calcolare precedente/successivo. */
-export interface RepertoCard {
-  inventoryId: string;
-  nome: string;
-  epoca?: string;
-  descrizione?: string;
-  foto?: Immagine;
-}
-
 export interface Orario {
   giorni: string;
   orario?: string;
@@ -98,22 +77,6 @@ export interface StoriaPage {
   pullQuote?: string;
   pullQuoteImmagine?: Immagine;
   ctaFinale?: { titolo?: string; testo?: string; linkLabel?: string; linkHref?: string };
-}
-
-export interface CollezionePage {
-  titolo?: string;
-  lead?: string;
-  etichettaTotale?: string;
-  etichettaProvenienza?: string;
-  valoreProvenienza?: string;
-  searchPlaceholder?: string;
-  editorialCard?: {
-    titolo?: string;
-    testo?: string;
-    linkLabel?: string;
-    linkHref?: string;
-    posizione?: number;
-  };
 }
 
 export interface ContattiPage {

@@ -9,12 +9,11 @@
  *
  * Serve SANITY_API_WRITE_TOKEN in `.env.local`.
  */
-import { createReadStream, existsSync, readFileSync } from 'node:fs';
+import { createReadStream, existsSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
 
 import { client } from './lib/client';
 import { addMissingKeys } from './lib/keys';
-import { toPortableText } from './lib/portable-text';
 import { singletons, type ImagePlaceholder } from './seed-content';
 
 // ─── Immagini ─────────────────────────────────────────────────────────────────
@@ -83,58 +82,6 @@ async function resolveImages<T>(node: T): Promise<T> {
   return node;
 }
 
-// ─── Reperti ──────────────────────────────────────────────────────────────────
-
-type RepertoJson = {
-  id: string;
-  nome: string;
-  epoca: string;
-  provenienza: string;
-  descrizione: string;
-  noteTitolo: string;
-  noteCorpo: string;
-};
-
-async function importReperti(): Promise<void> {
-  const reperti: RepertoJson[] = JSON.parse(
-    readFileSync(resolve(process.cwd(), 'public/data/reperti.json'), 'utf-8')
-  );
-
-  console.log(`\n▸ Reperti (${reperti.length})`);
-
-  let senzaFoto = 0;
-
-  for (const r of reperti) {
-    const assetId = await uploadImage(`public/data/oggetti/${r.id}.jpg`);
-    if (!assetId) senzaFoto++;
-
-    await client.createOrReplace({
-      _id: `reperto-${r.id}`,
-      _type: 'reperto',
-      inventoryId: r.id,
-      nome: r.nome,
-      epoca: r.epoca,
-      provenienza: r.provenienza,
-      descrizione: r.descrizione,
-      noteTitolo: r.noteTitolo,
-      noteCorpo: toPortableText(r.noteCorpo),
-      ...(assetId
-        ? {
-            foto: {
-              _type: 'immagine',
-              asset: { _type: 'reference', _ref: assetId },
-              alt: r.nome,
-            },
-          }
-        : {}),
-    });
-
-    console.log(`  ✓ ${r.id} — ${r.nome}${assetId ? '' : ' (senza foto)'}`);
-  }
-
-  console.log(`  ${reperti.length} reperti importati, ${senzaFoto} senza foto.`);
-}
-
 // ─── Singleton ────────────────────────────────────────────────────────────────
 
 async function importSingletons(): Promise<void> {
@@ -157,7 +104,6 @@ async function main(): Promise<void> {
       `dataset ${process.env.NEXT_PUBLIC_SANITY_DATASET}`
   );
 
-  await importReperti();
   await importSingletons();
 
   console.log('\n✓ Import completato. Apri /studio per controllare i contenuti.');

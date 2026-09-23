@@ -14,11 +14,10 @@ import { parseBody } from 'next-sanity/webhook';
  *   Dataset:  production
  *   Trigger:  create, update, delete
  *   Secret:   lo stesso valore di SANITY_REVALIDATE_SECRET
- *   Projection: {_type, inventoryId}
+ *   Projection: {_type}
  */
 type WebhookPayload = {
   _type?: string;
-  inventoryId?: string;
 };
 
 export async function POST(req: NextRequest) {
@@ -43,9 +42,6 @@ export async function POST(req: NextRequest) {
     // 'max' = stale-while-revalidate: serve il contenuto vecchio mentre rigenera.
     // La forma a un argomento è deprecata in Next 16.
     const tags = [body._type];
-    if (body._type === 'reperto' && body.inventoryId) {
-      tags.push(`reperto:${body.inventoryId}`);
-    }
 
     for (const tag of tags) {
       revalidateTag(tag, 'max');

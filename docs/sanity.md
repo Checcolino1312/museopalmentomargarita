@@ -1,7 +1,7 @@
 # Sanity — configurazione e uso
 
-Tutti i contenuti del sito (reperti, testi delle pagine, orari, indirizzo, menu)
-stanno su Sanity. Lo Studio per modificarli è incorporato nel sito, su `/studio`.
+Tutti i contenuti del sito (testi delle pagine, orari, indirizzo, menu,
+immagini) stanno su Sanity. Lo Studio per modificarli è incorporato nel sito, su `/studio`.
 
 ## Primo avvio
 
@@ -42,10 +42,9 @@ Poi riempire `NEXT_PUBLIC_SANITY_PROJECT_ID`, `SANITY_API_WRITE_TOKEN` e
 npm run sanity:import
 ```
 
-Carica i 59 reperti con le loro foto e compila le pagine con i testi che prima
-erano scritti nel codice. Dura qualche minuto: carica una sessantina di immagini.
+Compila le pagine con i testi che prima erano scritti nel codice.
 
-Lo script è idempotente (usa `_id` fissi come `reperto-INV-001`), quindi si può
+Lo script è idempotente (usa `_id` fissi come `homePage`), quindi si può
 rieseguire senza creare duplicati — ma **sovrascrive** le modifiche fatte a mano
 nello Studio.
 
@@ -55,8 +54,8 @@ nello Studio.
 npm run dev
 ```
 
-Aprire <http://localhost:3000/studio>: devono comparire i 59 reperti e le cinque
-voci di impostazioni/pagine. Poi controllare le pagine del sito.
+Aprire <http://localhost:3000/studio>: devono comparire le voci di impostazioni
+e pagine. Poi controllare le pagine del sito.
 
 ## Uso quotidiano
 
@@ -65,9 +64,7 @@ Lo Studio è su `/studio`. Il menu è diviso in:
 - **Impostazioni del sito** — indirizzo, WhatsApp, email, telefono, orari di
   contatto, voci di menu, footer.
 - **Pop-up eventi** — l'avviso in sovrimpressione sulla home. Vedi sotto.
-- **Pagine** — Home, Storia, Percorsi, Collezione, Contatti. La pagina Storia
-  non ha più la timeline «Quattro secoli»: è stata rimossa.
-- **Reperti** — i 59 oggetti, ordinati per codice inventario.
+- **Pagine** — Home, Storia, Percorsi, Contatti.
 
 Email e telefono sono volutamente vuoti: finché restano così, il sito non mostra
 i relativi link. Basta compilarli per farli comparire.
@@ -145,7 +142,7 @@ webhook su manage.sanity.io → **API** → **Webhooks**:
 | Dataset | `production` |
 | Trigger | create, update, delete |
 | Secret | lo stesso valore di `SANITY_REVALIDATE_SECRET` |
-| Projection | `{_type, inventoryId}` |
+| Projection | `{_type}` |
 
 Senza webhook i contenuti si aggiornano comunque, ma entro un'ora
 (`revalidate: 3600` in `lib/sanity-fetch.ts`).
@@ -167,7 +164,7 @@ Senza webhook i contenuti si aggiornano comunque, ma entro un'ora
 
 | Comando | Cosa fa |
 | --- | --- |
-| `npm run sanity:import` | import iniziale. **Sovrascrive tutto**: non va più rilanciato ora che ci sono modifiche fatte nello Studio |
+| `npm run sanity:import` | import iniziale dei testi. **Sovrascrive tutto**: non va più rilanciato ora che ci sono modifiche fatte nello Studio |
 | `npm run sanity:contenuti` | aggiorna i testi delle pagine campo per campo, lasciando intatto il resto |
 | `npm run sanity:immagini` | carica le immagini da `public/immagini/` e le assegna alle sezioni |
 | `npm run sanity:fix-keys` | ripara gli elementi di array privi di `_key` («Missing keys» nello Studio) |

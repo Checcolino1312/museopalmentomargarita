@@ -32,22 +32,7 @@ export const structure: StructureResolver = (S) =>
         .id('percorsiPage')
         .child(S.document().schemaType('percorsiPage').documentId('percorsiPage')),
       S.listItem()
-        .title('Pagina Collezione')
-        .id('collezionePage')
-        .child(S.document().schemaType('collezionePage').documentId('collezionePage')),
-      S.listItem()
         .title('Pagina Contatti')
         .id('contattiPage')
         .child(S.document().schemaType('contattiPage').documentId('contattiPage')),
-
-      S.divider(),
-
-      S.listItem()
-        .title('Reperti')
-        .id('reperti')
-        .child(
-          S.documentTypeList('reperto')
-            .title('Reperti')
-            .defaultOrdering([{ field: 'inventoryId', direction: 'asc' }])
-        ),
     ]);

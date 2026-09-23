@@ -151,25 +151,6 @@ export const storiaPage = {
   },
 };
 
-export const collezionePage = {
-  _id: 'collezionePage',
-  _type: 'collezionePage',
-  titolo: 'Cinquantanove oggetti, una sola vendemmia.',
-  lead: 'Ogni reperto è una traccia: un gesto antico, un mestiere scomparso, un sapore conservato. Sfoglia la collezione o cerca un oggetto specifico.',
-  etichettaTotale: 'Totale reperti',
-  etichettaProvenienza: 'Provenienza',
-  valoreProvenienza: 'Francavilla Fontana',
-  searchPlaceholder: "Cerca un oggetto, un'epoca…",
-  editorialCard: {
-    titolo: 'La masseria come fabbrica di conservazione.',
-    testo:
-      'Fino alla metà del Novecento, frutta, ortaggi, vino e olio venivano lavorati seguendo pratiche tradizionali tramandate di generazione in generazione.',
-    linkLabel: 'Leggi la storia',
-    linkHref: '/storia',
-    posizione: 6,
-  },
-};
-
 export const contattiPage = {
   _id: 'contattiPage',
   _type: 'contattiPage',
@@ -181,4 +162,4 @@ export const contattiPage = {
   scriviciTesto: 'Per informazioni, prenotazioni di gruppi e visite guidate.',
 };
 
-export const singletons = [siteSettings, homePage, storiaPage, collezionePage, contattiPage];
+export const singletons = [siteSettings, homePage, storiaPage, contattiPage];
