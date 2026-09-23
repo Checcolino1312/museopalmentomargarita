@@ -171,10 +171,12 @@ Senza webhook i contenuti si aggiornano comunque, ma entro un'ora
 | `npm run sanity:contenuti` | aggiorna i testi delle pagine campo per campo, lasciando intatto il resto |
 | `npm run sanity:immagini` | carica le immagini da `public/immagini/` e le assegna alle sezioni |
 | `npm run sanity:fix-keys` | ripara gli elementi di array privi di `_key` («Missing keys» nello Studio) |
+| `npm run sanity:pulizia` | referto sul dataset e cancellazione delle immagini non più usate da nessuna pagina |
 | `npm run sanity:backup` | esporta il dataset |
 
-`sanity:contenuti`, `sanity:immagini` e `sanity:fix-keys` mostrano un'anteprima
-e scrivono solo con `-- --apply`.
+`sanity:contenuti`, `sanity:immagini`, `sanity:fix-keys` e `sanity:pulizia`
+mostrano un'anteprima e scrivono solo con `-- --apply`. La cancellazione degli
+asset è **irreversibile**: il referto senza `--apply` serve a controllare prima.
 
 C'è poi `npx tsx scripts/logo-trasparente.ts <ingresso> <uscita>`, che toglie lo
 sfondo a un logo a tinta unita: serve quando il file consegnato ha il fondo

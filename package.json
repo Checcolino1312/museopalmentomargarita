@@ -12,7 +12,8 @@
     "sanity:fix-keys": "tsx scripts/fix-missing-keys.ts",
     "sanity:contenuti": "tsx scripts/aggiorna-contenuti.ts",
     "sanity:immagini": "tsx scripts/carica-immagini.ts",
-    "sanity:backup": "sanity dataset export production"
+    "sanity:backup": "sanity dataset export production",
+    "sanity:pulizia": "tsx scripts/pulizia-sanity.ts"
   },
   "dependencies": {
     "@portabletext/react": "^7.0.1",
