@@ -46,11 +46,39 @@ const ibmMono = IBM_Plex_Mono({
   display: 'swap',
 });
 
+/**
+ * Indirizzo di base del sito, necessario perché Next trasformi in assoluti i
+ * percorsi delle immagini di condivisione: i social non accettano URL relativi.
+ * Su Vercel arriva dall'ambiente, così le anteprime usano il proprio indirizzo.
+ */
+const SITO = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : 'https://museopalmentomargarita.vercel.app';
+
 export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSiteSettings();
+  const titolo = `${settings?.titolo ?? 'Museo Palmento Margarita'} — Francavilla Fontana`;
+  const descrizione = settings?.descrizione;
+
   return {
-    title: `${settings?.titolo ?? 'Museo Palmento Margarita'} — Francavilla Fontana`,
-    description: settings?.descrizione,
+    metadataBase: new URL(SITO),
+    title: titolo,
+    description: descrizione,
+    // `app/icon.png` e `app/opengraph-image.png` vengono agganciate da Next
+    // per convenzione di file: qui si aggiunge solo ciò che il file non dice.
+    openGraph: {
+      title: titolo,
+      description: descrizione,
+      siteName: settings?.titolo ?? 'Museo Palmento Margarita',
+      locale: 'it_IT',
+      type: 'website',
+      url: SITO,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: titolo,
+      description: descrizione,
+    },
   };
 }
 
