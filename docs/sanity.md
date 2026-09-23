@@ -169,15 +169,35 @@ Senza webhook i contenuti si aggiornano comunque, ma entro un'ora
 | `npm run sanity:immagini` | carica le immagini da `public/immagini/` e le assegna alle sezioni |
 | `npm run sanity:fix-keys` | ripara gli elementi di array privi di `_key` («Missing keys» nello Studio) |
 | `npm run sanity:pulizia` | referto sul dataset e cancellazione delle immagini non più usate da nessuna pagina |
+| `npm run sanity:coerenza` | controlla che schema, dati e query siano allineati. Non scrive nulla |
 | `npm run sanity:backup` | esporta il dataset |
 
 `sanity:contenuti`, `sanity:immagini`, `sanity:fix-keys` e `sanity:pulizia`
 mostrano un'anteprima e scrivono solo con `-- --apply`. La cancellazione degli
 asset è **irreversibile**: il referto senza `--apply` serve a controllare prima.
 
+### Dopo ogni modifica allo schema
+
+```bash
+npm run sanity:coerenza
+```
+
+Controlla tre scollamenti che non danno errore ma si notano tardi e male:
+
+- un campo rimasto nei dati che lo schema non prevede più → lo Studio si riempie
+  di avvisi «campo non previsto»
+- un campo nello schema che nessuna query chiede → il museo lo compila, pubblica,
+  e non compare da nessuna parte senza capire perché
+- un tipo di documento senza tag di cache → il webhook non lo aggiorna mai, e le
+  modifiche restano invisibili fino allo scadere dell'ora
+
 C'è poi `npx tsx scripts/logo-trasparente.ts <ingresso> <uscita>`, che toglie lo
 sfondo a un logo a tinta unita: serve quando il file consegnato ha il fondo
 bianco pieno, che sul crema del sito si vedrebbe come un rettangolo.
+
+E `npx tsx scripts/genera-icone.ts`, che dal logo ricava la favicon (solo lo
+stemma, ritagliato quadrato: a 16 pixel il logo intero è illeggibile) e
+l'immagine di condivisione 1200×630. Da rilanciare se il logo cambia.
 
 ## Statistiche
 

@@ -13,7 +13,8 @@
     "sanity:contenuti": "tsx scripts/aggiorna-contenuti.ts",
     "sanity:immagini": "tsx scripts/carica-immagini.ts",
     "sanity:backup": "sanity dataset export production",
-    "sanity:pulizia": "tsx scripts/pulizia-sanity.ts"
+    "sanity:pulizia": "tsx scripts/pulizia-sanity.ts",
+    "sanity:coerenza": "tsx scripts/verifica-coerenza.ts"
   },
   "dependencies": {
     "@portabletext/react": "^7.0.1",
